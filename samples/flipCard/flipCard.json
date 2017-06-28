@@ -1,0 +1,21 @@
+{
+  "extensions": [
+	{
+      "application": "Flip Card Sample",
+      "payload": {
+        "include-files": [
+          "samples/flipCard/commListCardsFlipStyle.user.js"
+        ]
+      },
+      "name": "Communities FlipCard Extension",
+      "type": "com.ibm.muse.ui",
+      "path": "communities"
+    }
+  ],
+  "name": "Flip Card Sample",
+  "description": "Renders Communities as flip cards rather than lists",
+  "services": [
+    "Muse"
+  ],
+  "title": "FlipCard Customization Sample"
+}
