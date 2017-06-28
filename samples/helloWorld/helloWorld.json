@@ -1,0 +1,20 @@
+{
+  "name": "Simple Muse Customization",
+  "title": "My First Muse Customization",
+  "description": "Sample app to insert text into Connections Homepage",
+  "services": [
+    "Muse"
+  ],
+  "extensions": [
+    {
+      "payload": {
+        "include-files": [
+          "helloWorld/helloWorld.user.js"
+        ]
+      },
+      "name": "Hello World Extension",
+      "type": "com.ibm.muse.ui",
+      "path": "homepage"
+    }
+  ]
+}
