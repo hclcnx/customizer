@@ -1,0 +1,21 @@
+{
+  "extensions": [
+    {
+      "application": "News River Sectioned Sample",
+      "payload": {
+        "include-files": [
+          "samples/newsRiver/newsRiverSectioned.user.js"
+        ]
+      },
+      "name": "News River Sectioned Extension",
+      "type": "com.ibm.muse.ui",
+	  "path": "homepage"
+    }
+  ],
+  "name": "News River Sectioned Sample",
+  "description": "Draws news river in sections surrounded with Pink border",
+  "services": [
+    "Muse"
+  ],
+  "title": "News River Sectioned Sample"
+}
