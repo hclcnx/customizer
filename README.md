@@ -12,3 +12,7 @@ If you are interested in participating in the Muse Pilot Program you can request
 
 ### 4. Provide Feedback
 Any bugs, feature requests and other observations should be reported as [issues][3] in this repository. 
+
+[1]: https://github.com/ibmcnxdev/muse-pilot/blob/master/doc/AllAboutMuseV1.pdf
+[2]: https://github.com/ibmcnxdev/muse-pilot/tree/master/samples
+[3]: https://github.com/ibmcnxdev/muse-pilot/issues
