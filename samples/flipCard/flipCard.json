@@ -8,14 +8,14 @@
         ]
       },
       "name": "Communities FlipCard Extension",
-      "type": "com.ibm.muse.ui",
+      "type": "com.ibm.cusotmizer.ui",
       "path": "communities"
     }
   ],
   "name": "Flip Card Sample",
   "description": "Renders Communities as flip cards rather than lists",
   "services": [
-    "Muse"
+    "Customizer"
   ],
   "title": "FlipCard Customization Sample"
 }

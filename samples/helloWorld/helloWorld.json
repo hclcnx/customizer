@@ -1,9 +1,9 @@
 {
-  "name": "Simple Muse Customization",
-  "title": "My First Muse Customization",
-  "description": "Sample app to insert text into Connections Homepage",
+  "name": "Homepage Customization",
+  "title": "Introductory Customizer App",
+  "description": "Inserts text into IBM Connections Homepage",
   "services": [
-    "Muse"
+    "Customizer"
   ],
   "extensions": [
     {
@@ -13,7 +13,7 @@
         ]
       },
       "name": "Hello World Extension",
-      "type": "com.ibm.muse.ui",
+      "type": "com.ibm.customizer.ui",
       "path": "homepage"
     }
   ]

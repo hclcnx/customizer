@@ -8,7 +8,7 @@
         ]
       },
       "name": "Profiles Customization Extension",
-      "type": "com.ibm.muse.ui",
+      "type": "com.ibm.customizer.ui",
 	  "path": "profiles"
     }
   ],
@@ -16,6 +16,6 @@
   "description": "Alternative Profiles Page Design & Layout",
   "title": "Profiles Customization Sample",
   "services": [
-    "Muse"
+    "Customizer"
   ]
 }
