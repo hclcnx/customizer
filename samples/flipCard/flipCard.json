@@ -8,7 +8,7 @@
         ]
       },
       "name": "Communities FlipCard Extension",
-      "type": "com.ibm.cusotmizer.ui",
+      "type": "com.ibm.customizer.ui",
       "path": "communities"
     }
   ],
