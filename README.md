@@ -2,7 +2,7 @@
 
 ## What's Here?
 ### 1. Documentation
-Detailed [details][1] on all aspects of the Customizer service for IBM Connections is available in the doc folder. 
+Full [details][1] on all aspects of the Customizer service for IBM Connections is available in the doc folder. 
 
 ### 2. Samples
 The Customizer samples referenced in the [documentation][1] plus others are available [here][2].
