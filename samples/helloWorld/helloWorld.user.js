@@ -43,16 +43,11 @@ if(typeof(dojo) != "undefined") {
             // here we use waitFor to wait on the .lotusStreamTopLoading div.loaderMain.lotusHidden element
             // before we proceed to customize the page...
             waitFor( function(){
-
-                // example customization of the "Updates" title...
-                var updatesDescription = document.getElementById("asDesc");
-                var originalText = updatesDescription.textContent;
-                updatesDescription.textContent="Hello World: "+originalText;
-                updatesDescription.style="color:#ff0000";
-
-               // wait until the "loading..." node has been hidden, indicating that we have loaded content.
-            }, ".lotusStreamTopLoading div.loaderMain.lotusHidden");
-
+			// wait until the "loading..." node has been hidden
+			// indicating that we have loaded content.
+   			dojo.query("span.shareSome-title")[0].textContent="Hello World! ";
+       	          },
+		  ".lotusStreamTopLoading div.loaderMain.lotusHidden");
       } catch(e) {
           alert("Exception occurred in helloWorld: " + e);
       }
