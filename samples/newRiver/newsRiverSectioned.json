@@ -8,14 +8,14 @@
         ]
       },
       "name": "News River Sectioned Extension",
-      "type": "com.ibm.muse.ui",
-	  "path": "homepage"
+      "type": "com.ibm.customizer.ui",
+      "path": "homepage"
     }
   ],
   "name": "News River Sectioned Sample",
   "description": "Draws news river in sections surrounded with Pink border",
   "services": [
-    "Muse"
+    "Customizer"
   ],
   "title": "News River Sectioned Sample"
 }
