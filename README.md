@@ -2,7 +2,7 @@
 
 ## What's Here?
 ### 1. Documentation
-IBM Connections Customizer is a new service for modifying the IBM Connections user experience. Detailed [documentation][1] on all aspects of Customizer is available in the doc folder. 
+IBM Connections Customizer is a new service for modifying the IBM Connections user experience. Detailed [documentation][1] on all aspects of Customizer is available in the docs folder. 
 
 ### 2. Samples
 The Customizer samples referenced in the [documentation][1] plus others are available [here][2].
