@@ -11,7 +11,7 @@ The Customizer samples referenced in the [documentation][1] plus others are avai
 If you are interested in participating in the Customizer Pilot Program you can request to join by sending a mail to `ibmcndev@us.ibm.com`. You must include your `name`, `organization name` and `organization id` as part of your request. If you do not already have an IBM Connections Cloud organization you can use a free 60 day trial account. Set up is quick and easy - use this [short video][4] to get started.
 
 ### 4. Take Part in the Connections Customizer Contest
-To help jump start you with IBM Connections Customizer we are running a [community contest][7] for everyone to get involved. If you can write a cool IBM Connections customization and make it available to the community as an open sourced project then you could well be on your way to winning an ***iPad Mini*** courtesy of [OpenCode4Connections.org][5]. 
+To help jump start you with IBM Connections Customizer we are running a [community contest][7] for everyone to get involved. If you can write a cool IBM Connections customization and make it available to the community as an open sourced project then you could well be on your way to winning an ***iPad Mini*** courtesy of [OpenCode4Connections.org][5]. See these [videos][8] to help you on your way.
 
 ### 5. Provide Feedback
 Any bugs, feature requests and other observations should be reported as [issues][3] in this repository. 
@@ -23,3 +23,4 @@ Any bugs, feature requests and other observations should be reported as [issues]
 [5]: http://opencode4connections.org/
 [6]: http://opencode4connections.org/
 [7]: https://opencode4connections.org/oc4c.nsf/page.xsp?key=ccc-contest
+[8]: https://www.youtube.com/playlist?list=PLaDSIoof-i95DcgxaxGgl3tdziBdyEfuE
