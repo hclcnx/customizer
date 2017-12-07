@@ -5,13 +5,11 @@
 IBM Connections Customizer is a new service for modifying the IBM Connections user experience. Detailed [documentation][1] on all aspects of Customizer is available in the docs folder. 
 
 ### 2. Samples
-The Customizer samples referenced in the [documentation][1] plus others are available [here][2].
+All the Customizer samples referred to in the [documentation][1] are available here in the [samples folder][2]. Other supplemental enablement videos are available online on this [YouTube channel][8].
 
-### 3. Join the Customizer Pilot 
-If you are interested in participating in the Customizer Pilot Program you can request to join by sending a mail to `ibmcndev@us.ibm.com`. You must include your `name`, `organization name` and `organization id` as part of your request. If you do not already have an IBM Connections Cloud organization you can use a free 60 day trial account. Set up is quick and easy - use this [short video][4] to get started.
-
-### 4. Take Part in the Connections Customizer Contest
-To help jump start you with IBM Connections Customizer we are running a [community contest][7] for everyone to get involved. If you can write a cool IBM Connections customization and make it available to the community as an open sourced project then you could well be on your way to winning an ***iPad Mini*** courtesy of [OpenCode4Connections.org][5]. See these [videos][8] to help you on your way.
+### 3. IBM Connections Customizer GA   
+Customizer is now generally available on IBM Connections Cloud for tenants of the North America and Europe data centres. Before using Customizer your organization must first register for the service by sending a mail to `ibmcndev@us.ibm.com`. The email should include your `name`, `organization name` and `organization id`. Trial organizations are also eligible to use Customizer and can register in the same way.
+If you have already participated in the Customizer pilot program *you do not need to re-apply* as your organization is automatically enabled for the GA release. **NOTE** - for pilot participants who wish to continue to use applications created during the pilot phase, you must migrate these applications to the production environment. This is a simple process which is explained [here][9].
 
 ### 5. Provide Feedback
 Any bugs, feature requests and other observations should be reported as [issues][3] in this repository. 
@@ -24,3 +22,4 @@ Any bugs, feature requests and other observations should be reported as [issues]
 [6]: http://opencode4connections.org/
 [7]: https://opencode4connections.org/oc4c.nsf/page.xsp?key=ccc-contest
 [8]: https://www.youtube.com/playlist?list=PLaDSIoof-i95DcgxaxGgl3tdziBdyEfuE
+[9]: https://github.com/ibmcnxdev/customizer/blob/master/docs/MigratingAppsToV3.md
