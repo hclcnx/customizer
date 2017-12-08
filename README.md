@@ -22,4 +22,4 @@ Any bugs, feature requests and other observations should be reported as [issues]
 [6]: http://opencode4connections.org/
 [7]: https://opencode4connections.org/oc4c.nsf/page.xsp?key=ccc-contest
 [8]: https://www.youtube.com/playlist?list=PLaDSIoof-i95DcgxaxGgl3tdziBdyEfuE
-[9]: https://github.com/ibmcnxdev/customizer/blob/MartinDonnelly-V3Updates-1/docs/MigratingAppsToV3.md
+[9]: https://github.com/ibmcnxdev/customizer/blob/master/docs/MigratingAppsToV3.md
