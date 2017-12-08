@@ -17,6 +17,6 @@ The App Registry migration process for Customizer apps is simple and can be summ
 10. Validate that the app continues to work as before
 11. Repeat Steps 3 - 11 for any other applications you wish to migrate
 
-Congratulations - you have migrated your applications to production and they are now running in IBM Connections Pink! You can also view [a short video][1] on this topic which does a walk through of the steps outlined above. 
+Congratulations - you have migrated your applications to production and they are now running in IBM Connections Pink! You can also view [a short video][1] on this topic which does a walk through of the steps outlined above. Please refer to the doc for the latest features and updates. 
 
-[1]: https://www.youtube.com/playlist?xxx
+[1]: https://youtu.be/sPpUqhalkiA
