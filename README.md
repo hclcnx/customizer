@@ -11,7 +11,7 @@ All the Customizer samples referred to in the [documentation][1] are available h
 Customizer is now generally available on IBM Connections Cloud for tenants of the North America and Europe data centres. Before using Customizer your organization must first register for the service by sending a mail to `ibmcndev@us.ibm.com`. The email should include your `name`, `organization name` and `organization id`. Trial organizations are also eligible to use Customizer and can register in the same way.
 If you have already participated in the Customizer pilot program *you do not need to re-apply* as your organization is automatically enabled for the GA release. **NOTE** - for pilot participants who wish to continue to use applications created during the pilot phase, you must migrate these applications to the production environment. This is a simple process which is explained [here][9].
 
-### 5. Provide Feedback
+### 4. Provide Feedback
 Any bugs, feature requests and other observations should be reported as [issues][3] in this repository. 
 
 [1]: https://github.com/ibmcnxdev/customizer/blob/master/docs/IBMConnectionsCustomizer.pdf
