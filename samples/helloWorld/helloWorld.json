@@ -10,7 +10,10 @@
       "payload": {
         "include-files": [
           "helloWorld/helloWorld.user.js"
-        ]
+        ],
+	      "include-repo":{
+	       "name": "global-samples"
+	     }
       },
       "name": "Hello World Extension",
       "type": "com.ibm.customizer.ui",
