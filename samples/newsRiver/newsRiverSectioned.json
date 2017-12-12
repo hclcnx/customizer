@@ -5,7 +5,10 @@
       "payload": {
         "include-files": [
           "samples/newsRiver/newsRiverSectioned.user.js"
-        ]
+        ],
+	      "include-repo":{
+	        "name": "global-samples"
+	      }
       },
       "name": "News River Sectioned Extension",
       "type": "com.ibm.customizer.ui",
