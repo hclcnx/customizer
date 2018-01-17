@@ -4,7 +4,7 @@
       "application": "Flip Card Sample",
       "payload": {
         "include-files": [
-          "samples/flipCard/commListCardsFlipStyle.user.js"
+          "flipCard/commListCardsFlipStyle.user.js"
         ],
 	"include-repo":{
 	  "name": "global-samples"
