@@ -4,7 +4,7 @@
       "application": "Profiles Customization Sample",
       "payload": {
         "include-files": [
-          "samples/profiles/profilesCustomization.js"
+          "profiles/profilesCustomization.js"
         ],
 	"include-repo":{
 	  "name": "global-samples"
