@@ -4,7 +4,7 @@
       "application": "News River Sectioned Sample",
       "payload": {
         "include-files": [
-          "samples/newsRiver/newsRiverSectioned.user.js"
+          "newsRiver/newsRiverSectioned.user.js"
         ],
 	"include-repo":{
 	  "name": "global-samples"
