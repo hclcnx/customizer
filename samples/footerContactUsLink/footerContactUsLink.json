@@ -1,0 +1,23 @@
+{
+  "name": "Homepage Footer Contact Us Link Customization",
+  "title": "Footer Contact Us Link Customization",
+  "description": "Replace Footer Contact Us Link with a different mailto address",
+  "services": [
+    "Customizer"
+  ],
+  "extensions": [
+    {
+      "payload": {
+        "include-files": [
+          "footerContactUsLink/footerContactUsLink.js"
+        ],
+	      "include-repo":{
+	       "name": "global-samples"
+	     }
+      },
+      "name": "Footer Contact Us Link Extension",
+      "type": "com.ibm.customizer.ui",
+      "path": "homepage"
+    }
+  ]
+}
