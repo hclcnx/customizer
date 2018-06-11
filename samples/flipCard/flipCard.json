@@ -1,14 +1,14 @@
 {
   "extensions": [
-	{
+    {
       "application": "Flip Card Sample",
       "payload": {
         "include-files": [
           "flipCard/commListCardsFlipStyle.user.js"
         ],
-	"include-repo":{
-	  "name": "global-samples"
-	}
+        "include-repo": {
+          "name": "global-samples"
+        }
       },
       "name": "Communities FlipCard Extension",
       "type": "com.ibm.customizer.ui",
