@@ -1,0 +1,11 @@
+body.lotusui {
+  opacity: 0;
+}
+
+body.lotusui.all-loaded {
+  opacity: 1;
+}
+
+a.navbar_dyn_extensions {
+  display: none !important;
+}
