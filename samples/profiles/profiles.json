@@ -6,13 +6,13 @@
         "include-files": [
           "profiles/profilesCustomization.css"
         ],
-	"include-repo":{
-	  "name": "global-samples"
-	}
+        "include-repo": {
+          "name": "global-samples"
+        }
       },
       "name": "Profiles Customization Extension",
       "type": "com.ibm.customizer.ui",
-	  "path": "profiles"
+      "path": "profiles"
     }
   ],
   "name": "Profiles Customization Sample",
