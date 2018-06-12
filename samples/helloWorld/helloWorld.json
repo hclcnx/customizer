@@ -11,9 +11,12 @@
         "include-files": [
           "helloWorld/helloWorld.user.js"
         ],
-	      "include-repo":{
-	       "name": "global-samples"
-	     }
+        "include-repo":{
+          "name": "global-samples"
+        },
+        "cache-headers": {
+          "cache-control": "max-age=0"
+        }
       },
       "name": "Hello World Extension",
       "type": "com.ibm.customizer.ui",
