@@ -8,6 +8,9 @@
         ],
         "include-repo": {
           "name": "global-samples"
+        },
+        "cache-headers": {
+          "cache-control": "max-age=0"
         }
       },
       "name": "Profiles Customization Extension",
