@@ -317,76 +317,47 @@ extension is ignored for other Communities URLs like those shown in
 Listing 3, i.e. ownedcommunities, communityinvites, etc.
 
 ## Listing 4 – Customizer App With URL Matching
-
-1 {
-
-2 "services": \[
-
-3 "Customizer"
-
-4 \],
-
-5 "name": "Communities Customization",
-
-6 "title": "UI Customization for Communities I Follow",
-
-7 "description": "Sample to modify Connections Communities",
-
-8 "extensions": \[
-
-9 {
-
-10 "name": "Followed Communities Customizer",
-
-11 "type": "com.ibm.customizer.ui",
-
-12 "path": "**communities**",
-
-13 "payload": {
-
-14 **"match": {**
-
-15 **"url": "followedcommunities"**
-
-16 **},**
-
-17 "include-files": \[
-
-18 " flipCard/commListCardsFlipStyle.user.js "
-
-19 \] ,
-
-20 "include-repo": {
-
-21 "name": "global-samples"
-
-22 }
-
-23 }
-
-24 }
-
-25 \] }
+```json
+{
+   "services":[
+      "Customizer"
+   ],
+   "name":"Communities Customization",
+   "title":"UI Customization for Communities I Follow",
+   "description":"Sample to modify Connections Communities",
+   "extensions":[
+      {
+         "name":"Followed Communities Customizer",
+         "type":"com.ibm.customizer.ui",
+         "path":"communities",
+         "payload":{
+            "match":{
+               "url":"followedcommunities"
+            },
+            "include-files":[
+               " flipCard/commListCardsFlipStyle.user.js "
+            ],
+            "include-repo":{
+               "name":"global-samples"
+            }
+         }
+      }
+   ]
+}
+```
 
 Similarly, the following fragment shows how a single global extension
 can be applied to Homepage and Communities but nothing else:
 
 ##  Listing 5 – Global Customizer App With URL Matching
-
-…
-
-12 "path": "**global**",
-
-13 "payload": {
-
-14 **"match": {**
-
-**15 "url": "homepage|communities"**
-
-**16 },**
-
-17 …
-
+```json
+"path":"global",
+"payload":{
+   "match":{
+      "url":"homepage|communities"
+   }
+}
+```
 **Note:** The design of some IBM Connections components like Homepage
 are based on the Single Page App paradigm. For example, look at the
 homepage URLs at the top of Listing 3 – all contain hashtags which means
@@ -429,27 +400,18 @@ by employing this technique, i.e. any users of the same name will see
 the extension.
 
 ##   
-Listing 6 –Customizer App Targetting Specific Users By Name
-
-…
-
-12 "path": "communities",
-
-13 "payload": {
-
-14 **"match": {**
-
-15 **"user-name":\[**
-
-16 **"Jane Doe",**
-
-17 **"Joe Schmoe"**
-
-18 **\]**
-
-19 **},**
-
-20 …
+Listing 6 – Customizer App Targetting Specific Users By Name
+```json
+"path":"communities",
+"payload":{
+   "match":{
+      "user-name":[
+         "Jane Doe",
+         "Joe Schmoe"
+      ]
+   }
+}
+```
 
 To avoid possible ambiguity you can apply a precise filter by using the
 **user-id** match property instead. Note that the term “user id” is
@@ -457,23 +419,17 @@ sometimes referred to as “subscriber id” in the IBM Connection UI and
 documentation.
 
 ## Listing 7 –Customizer App Targetting Specific Users By Id
-
-12 "path": "communities",
-
-13 "payload": {
-
-14 **"match": {**
-
-15 **"user-id":\[**
-
-16 **"20071635",**
-
-17 **"20071656"**
-
-18 **\]**
-
-19 **},**
-
+```json
+"path":"communities",
+"payload":{
+   "match":{
+      "user-id":[
+         "20071635",
+         "20071656"
+      ]
+   }
+}
+```
 ##### Customizer Cache Management
 
 Listing 2 provided a summary description of a cache-headers payload
@@ -535,31 +491,20 @@ HTTP cache headers are declared in the JSON payload. Listing 8 is a JSON
 fragment showing how a HTTP cache header can be applied.
 
 ## Listing 8 Controlling Caching of Include-Files
-
-12 "path": "communities",
-
-13 "payload": {
-
-14 "include-files": \[
-
-15 " flipCard/commListCardsFlipStyle.user.js "
-
-16 \],
-
-17 "include-repo": {
-
-18 "name": "global-samples"
-
-19 },
-
-20 "**cache-headers**": {
-
-21 "**expires**": **"Tue, 25 Dec 2018 00:00:00 GMT**"
-
-22 }
-
-23 }
-
+```json
+"path":"communities",
+"payload":{
+   "include-files":[
+      " flipCard/commListCardsFlipStyle.user.js "
+   ],
+   "include-repo":{
+      "name":"global-samples"
+   },
+   "cache-headers":{
+      "expires":"Tue, 25 Dec 2018 00:00:00 GMT"
+   }
+}
+```
 Other HTTP cache headers can be set in the same way, namely:
 cache-control, last-modified and pragma. These headers can be mixed and
 matched to form a caching policy to suit your needs. The values
