@@ -243,38 +243,26 @@ values enumerated in Listing 2, i.e. homepage, communities, files, etc.
 ## Listing 3 – Examples of IBM Connections URLs
 ```javascript
 /* homepage */
-
-//w3-connections.ibm.com/homepage/web/updates/\#myStream/imFollowing/all
-
-//w3-connections.ibm.com/homepage/web/updates/\#myStream/statusUpdates/all
-
-//w3-connections.ibm.com/homepage/web/updates/\#myStream/discover/all
-
-//w3-connections.ibm.com/homepage/web/updates/\#atMentions/atMentions
+//w3-connections.ibm.com/homepage/web/updates/#myStream/imFollowing/all
+//w3-connections.ibm.com/homepage/web/updates/#myStream/statusUpdates/all
+//w3-connections.ibm.com/homepage/web/updates/#myStream/discover/all
+//w3-connections.ibm.com/homepage/web/updates/#atMentions/atMentions
 
 /* communities */
-
 //w3-connections.ibm.com/communities/service/html/ownedcommunities
-
 //w3-connections.ibm.com/communities/service/html/followedcommunities
-
 //w3-connections.ibm.com/communities/service/html/communityinvites
 
 /* files */
-
-//w3-connections.ibm.com/files/app\#/pinnedfiles
-
-//w3-connections.ibm.com/files/app\#/person/7f37da40-8f0a-1028-938d-db07163b51b2
+//w3-connections.ibm.com/files/app#/pinnedfiles
+//w3-connections.ibm.com/files/app#/person/7f37da40-8f0a-1028-938d-db07163b51b2
 
 /* blogs */
-
-//w3-connections.ibm.com/blogs/roller-ui/allblogs?email=joe\_schmoe
-
-//w3-connections.ibm.com/blogs/roller-ui/homepage?lang=en\_us
+//w3-connections.ibm.com/blogs/roller-ui/allblogs?email=joe_schmoe
+//w3-connections.ibm.com/blogs/roller-ui/homepage?lang=en_us
 
 /* wikis */
-
-//w3-connections.ibm.com/wikis/home?lang=en-us\#\!/mywikis?role=editor
+//w3-connections.ibm.com/wikis/home?lang=en-us#!/mywikis?role=editor
 ```
 It follows that according as http requests flow through Customizer it
 can query the Application Registry for any extensions relating to a
