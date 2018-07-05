@@ -88,23 +88,55 @@ following points can be inferred by a quick inspection of the code:
 
 A more complete summary of the properties used in Listing 1 is shown
 below:
-
-## Listing 2 Customizer Application Properties
+## Listing 2 – Customizer Application Properties
 | Property      | Description |
 | ------------- | ------------- |
-| name          | String used to identify the extension   |
-| title         | Short string description - translatable for international audiences     |
-| description   | Long string description - translatable for international audiences      |
-| description   | Long string description - translatable for international audiences      |
-| services      | The service(s) with which the application is associated                 |
-| type          | Mandatory string used to identify the extension point being implemented |
+| `name`          | String used to identify the extension   |
+| `title`         | Short string description - translatable for international audiences     |
+| `description`   | Long string description - translatable for international audiences      |
+| `services`      | The service(s) with which the application is associated                 |
+| `type`          | Mandatory string used to identify the extension point being implemented |
 |               | Valid values are as follows:                                            |
 |               | *com.ibm.customizer.ui*                                                 |
 |               | *com.ibm.customizer.api*                                                |
-| path          | String value used to identify the component to be customized:           |
+| `path`          | String value used to identify the component to be customized:           |
 |               | *activities*                                                            |
 |               | *blogs*                                                                 |
-|               | *communities*                                                           |
+|               | *downloads*                                                           |
+|               | *files*                                                           |
+|               | *forums*                                                           |
+|               | *global* \*                                                           |
+|               | *homepage*                                                           |
+|               | *manage*  \*\*                                                         |
+|               | *meetings*                                                           |
+|               | *metrics*                                                           |
+|               | *mycontacts*                                                           |
+|               | *news*                                                           |
+|               | *profiles*                                                           |
+|               | *search*                                                           |
+|               | *social*                                                           |
+|               | *viewer*                                                           |
+|               | *wikis*                                                           |
+|               | \* Unlike the other path values, global does not represent a real URL | 
+|               | path element but is a keyword meaning match all URLs.                |
+|               | \*\* The manage path does not cover all possible IBM Connections `manage` URL paths.  | 
+|               | */manage/subscribers/showInviteGuestDialog/input*                    |
+|               | */manage/account/user/input*                |
+|  `payload`    | The properties described below can be included in the `payload` object definition.  |
+| `match:url`   | A regular expression used to provide more fine-grained target resource matching, |
+|               | i.e. beyond the broad match specified in the path property  |
+|`match:user-name` | String used to identify one or more users as the target for the customization  |
+|               | - not unique within a given organization  |
+|`match:user-email` | String used to identify one or more users as the target for the customization  |
+|               | - This property **is unique** within a given organization |
+|`include-files` | List of files to be inserted into the response for a matched page request  |
+|`cache-headers` | One or more string values corresponding to standard HTTP cache  |
+| | header name/value pairs. Value(s) must be from the following list:  |
+| | One or more string values corresponding to standard HTTP cache  |
+| | *cache-control, expires, last-modified, pragma* |
+| | e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"` |
+| | All `cache-headers` values are treated as pass-through data that will |
+| | be set **as-is** in the Customizer HTTP response and not validated. |
 
 ### A Closer Look at Customizer Properties
 
