@@ -90,109 +90,21 @@ A more complete summary of the properties used in Listing 1 is shown
 below:
 
 ## Listing 2 Customizer Application Properties
-
-<table>
-<thead>
-<tr class="header">
-<th><strong>Property</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><b>name</b></td>
-<td>String used to identify the extension</td>
-</tr>
-<tr class="even">
-<td><b>title</b></td>
-<td>Short string description - translatable for international audiences</td>
-</tr>
-<tr class="odd">
-<td><b>description</b></td>
-<td>Long string description - translatable for international audiences</td>
-</tr>
-<tr class="even">
-<td><b>services</b></td>
-<td>The service(s) with which the application is associated</td>
-</tr>
-<tr class="odd">
-<td><b>type</b></td>
-<td><p>String used to identify the extension point being implemented – required. Valid values are as follows:</p>
-<i>
-<p>com.ibm.customizer.ui</p>
-<p>com.ibm.customizer.api</p></td>
-</i>
-</tr>
-<tr class="even">
-<td><b>path<b></td>
-<td><p>String value used to identify the component to be customized:</p>
-<i>
-<p>activities</p>
-<p>blogs</p>
-<p>communities</p>
-<p>downloads</p>
-<p>files</p>
-<p>forums</p>
-<p>global *</p>
-<p>homepage</p>
-<p>manage **</p>
-<p>meetings</p>
-<p>metrics</p>
-<p>mycontacts</p>
-<p>news</p>
-<p>profiles</p>
-<p>search</p>
-<p>social</p>
-<p>viewer</p>
-<p>wikis</p>
-</i>
-<p>* Unlike the other path values, global does not represent a real URL path element but is a keyword meaning match <strong>all</strong> URLs.</p>
-<p>** The manage path does not cover all possible IBM Connections “manage” URL paths. The subset of URLs that are covered is:</p>
-<i>
-<p>/manage/subscribers/showInviteGuestDialog/input</p>
-<p>/manage/account/user/input</p>
-</i>
-<p>Note - more Connections paths may be added as Customizer evolves.</p></td>
-</tr>
-<tr class="odd">
-<td><b>Payload</b></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><strong>match: url</strong></td>
-<td>A regular expression used to provide more fine-grained target resource matching, i.e. beyond the broad match specified in the path property</td>
-</tr>
-<tr class="odd">
-<td><strong>match: user-name</strong></td>
-<td>String used to identify one or more users as the target for the customization - <strong>not</strong> <strong>unique</strong> within a given organization</td>
-</tr>
-<tr class="even">
-<td><strong>match: user-id</strong></td>
-<td>String used to identify one or more users as the target for the customization. This property <strong>is unique</strong> within a given organization</td>
-</tr>
-<tr class="odd">
-<td><strong>match: user-email</strong></td>
-<td>String used to identify one or more users based on email address value</td>
-</tr>
-<tr class="even">
-<td><strong>include-files</strong></td>
-<td>List of files to be inserted into the response for a matched page request</td>
-</tr>
-<tr class="odd">
-<td><strong>include-repo: name </strong></td>
-<td>String used to identify the repository where the include-files are stored</td>
-</tr>
-<tr class="even">
-<td><strong>cache-headers</strong></td>
-<td><p>One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list:</p>
-<i>
-<p>cache-control, expires, last-modified, pragma</p>
-</i>
-<p>e.g. &quot;expires&quot;: &quot;Tue, 25 Dec 2018 00:00:00 GMT&quot;</p>
-<p>All cache-headers values are treated as pass-through data that will be set <em>as-is</em> in the Customizer HTTP response and not validated.</p></td>
-</tr>
-</tbody>
-</table>
+| Property      | Description |
+| ------------- | ------------- |
+| name          | String used to identify the extension   |
+| title         | Short string description - translatable for international audiences     |
+| description   | Long string description - translatable for international audiences      |
+| description   | Long string description - translatable for international audiences      |
+| services      | The service(s) with which the application is associated                 |
+| type          | Mandatory string used to identify the extension point being implemented |
+|               | Valid values are as follows:                                            |
+|               | *com.ibm.customizer.ui*                                                 |
+|               | *com.ibm.customizer.api*                                                |
+| path          | String value used to identify the component to be customized:           |
+|               | *activities*                                                            |
+|               | *blogs*                                                                 |
+|               | *communities*                                                           |
 
 ### A Closer Look at Customizer Properties
 
