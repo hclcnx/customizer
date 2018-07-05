@@ -117,22 +117,21 @@ below:
 |               | *social*                                                           |
 |               | *viewer*                                                           |
 |               | *wikis*                                                           |
-|               | \* Unlike the other path values, global does not represent a real URL | 
-|               | path element but is a keyword meaning match all URLs.                |
+|               | \* Unlike the other path values, global does not represent a real URL path element| 
+|               |  but is a keyword meaning match all URLs.                |
 |               | \*\* The manage path does not cover all possible IBM Connections `manage` URL paths.  | 
 |               | */manage/subscribers/showInviteGuestDialog/input*                    |
 |               | */manage/account/user/input*                |
 |  `payload`    | The properties described below can be included in the `payload` object definition.  |
 | `match:url`   | A regular expression used to provide more fine-grained target resource matching, |
 |               | i.e. beyond the broad match specified in the path property  |
-|`match:user-name` | String used to identify one or more users as the target for the customization  |
-|               | - not unique within a given organization  |
-|`match:user-email` | String used to identify one or more users as the target for the customization  |
-|               | - This property **is unique** within a given organization |
+|`match:user-name` | String used to identify one or more users as the target for the customization. |
+|               | This  property is **not unique** within a given organization  |
+|`match:user-email` | String used to identify one or more users as the target for the customization. |
+|               | This property **is unique** within a given organization |
 |`include-files` | List of files to be inserted into the response for a matched page request  |
-|`cache-headers` | One or more string values corresponding to standard HTTP cache  |
-| | header name/value pairs. Value(s) must be from the following list:  |
-| | One or more string values corresponding to standard HTTP cache  |
+|`cache-headers` | One or more string values corresponding to standard HTTP cache header name/value pairs.|
+| | Value(s) must be from the following list:  |
 | | *cache-control, expires, last-modified, pragma* |
 | | e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"` |
 | | All `cache-headers` values are treated as pass-through data that will |
