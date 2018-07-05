@@ -608,13 +608,11 @@ needs:
 > whom you wish to grant access.
 
 ## Listing 9 –Sample acl.ids file 
-
-> 60050207
-> 
-> 22716730
-> 
-> 10034583
-> 
+```
+60050207
+22716730
+10034583
+``` 
 > This is basically a whitelist for tenant access. Once you create an
 > acl.ids file in your repository then only those tenant organizations
 > listed in the file are allowed to use it - all others are denied
@@ -653,86 +651,54 @@ certain variable names and comments have been trimmed for readability in
 this document but nothing that affects the execution of the script.
 
 ## Listing 10 –Hello World Include File
+```javascript
+if (typeof(dojo)\ != "undefined") {
+  require(\["dojo/domReady\!"\], function() {
+    try {
+          // utility function to wait for a specific element to load...
+          var waitFor = function(callback, eXpath, eXpathRt, maxIV, waitTime) {
+            if (\!eXpathRt) var eXpathRt = dojo.body();
+            if (\!maxIV) var maxIV = 10000; // intervals before expiring
+            if (\!waitTime) var waitTime = 1; // 1000=1 second
 
-1 if(typeof(dojo) \!= "undefined") {
+            if (\!eXpath) return;
+            var waitInter = 0; // current interval
+            var intId = setInterval(function() {
+                if (++waitInter\ < maxIV && \!dojo.query(eXpath, eXpathRt).length)
+                  return;
 
-2 require(\["dojo/domReady\!"\], function(){
+                clearInterval(intId);
 
-3 try {
+                if (waitInter\ >= maxIV) {
+                  console.log("\*\*\*\* WAITFOR \[" + eXpath + "\] WATCH EXPIRED\!\!\!
+                    interval "+waitInter+" (max: "+ maxIV +")
+                    ");
+                  }
+                  else {
+                    console.log("\*\*\*\* WAITFOR \[" + eXpath + "\] WATCH TRIPPED AT
+                      interval "+waitInter+" (max: "+maxInter+")
+                      ");
+                      callback();
+                    }
+                  }, waitTime); // end setInterval()
+              }; // end waitFor()
+              // here we use waitFor to wait for the
+              // .lotusStreamTopLoading div.loaderMain.lotusHidden element
+              // before we proceed to customize the page...
+              waitFor(function() {
+                // wait until the "loading..." node has been hidden
+                // indicating that we have loaded content.
 
-4 // utility function to wait for a specific element to load...
+                dojo.query("span.shareSome-title")\[0\].textContent = "Hello World\!";
 
-5 var waitFor = function(callback, eXpath, eXpathRt, maxIV, waitTime){
-
-6 if(\!eXpathRt) var eXpathRt = dojo.body();
-
-7 if(\!maxIV) var maxIV = 10000; // intervals before expiring
-
-8 if(\!waitTime) var waitTime = 1; // 1000=1 second
-
-9 if(\!eXpath) return;
-
-10 var waitInter = 0; // current interval
-
-11 var intId = setInterval( function(){
-
-12 if(++waitInter\<maxIV && \!dojo.query(eXpath,eXpathRt).length)
-
-13 return;
-
-14 clearInterval(intId);
-
-15 if( waitInter \>= maxIV) {
-
-16 console.log("\*\*\*\* WAITFOR \["+eXpath+"\] WATCH EXPIRED\!\!\!
-interval "+waitInter+" (max:"+ maxIV +")");
-
-17 } else {
-
-18 console.log("\*\*\*\* WAITFOR \["+eXpath+"\] WATCH TRIPPED AT
-interval "+waitInter+" (max:"+maxInter+")");
-
-19 callback();
-
-20 }
-
-21 }, waitTime); // end setInterval()
-
-22 }; // end waitFor()
-
-23
-
-24 // here we use waitFor to wait for the
-
-25 // .lotusStreamTopLoading div.loaderMain.lotusHidden element
-
-26 // before we proceed to customize the page...
-
-27 waitFor( function(){
-
-28 // wait until the "loading..." node has been hidden
-
-29 // indicating that we have loaded content.
-
-30 **dojo.query("span.shareSome-title")\[0\].textContent="Hello World\!
-";**
-
-**cs.now()**
-
-31 }, ".lotusStreamTopLoading div.loaderMain.lotusHidden");
-
-32
-
-33 } catch(e) {
-
-34 alert("Exception occurred in helloWorld: " + e);
-
-35 }
-
-39 });
-
-36 }
-
+              }, ".lotusStreamTopLoading div.loaderMain.lotusHidden");
+            }
+            catch (e) {
+              alert("Exception occurred in helloWorld: " + e);
+            }
+          });
+      }
+```
 For a simple Hello World example, this may appear to be more complicated
 than expected, but a closer inspection will simplify matters. Before
 perusing the code be aware of the following points:
@@ -772,13 +738,10 @@ Connections Homepage in the browser and scrolling to the bottom of the
 file. The following tag fragment should be evident:
 
 ## Listing 11 –Customizer Script Injection
-
-…
-
-\<script type='text/javascript'
+```html
+<script type='text/javascript'
 src='/files/customizer/helloWorld/helloWorld.user.js?repoName=global-samples'\>
-
-…
+```
 
 URLs leading with the '/files/customizer'path are processed by the
 Customizer service. In this example it fetches the
@@ -790,9 +753,9 @@ repository is available to all organizations then any Customizer
 application can reference resources contained inside it, using links of
 this
 format:
-
+```html
 '/files/customizer/folder-name/resource-name.xxx?repoName=global-samples'
-
+```html
 The [profiles](#profiles) sample that you will see shortly uses a
 JavaScript code injection to load a CSS file from the profiles folder
 under the global-samples repository. Be aware that this type of broad
@@ -888,24 +851,15 @@ enhanced-activity-stream project available on the [OpenCode4Connections
 GitHub repository](https://github.com/OpenCode4Connections/):
 
 ## Listing 12 –Multiple Include Files
-
-…
-
-"payload": {
-
-"include-files": \[
-
-"enhanced-activity-stream/core.js",
-
-"enhanced-activity-stream/scroller.js",
-
-"enhanced-activity-stream/notifier.js"
-
-\]
-
+```json
+"payload":{
+   "include-files":[
+      "enhanced-activity-stream/core.js",
+      "enhanced-activity-stream/scroller.js",
+      "enhanced-activity-stream/notifier.js"
+   ]
 }
-
-…
+```
 
 The three JavaScript files referenced in Listing 12 will be injected in
 the order they are listed.
