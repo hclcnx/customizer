@@ -755,7 +755,7 @@ this
 format:
 ```html
 '/files/customizer/folder-name/resource-name.xxx?repoName=global-samples'
-```html
+```
 The [profiles](#profiles) sample that you will see shortly uses a
 JavaScript code injection to load a CSS file from the profiles folder
 under the global-samples repository. Be aware that this type of broad
