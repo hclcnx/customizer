@@ -134,8 +134,8 @@ below:
 | | Value(s) must be from the following list:  |
 | | *cache-control, expires, last-modified, pragma* |
 | | e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"` |
-| | All `cache-headers` values are treated as pass-through data that will |
-| | be set **as-is** in the Customizer HTTP response and not validated. |
+| | All `cache-headers` values are treated as pass-through data that will be set **as-is** in the|
+| | Customizer HTTP response and not validated. |
 
 ### A Closer Look at Customizer Properties
 
