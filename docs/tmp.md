@@ -342,8 +342,7 @@ organization so it’s possible to inadvertently target unintended users
 by employing this technique, i.e. any users of the same name will see
 the extension.
 
-##   
-Listing 6 – Customizer App Targetting Specific Users By Name
+## Listing 6 – Customizer App Targetting Specific Users By Name
 ```json
 "path":"communities",
 "payload":{
