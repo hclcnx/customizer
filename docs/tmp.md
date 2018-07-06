@@ -792,7 +792,7 @@ flipped to display the details of the community in question.
 
 ## Figure 4 Communities Page before and after Flipcard Customization
 
-![](images/icc-flipcard.png.png)
+![](images/icc-flipcard.png)
 
 The flipCard.json file follows the standard App Reg pattern explained
 already with the Hello World example. The JavaScript file
