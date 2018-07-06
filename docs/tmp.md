@@ -473,7 +473,7 @@ This request processing mechanism can be succinctly summarized in Figure
 
 ## Figure 1 – IBM Customizer Request Life Cycle
 
-![](media/image1.png)
+![](images/icc-lifecycle.png)
 
 You have already read about how Customizer generates App Registry
 queries and how request matching is performed based on the application
