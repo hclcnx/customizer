@@ -985,10 +985,9 @@ Some Points to Note regarding Customizer Applications
 
 ### Useful Online References
 
-User Script
-Technologies:
+**User Script Technologies:**
 
-> <https://greasyfork.org/en>
+<https://greasyfork.org/en>
 
 <https://tampermonkey.net/>
 
@@ -998,8 +997,8 @@ Technologies:
 
 <https://www.lifewire.com/top-greasemonkey-tampermonkey-user-scripts-4134335>
 
-IBM Connections Customizer:
+**IBM Connections Customizer:**
 
-> <https://opencode4connections.org/>
-> 
-> <https://github.com/ibmcnxdev/customizer>
+<https://opencode4connections.org/>
+ 
+<https://github.com/ibmcnxdev/customizer>
