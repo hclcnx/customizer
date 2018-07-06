@@ -580,7 +580,7 @@ contained within. This raises a number of interesting questions:
 
 ## Figure 2 – IBM Connections Developers Organization on GitHub
 
-> ![](media/image2.png)
+> ![](images/icc-ibmcnxdev.png)
 
 **<span class="underline">TIP:</span>** More information on how to
 integrate your Customizer include files with IBM Connections Cloud is
@@ -671,14 +671,12 @@ if (typeof(dojo)\ != "undefined") {
                 clearInterval(intId);
 
                 if (waitInter\ >= maxIV) {
-                  console.log("\*\*\*\* WAITFOR \[" + eXpath + "\] WATCH EXPIRED\!\!\!
-                    interval "+waitInter+" (max: "+ maxIV +")
-                    ");
+                  console.log("**** WAITFOR [" + eXpath + "] WATCH EXPIRED!!!
+                    interval "+waitInter+" (max: "+ maxIV +")");
                   }
                   else {
                     console.log("\*\*\*\* WAITFOR \[" + eXpath + "\] WATCH TRIPPED AT
-                      interval "+waitInter+" (max: "+maxInter+")
-                      ");
+                      interval "+waitInter+" (max: "+maxInter+")");
                       callback();
                     }
                   }, waitTime); // end setInterval()
@@ -691,7 +689,6 @@ if (typeof(dojo)\ != "undefined") {
                 // indicating that we have loaded content.
 
                 dojo.query("span.shareSome-title")\[0\].textContent = "Hello World\!";
-
               }, ".lotusStreamTopLoading div.loaderMain.lotusHidden");
             }
             catch (e) {
@@ -708,7 +705,7 @@ perusing the code be aware of the following points:
     injection code can sit inside
 
   - Just 1 line of code are needed for the actual Hello World UI update:
-    Line 30 - in **bold**
+    See the `dojo.query` statment on line 30
 
   - IBM Connections classic UI uses Dojo so code is injected into a Dojo
     structured page
@@ -725,9 +722,9 @@ logged to the JS console.
 
 ## Figure 3 Hello World Extension for IBM Connections Homepage
 
-![](media/image3.png)
+![](images/icc-helloworld.png)
 
-This waitFor()function is thus called passing in the callback function
+This `waitFor()` function is thus called passing in the callback function
 to manipulate the DOM and modify the UI. The interesting part of the
 callback function (Line 31 as already highlighted) locates a DOM element
 and assigns “Hello World” as the text content. When this extension is
