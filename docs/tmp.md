@@ -459,7 +459,7 @@ cases](https://developers.google.com/web/fundamentals/performance/optimizing-con
 
 ******
 
-*** The Request Life Cycle for IBM Connections Customizer***
+### The Request Life Cycle for IBM Connections Customizer***
 
 To summarize what’s been discussed thus far, Customizer is a proxy and
 all Connections requests and responses flow through it. Customizer
