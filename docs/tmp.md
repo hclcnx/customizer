@@ -580,7 +580,7 @@ contained within. This raises a number of interesting questions:
 
 ## Figure 2 – IBM Connections Developers Organization on GitHub
 
-> ![](images/icc-ibmcnxdev.png)
+![](images/icc-ibmcnxdev.png)
 
 **<span class="underline">TIP:</span>** More information on how to
 integrate your Customizer include files with IBM Connections Cloud is
@@ -792,7 +792,7 @@ flipped to display the details of the community in question.
 
 ## Figure 4 Communities Page before and after Flipcard Customization
 
-![](media/image4.png)
+![](images/icc-flipcard.png.png)
 
 The flipCard.json file follows the standard App Reg pattern explained
 already with the Hello World example. The JavaScript file
@@ -818,7 +818,7 @@ two JavaScript file injections in this case.
 
 ## Figure 5 Multiple Extensions for IBM Connections Homepage
 
-![](media/image5.png)
+![](images/icc-hellonewsriver.png)
 
 ##### profiles
 
@@ -835,7 +835,7 @@ action buttons, and so forth.
 
 ## Figure 6 Profile Page Extension
 
-![](media/image6.png)
+![](images/icc-profiles.png)
 
 **Bringing Some Order To Proceedings**
 
