@@ -457,7 +457,8 @@ headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
 and how [they can be best applied to satisfy different use
 cases](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching).
 
-\pagebreak
+******
+
 *** The Request Life Cycle for IBM Connections Customizer***
 
 To summarize what’s been discussed thus far, Customizer is a proxy and
