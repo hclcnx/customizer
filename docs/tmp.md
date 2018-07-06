@@ -472,7 +472,8 @@ This request processing mechanism can be succinctly summarized in Figure
 1 as follows:
 
 ## Figure 1 – IBM Customizer Request Life Cycle
-
+  
+  
 ![](images/icc-lifecycle.png)
 
 You have already read about how Customizer generates App Registry
