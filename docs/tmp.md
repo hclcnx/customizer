@@ -367,7 +367,7 @@ documentation.
 }
 ```
 ******
-#### Customizer Cache Management
+### Customizer Cache Management
 
 Listing 2 provided a summary description of a cache-headers payload
 property that enables particular HTTP cache settings to be applied for
@@ -385,7 +385,7 @@ explicit *cache-headers* payload property need only be applied *if you
 wish to override the default ETag behaviour* provided out of the box by
 Customizer.
 
-**Customizer Automatic ETag Support on IBM Connection Cloud**
+#### Customizer Automatic ETag Support on IBM Connection Cloud
 
 When a JavaScript or CSS resource is first served up by Customizer it
 generates a unique ETag for the resource. The ETag value is in the form
@@ -637,7 +637,8 @@ would typically not contain any include-repo reference as Customizer
 will resolve the include-files location based on the tenant’s
 organization id.
 
-***A Peek Inside Some Samples***
+******
+### A Peek Inside Some Samples
 
 This journey started as most app dev stories do with a reference to a
 “Hello World” application, the point of which is to jump start the
@@ -887,8 +888,9 @@ can view the order at any time by viewing the Connections page source
 and searching for the "/file/customizer" path. This section simply
 describes how the injection mechanism works so that you can plan and
 organize Customizer projects with that information in mind.
+
 ******
-**Getting Up and Running**
+### Getting Up and Running
 
 The sample customizations discussed in this document are available to
 any IBM Connections Cloud tenant organization. Applying a sample
@@ -952,8 +954,8 @@ include-files. You can then invoke the customization by creating a
 Customizer extension (just like the JSON files contained in the standard
 samples) in the Application Registry.
 
-###   
-Some Points to Note regarding Customizer Applications
+******
+### Some Points to Note regarding Customizer Applications
 
   - Support for Customizer applications follows the same
     [policy](https://www.ibm.com/support/knowledgecenter/en/SSYGQH_5.5.0/admin/customize/c_customize_overview.html)
@@ -965,8 +967,8 @@ Some Points to Note regarding Customizer Applications
   - Listing 2 provides the list of supported paths for Customizer at
     this point in time. This list currently encompasses all core IBM
     Connections apps but does not include the Administration URLs (aka
-    BSS), or related IBM ICS components like IBM Docs, Meetings, Chat or
-    Verse. The list may be expanded to include these and possibly other
+    BSS), or related IBM ICS components like IBM Docs, Chat or Verse.
+	The list may be expanded to include these and possibly other
     components in the future.
 
   - Customizer extensions are currently restricted to the organization
