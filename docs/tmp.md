@@ -29,7 +29,7 @@ workspace. App Reg is also available for IBM Connections On-Premises as
 part of the [Component Pack for
 V6.0.0.4](http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/3/877/ENUSZP18-0053/index.html&lang=en&request_locale=en)
 released in January 2018. As an administrator you can access App Reg
-On-Premises using this URL: http://*yourConnectionsUrl.com*/appreg/
+On-Premises using this URL: `http://*yourConnectionsUrl.com*/appreg/`
 
 ## Listing 1 – Hello World Customizer App
 ```json
@@ -68,74 +68,69 @@ rudimentary Customizer application.
 The application JSON in Listing 1 requires little explanation. The
 following points can be inferred by a quick inspection of the code:
 
-  - The app is named “Simple Customizer Sample” and it extends the
-    Customizer service
+  - The app is named “Simple Customizer Sample” and it extends the `Customizer` service
 
-  - It contains **one** extension named “Hello World Extension” (apps
-    can have many)
+  - It contains **one** extension named “Hello World Extension” (apps can have many)
 
-  - The extension is a customization of the UI (line \#11 -
-    com.ibm.customizer.ui)
+  - The extension is a customization of the UI (line \#11 - `"type": "com.ibm.customizer.ui"`)
 
-  - The customization applies to the Connections homepage (line \#12 -
-    homepage)
+  - The customization applies to the Connections homepage (line \#12 - `"path": "homepage"`)
 
-  - A file named helloWorld.user.js is to be injected into the
-    homepage (line \#15)
+  - A file named `helloWorld.user.js` is to be injected into the homepage (line \#15)
 
-  - helloWorld.user.js is retrieved from a global repository of
-    Customizer samples
+  - `helloWorld.user.js` is retrieved from a global repository of Customizer samples
 
-A more complete summary of the properties used in Listing 1 is shown
-below:
+A more complete summary of the properties used in Listing 1 is shown below:
+
 ## Listing 2 – Customizer Application Properties
-| Property      | Description |
-| ------------- | ------------- |
-| `name`          | String used to identify the extension   |
-| `title`         | Short string description - translatable for international audiences     |
-| `description`   | Long string description - translatable for international audiences      |
-| `services`      | The service(s) with which the application is associated                 |
-| `type`          | Mandatory string used to identify the extension point being implemented |
-|               | Valid values are as follows:                                            |
-|               | *com.ibm.customizer.ui*                                                 |
-|               | *com.ibm.customizer.api*                                                |
-| `path`          | String value used to identify the component to be customized:           |
-|               | *activities*                                                            |
-|               | *blogs*                                                                 |
-|               | *downloads*                                                           |
-|               | *files*                                                           |
-|               | *forums*                                                           |
-|               | *global* \*                                                           |
-|               | *homepage*                                                           |
-|               | *manage*  \*\*                                                         |
-|               | *meetings*                                                           |
-|               | *metrics*                                                           |
-|               | *mycontacts*                                                           |
-|               | *news*                                                           |
-|               | *profiles*                                                           |
-|               | *search*                                                           |
-|               | *social*                                                           |
-|               | *viewer*                                                           |
-|               | *wikis*                                                           |
-|               | \* Unlike the other path values, global does not represent a real URL path element| 
-|               |  but is a keyword meaning match all URLs.                |
-|               | \*\* The manage path does not cover all possible IBM Connections `manage` URL paths.  | 
-|               | */manage/subscribers/showInviteGuestDialog/input*                    |
-|               | */manage/account/user/input*                |
-|  `payload`    | The properties described below can be included in the `payload` object definition.  |
-| `match:url`   | A regular expression used to provide more fine-grained target resource matching, |
-|               | i.e. beyond the broad match specified in the path property  |
-|`match:user-name` | String used to identify one or more users as the target for the customization. |
-|               | This  property is **not unique** within a given organization  |
-|`match:user-email` | String used to identify one or more users as the target for the customization. |
-|               | This property **is unique** within a given organization |
-|`include-files` | List of files to be inserted into the response for a matched page request  |
-|`cache-headers` | One or more string values corresponding to standard HTTP cache header name/value pairs.|
-| | Value(s) must be from the following list:  |
-| | *cache-control, expires, last-modified, pragma* |
-| | e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"` |
-| | All `cache-headers` values are treated as pass-through data that will be set **as-is** in the|
-| | Customizer HTTP response and not validated. |
+| Property         | Description                                                                                  |
+| -------------    | -------------                                                                                |
+| `name`           | String used to identify the extension                                                        |
+| `title`          | Short string description - translatable for international audiences                          |
+| `description`    | Long string description - translatable for international audiences                           |
+| `services`       | The service(s) with which the application is associated                                      |
+| `type`           | Mandatory string used to identify the extension point being implemented                      |
+|                  | Valid values are as follows:                                                                 |
+|                  | *com.ibm.customizer.ui*                                                                      |
+|                  | *com.ibm.customizer.api*                                                                     |
+| `path`           | String value used to identify the component to be customized:                                |
+|                  | *activities*                                                                                 |
+|                  | *blogs*                                                                                      |
+|                  | *downloads*                                                                                  |
+|                  | *files*                                                                                      |
+|                  | *forums*                                                                                     |
+|                  | *global* \*                                                                                  |
+|                  | *homepage*                                                                                   |
+|                  | *manage*  \*\*                                                                               |
+|                  | *meetings*                                                                                   |
+|                  | *metrics*                                                                                    |
+|                  | *mycontacts*                                                                                 |
+|                  | *news*                                                                                       |
+|                  | *profiles*                                                                                   |
+|                  | *search*                                                                                     |
+|                  | *social*                                                                                     |
+|                  | *viewer*                                                                                     |
+|                  | *wikis*                                                                                      |
+|                  | \* Unlike the other path values, global does not represent a real URL path element           | 
+|                  |  but is a keyword meaning match all URLs.                                                    |
+|                  | \*\* The manage path does not cover all possible IBM Connections `manage` URL paths.         | 
+|                  | */manage/subscribers/showInviteGuestDialog/input*                                            |
+|                  | */manage/account/user/input*                                                                 |
+|`payload`         | The properties described below cab be applied in the `payload` object definition when the    |
+|                  | extension point is `com.ibm.customizer.ui`                                                   |  
+|`match:url`       | A regular expression used to provide more fine-grained target resource matching,             |
+|                  | i.e. beyond the broad match specified in the path property                                   |
+|`match:user-name` | String used to identify one or more users as the target for the customization.               |
+|                  | This  property is **not unique** within a given organization                                 |
+|`match:user-email`| String used to identify one or more users as the target for the customization.               |
+|                  | This property **is unique** within a given organization                                      |
+|`include-files`   | List of files to be inserted into the response for a matched page request                    |
+|`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs.      |
+|                  | Value(s) must be from the following list:                                                    |
+|                  | *cache-control, expires, last-modified, pragma*                                              |
+|                  | e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"`                                            |
+|                  | All `cache-headers` values are treated as pass-through data that will be set **as-is** in the|
+|                  | Customizer HTTP response and not validated.                                                  |
 
 ### A Closer Look at Customizer Properties
 
@@ -459,7 +454,7 @@ cases](https://developers.google.com/web/fundamentals/performance/optimizing-con
 
 ******
 
-### The Request Life Cycle for IBM Connections Customizer***
+### The Request Life Cycle for IBM Connections Customizer
 
 To summarize what’s been discussed thus far, Customizer is a proxy and
 all Connections requests and responses flow through it. Customizer
