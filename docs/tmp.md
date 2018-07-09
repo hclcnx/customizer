@@ -354,7 +354,7 @@ To avoid possible ambiguity you can apply a precise filter by using the
 sometimes referred to as “subscriber id” in the IBM Connection UI and
 documentation.
 
-## Listing 7 –Customizer App Targetting Specific Users By Id
+## Listing 7 – Customizer App Targetting Specific Users By Id
 ```json
 "path":"communities",
 "payload":{
@@ -427,7 +427,7 @@ effectively turn off the ETag mechanism and replace it with whatever
 HTTP cache headers are declared in the JSON payload. Listing 8 is a JSON
 fragment showing how a HTTP cache header can be applied.
 
-## Listing 8 Controlling Caching of Include-Files
+## Listing 8 - Controlling Caching of Include-Files
 ```json
 "path":"communities",
 "payload":{
@@ -603,7 +603,7 @@ is to provide an acl.ids file at the root of your project and populate
 it with the IBM Connections Cloud ids of the tenant organizations to
 whom you wish to grant access.
 
-## Listing 9 –Sample acl.ids file 
+## Listing 9 – Sample acl.ids file 
 ```
 60050207
 22716730
@@ -646,7 +646,7 @@ does the helloWorld.user.js include file do? Listing 10 shows the code –
 certain variable names and comments have been trimmed for readability in
 this document but nothing that affects the execution of the script.
 
-## Listing 10 –Hello World Include File
+## Listing 10 – Hello World Include File
 ```javascript
 if (typeof(dojo)\ != "undefined") {
   require(\["dojo/domReady\!"\], function() {
@@ -730,7 +730,7 @@ The code injection can be seen by viewing the source of the IBM
 Connections Homepage in the browser and scrolling to the bottom of the
 file. The following tag fragment should be evident:
 
-## Listing 11 –Customizer Script Injection
+## Listing 11 – Customizer Script Injection
 ```html
 <script type='text/javascript'
 src='/files/customizer/helloWorld/helloWorld.user.js?repoName=global-samples'\>
@@ -842,7 +842,7 @@ file reference. The snippet shown in Listing 12 is an example from the
 enhanced-activity-stream project available on the [OpenCode4Connections
 GitHub repository](https://github.com/OpenCode4Connections/):
 
-## Listing 12 –Multiple Include Files
+## Listing 12 – Multiple Include Files
 ```json
 "payload":{
    "include-files":[
