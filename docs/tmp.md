@@ -911,12 +911,12 @@ and import it into App Reg as follows:
   **Admin \> Manage Organization \> Organization Extensions**
 
 4.  Click the **new Apps Manager** link to take you to the Pink
-    Application Registry †
+    Application Registry
 
 5.  Click **New App** and then click the **Import** button once the App
     Editor appears
 
-6.  Select your local copy of the helloWorld.json
+6.  Select your local copy of the `helloWorld.json`
 
 7.  Insert a match criterion like the one in Listing 6 so that the
     extension is only applied to you:
@@ -927,9 +927,6 @@ and import it into App Reg as follows:
 
 9.  Refresh the IBM Connections Homepage and verify that the Hello World
     extension appears
-
-> † Note that Step 4 is temporary while the new IBM Connections Pink UI
-> components are being integrated into the cloud.
 
 >> **<span class="underline">TIP:</span>** The steps outlined above are
 covered in an enablement video available online here:
