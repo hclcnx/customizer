@@ -207,7 +207,7 @@ given request URL and reduce the scope of the result set by specifying
 the particular in-context `path` value. Thus a typical REST request
 from Customizer to App Reg for Files customizations might look like
 this:
-```html
+```
 appregistry/api/v3/services/**Customizer**/extensions?**type**=com.ibm.customizer.ui&**path**=files
 ```
 
@@ -908,7 +908,7 @@ and import it into App Reg as follows:
 
 3.  As Admin user in your IBM Connections Cloud organization go to:
 
-> **Admin \> Manage Organization \> Organization Extensions**
+  **Admin \> Manage Organization \> Organization Extensions**
 
 4.  Click the **new Apps Manager** link to take you to the Pink
     Application Registry †
@@ -921,7 +921,7 @@ and import it into App Reg as follows:
 7.  Insert a match criterion like the one in Listing 6 so that the
     extension is only applied to you:
 
-> i.e. match to **your** user-name, e-mail address or user id
+  i.e. match to **your** user-name, e-mail address or user id
 
 8.  Click **Save** to save the application into the Application Registry
 
