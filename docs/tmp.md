@@ -214,7 +214,7 @@ this:
 Customizer service that apply to Files”. This should clarify why
 Customizer extensions must contain both a `type` and `path` value.
 One caveat to note with regard to the `path` value is the existence of
-the special global key word. This is designed to address the use case
+the special `global` key word. This is designed to address the use case
 where an extension needs to apply to *all* requests and it would be
 clearly inefficient to have to create an extension for every possible
 `path` value. For example, should a customer need to display some
@@ -240,7 +240,7 @@ an extension should be applied to a given URL request or not. All
 always just passed back to the nominated service container (Customizer
 in this instance) for processing.
 
-##### Fine Grained URL Matching
+#### Fine Grained URL Matching
 
 The `match url` property takes a regular expression and evaluates it
 against the current URL. If it matches then the extensions is applied.
@@ -321,7 +321,7 @@ various braces contained in the regular expression would need to be
 escaped (i.e. preceded by a backslash character: \\) when entered into
 JSON content stored in App Reg.
 
-###### Fine Grained Matching based on the Active End-User
+#### Fine Grained Matching based on the Active End-User
 
 The `match` property also accepts various user related conditions
 based on the current user’s name or id. In both cases single or
@@ -366,7 +366,7 @@ documentation.
    }
 }
 ```
-##### Customizer Cache Management
+#### Customizer Cache Management
 
 Listing 2 provided a summary description of a cache-headers payload
 property that enables particular HTTP cache settings to be applied for
@@ -384,7 +384,7 @@ explicit *cache-headers* payload property need only be applied *if you
 wish to override the default ETag behaviour* provided out of the box by
 Customizer.
 
-###### **Customizer Automatic ETag Support on IBM Connection Cloud**
+**Customizer Automatic ETag Support on IBM Connection Cloud**
 
 When a JavaScript or CSS resource is first served up by Customizer it
 generates a unique ETag for the resource. The ETag value is in the form
@@ -418,7 +418,7 @@ with the updated repository, a new ETag is generated and the latest
 resources are served up and cached once again in the browser from that
 point forward.
 
-###### **The Cache-Headers Property**
+#### **The Cache-Headers Property**
 
 The cache-headers property enables you to enforce your own (non-ETag
 based) caching policy. If you specify cache-headers values you
@@ -774,7 +774,7 @@ Each sample has its own subfolder which contains the App Reg design
 definition (JSON file) and the resources to be injected to perform the
 customization (JavaScript, CSS). Take a look at the following examples:
 
-##### flipcards
+#### flipcards
 
 This extension provides an alternative rendering for the Communities
 pages so that a user’s communities can be displayed as flip cards rather
@@ -799,7 +799,7 @@ Look for the Toggle Extension control on the Communities page when this
 customization is applied. Clicking the button allows the user to switch
 back and forth between the standard row layout and the flip card format.
 
-##### newsRiver
+#### newsRiver
 
 This extension targets the IBM Connections Homepage and reformats the
 layout of the activity stream updates by accentuating the space
@@ -814,7 +814,7 @@ two JavaScript file injections in this case.
 
 ![](images/icc-hellonewsriver.png)
 
-##### profiles
+#### profiles
 
 The Profiles extension delivers a more sophisticated rendering to the
 page that is displayed when the user selects the “**My Profile**”
