@@ -307,10 +307,9 @@ followedcommunities. Thus a developer can target individual Communities
 URLs using the `match url` property but cannot use the same technique
 to match the Homepage hashtag URLs. Instead a homepage extension would
 need to inject a script that would listen for hash change events and
-respond accordingly. A sample is included in the homepage samples:
-[newsRiverSectioned.user.js](https://github.com/ibmcnxdev/customizer/blob/master/samples/newsRiver/newsRiverSectioned.user.js%20)
-. In particular take a look at the handleHashChangeEvent() function
-contained within.
+respond accordingly. An example is included in the homepage samples:
+[newsRiverSectioned.user.js](https://github.com/ibmcnxdev/customizer/blob/master/samples/newsRiver/newsRiverSectioned.user.js). 
+In particular take a look at the `handleHashChangeEvent()`` function contained within.
 
 It’s easy to envisage many other use cases that would require
 fine-grained match criteria. For instance, if a customer wants to apply
