@@ -208,7 +208,7 @@ the particular in-context `path` value. Thus a typical REST request
 from Customizer to App Reg for Files customizations might look like
 this:
 ```
-appregistry/api/v3/services/**Customizer**/extensions?**type**=com.ibm.customizer.ui&**path**=files
+appregistry/api/v3/services/Customizer/extensions?type=com.ibm.customizer.ui&path=files
 ```
 
 … which translates as “get all UI extensions registered for the
