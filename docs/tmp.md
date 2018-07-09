@@ -93,6 +93,7 @@ A more complete summary of the properties used in Listing 1 is shown below:
 |                  | Valid values are as follows:                                                                 |
 |                  | *com.ibm.customizer.ui*                                                                      |
 |                  | *com.ibm.customizer.api*                                                                     |
+|                  | *com.ibm.customizer.proxy*                                                                   |
 | `path`           | String value used to identify the component to be customized:                                |
 |                  | *activities*                                                                                 |
 |                  | *blogs*                                                                                      |
@@ -124,7 +125,9 @@ A more complete summary of the properties used in Listing 1 is shown below:
 |`match:user-email`| String used to identify one or more users as the target for the customization.               |
 |                  | This property **is unique** within a given organization                                      |
 |`include-files`   | List of files to be inserted into the response for a matched page request                    |
-|`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list: *cache-control, expires, last-modified, pragma* e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"` All `cache-headers` values are treated as pass-through data that will be set **as-is** in the Customizer HTTP response and not validated.                                                                                  |
+|`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list: `cache-control, expires, last-modified, pragma` e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"`. All `cache-headers` values are treated as pass-through data that will be set **as-is** in the Customizer HTTP response and not validated.                                                                                  |
+|**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.proxy`** |  
+|**TBC...**     | ... | 
 
 ### A Closer Look at Customizer Properties
 
@@ -137,39 +140,41 @@ Properties defined for *all* App Reg applications across all services
 
 2.  Customizer Service Properties
 
-Properties specific to the Customizer service, i.e. *everything in the
-**Payload** section*
+Properties specific to the Customizer service, i.e. *everything in the **Payload** section*. 
+**Note:** `Payload` properties will vary according to the extension point being used. In other words,
+the `payload` properties are contextual so the `com.ibm.customizer.ui` extension point properties will 
+differ to those defined for `com.ibm.customizer.proxy`.
 
 In terms of the generic properties, App Reg requires that any
-application specify **name**, **title**, **description, service** and
-**type** property values. The Application Registry specification does
-not require the **path** property to be specified when an application is
+application specify `name`, `title`, `description`, `service` and
+`type` property values. The Application Registry specification does
+not require the `path` property to be specified when an application is
 created, but the Customizer service puts it to good use for every
 request it processes, as will be seen shortly. Ergo, in reality for
-Customizer applications, a **path** value is *required* in order for
+Customizer applications, a `path` value is *required* in order for
 them to work properly.
 
-Of the generic properties outlined in Listing 2, only **type** and
-**path** merit any further discussion. A **type** value always equates
+Of the generic properties outlined in Listing 2, only `type` and
+`path` merit any further discussion. A `type` value always equates
 to an extension point defined by a service. At present Customizer only
 defines two extension points, com.ibm.customizer.ui and
 com.ibm.customizer.api. The former is a declaration that a given
 Customizer extension performs a modification to the IBM Connections UI,
 and thus will be handled in accordance with a prescribed UI extension
-pattern – for example any **include-files** specified in the **payload**
+pattern – for example any `include-files` specified in the `payload`
 are always injected into the response document. The latter is reserved
 for future use – suffice to say that as a middleware proxy Customizer is
 capable of modifying API behaviours, but that use case is not catered
 for in the current Customizer release.
 
-For Customizer applications, the **path** property value is used to
+For Customizer applications, the `path` property value is used to
 identify a path element in the IBM Connections request URL, which in
 most use cases corresponds to a standard IBM Connections component.
 
 Consider the URLs displayed in Listing 3 - these sample URLs follow a
 clear pattern where the next element after the IBM Connections cloud
 domain name identifies the Connections component or application handling
-the request. The possible values of this element map to the **path**
+the request. The possible values of this element map to the `path`
 values enumerated in Listing 2, i.e. homepage, communities, files, etc.
 
 ## Listing 3 – Examples of IBM Connections URLs
@@ -199,7 +204,7 @@ values enumerated in Listing 2, i.e. homepage, communities, files, etc.
 It follows that according as http requests flow through Customizer it
 can query the Application Registry for any extensions relating to a
 given request URL and reduce the scope of the result set by specifying
-the particular in-context **path** value. Thus a typical REST request
+the particular in-context `path` value. Thus a typical REST request
 from Customizer to App Reg for Files customizations might look like
 this:
 
@@ -207,12 +212,12 @@ this:
 
 … which translates as “get all UI extensions registered for the
 Customizer service that apply to Files”. This should clarify why
-Customizer extensions must contain both a **type** and **path** value.
-One caveat to note with regard to the **path** value is the existence of
+Customizer extensions must contain both a `type` and `path` value.
+One caveat to note with regard to the `path` value is the existence of
 the special global key word. This is designed to address the use case
 where an extension needs to apply to *all* requests and it would be
 clearly inefficient to have to create an extension for every possible
-**path** value. For example, should a customer need to display some
+`path` value. For example, should a customer need to display some
 corporate footer text at the bottom of every page in IBM Connections
 then a global extension would facilitate that.
 
@@ -221,23 +226,23 @@ of extensions match these criteria, i.e. a single collection of one or
 more JSON files just like the one shown previously in Listing 1. It is
 then up to the Customizer service implementation to parse and apply the
 design metadata contained in the returned extensions – and that is where
-the **payload** data comes into play.
+the `payload` data comes into play.
 
 ### Customizer Payload Properties
 
-As should now be evident, the generic **path** property provides a
+As should now be evident, the generic `path` property provides a
 coarse means of querying the Application Registry for extensions
-pertaining to a given IBM Connections component. The optional **match**
-properties inside the Customizer **payload** provide a further means of
+pertaining to a given IBM Connections component. The optional `match`
+properties inside the Customizer `payload` provide a further means of
 fine-tuning the filtering of extensions and essentially deciding whether
 an extension should be applied to a given URL request or not. All
-**payload** properties are meaningless to the App Registry – they are
+`payload` properties are meaningless to the App Registry – they are
 always just passed back to the nominated service container (Customizer
 in this instance) for processing.
 
 ##### Fine Grained URL Matching
 
-The **match url** property takes a regular expression and evaluates it
+The `match url` property takes a regular expression and evaluates it
 against the current URL. If it matches then the extensions is applied.
 If no match occurs, the extension is not applied. This is a powerful
 feature as the following code snippets will demonstrate.
@@ -298,7 +303,7 @@ page. Thus Customizer is not notified for example when a user moves from
 imfollowing to atmentions. By contrast this is not the case in
 Communities when a user moves from ownedcommunities to
 followedcommunities. Thus a developer can target individual Communities
-URLs using the **match url** property but cannot use the same technique
+URLs using the `match url` property but cannot use the same technique
 to match the Homepage hashtag URLs. Instead a homepage extension would
 need to inject a script that would listen for hash change events and
 respond accordingly. A sample is included in the homepage samples:
@@ -309,7 +314,7 @@ contained within.
 It’s easy to envisage many other use cases that would require
 fine-grained match criteria. For instance, if a customer wants to apply
 a customization to any Files URL that contains a GUID then this can be
-achieved by setting the path value to “files” and the match **url**
+achieved by setting the path value to “files” and the match `url`
 value to “id=\[a-z0-9\]{8}-(\[a-z0-9\]{4}-){3}\[a-z0-9\]{12}” – refer
 back to Listing 3 for an example of such a Files URL. Be aware that the
 various braces contained in the regular expression would need to be
@@ -318,7 +323,7 @@ JSON content stored in App Reg.
 
 ###### Fine Grained Matching based on the Active End-User
 
-The **match** property also accepts various user related conditions
+The `match` property also accepts various user related conditions
 based on the current user’s name or id. In both cases single or
 multi-value parameters may be provided, or in JSON parlance a single
 string value or an array of strings can be specified. The fragment
@@ -345,7 +350,7 @@ the extension.
 ```
 
 To avoid possible ambiguity you can apply a precise filter by using the
-**user-id** match property instead. Note that the term “user id” is
+`user-id` match property instead. Note that the term “user id” is
 sometimes referred to as “subscriber id” in the IBM Connection UI and
 documentation.
 
@@ -481,7 +486,7 @@ contained within. This raises a number of interesting questions:
 
 1.  **Where do these files reside?**
 
-> For IBM Connections Cloud, any files declared in the **include-files**
+> For IBM Connections Cloud, any files declared in the `include-files`
 > property list are stored in one of two locations:
 
 1)  a private IBM [GitHub](https://github.com/) organization (i.e.
