@@ -118,9 +118,7 @@ A more complete summary of the properties used in Listing 1 is shown below:
 |                  | */manage/subscribers/showInviteGuestDialog/input*                                            |
 |                  | */manage/account/user/input*                                                                 |
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.ui`** |  
-|`match/exclude`   | Test criterion that determines whether or not the nominated `include-files` are inserted into the response. |
-|                  | Either a `match` OR `exclude` condition can be applied to the `url` or one of the `user-xxxx` properties.   |
-|                  | If the criterion tests positive then the `include-files` are inserted on a `match` or omitted on an `èxclude`.   |
+|`match/exclude`   | Test criterion that determines whether or not the nominated `include-files` are inserted into the response. Either a `match` OR `exclude` condition can be applied to the `url` or one of the `user-xxxx` properties. If the criterion tests positive then the `include-files` are inserted on a `match` or omitted on an `èxclude`.|
 |`url`             | A regular expression applied to the current Connections URL.                                 |
 |`user-name`       | String used to identify one or more users as the target for the customization.               |
 |                  | This  property is **not unique** within a given organization                                 |
