@@ -119,12 +119,12 @@ A more complete summary of the properties used in Listing 1 is shown below:
 |                  | */manage/account/user/input*                                                                 |
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.ui`** |  
 |`match/exclude`   | Test criteria that determine whether or not the nominated `include-files` are inserted into the response. Either a `match` OR `exclude` condition can be applied to the `url` or one of the three `user-xxxx` sub-properties. If the criterion tests positive then the `include-files` are inserted on a `match` or omitted on an `exclude`.|
-|...> `url`             | A regular expression applied to the current Connections URL.                                 |
-|...> `user-name`  | String used to identify one or more users as the target for the customization.               |
+| `url`             | A regular expression applied to the current Connections URL.                                 |
+| `user-name`  | String used to identify one or more users as the target for the customization.               |
 |                  | This  property is **not unique** within a given organization                                 |
-|...> `user-email` | String used to identify one or more users as the target for the customization.               |
+| `user-email` | String used to identify one or more users as the target for the customization.               |
 |                  | This property **is unique** within a given organization                                      |
-|...> `user-id`    | IBM Connections user-id used to identify one or more users as the target for the customization. |
+| `user-id`    | IBM Connections user-id used to identify one or more users as the target for the customization. |
 |                  | This property **is unique** within a given organization                                      |
 |`include-files`   | List of files to be inserted into the response for a matched page request                    |
 |`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list: `cache-control, expires, last-modified, pragma` e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"`. All `cache-headers` values are treated as pass-through data that will be set **as-is** in the Customizer HTTP response and not validated.                                                                                  |
