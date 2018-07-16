@@ -245,9 +245,7 @@ in this instance) for processing.
 The `match url` property takes a regular expression and evaluates it
 against the current URL. If the expression matches then the extension is applied. 
 If no match occurs, the extension is not applied. Conversely the `exclude url` property
-will **not** insert the nominated `include-files` if the regular expression produces a match.
-
-This is a powerful feature as the following code snippets will demonstrate.
+will **not** insert the nominated `include-files` if the regular expression produces a match. This is a powerful feature as the following code snippets will demonstrate.
 
 Listing 4 shows a Communities extension that has a fine-grained URL
 match applied on lines 14 – 16. This extension is only applied if the
@@ -324,7 +322,7 @@ JSON content stored in App Reg.
 
 #### Fine Grained Matching based on the Active End-User
 
-The `match` and `èxclude` propertes also accept various user related conditions
+The `match` and `èxclude` properties also accept various user related conditions
 based on the current user’s name, email or id. In all cases single or
 multi-value parameters may be provided, or in JSON parlance a single
 string value or an array of strings can be specified. The fragment
@@ -337,7 +335,7 @@ organization so it’s possible to inadvertently target unintended users
 by employing this technique, i.e. any users of the same name will see
 the extension. 
 
-## Listing 6 – Customizer App Targetting Specific Users By Name
+## Listing 6 – Whitelist: Customizer App Targetting Specific Users By Name
 ```json
 "path":"communities",
 "payload":{
@@ -355,12 +353,7 @@ only for those users explicitly called out in the `user-name` array. To do the o
 i.e. apply the customizations for everyone _except_ a list of specific users (a blacklist)
 you can use the `exclude` property instead as shown in Listing 7.
 
-To avoid possible ambiguity you can apply a precise filter by using the
-`user-id` match property instead. Note that the term “user id” is
-sometimes referred to as “subscriber id” in the IBM Connection UI and
-documentation.
-
-## Listing 7 – Customizer App Targetting Specific Users By Id
+## Listing 7 – Blacklist: Customizer App Excluding Specific Users By Id
 ```json
 "path":"communities",
 "payload":{
@@ -372,6 +365,10 @@ documentation.
    }
 }
 ```
+To avoid possible ambiguity you can apply a precise filter by using the
+`user-id` sub-property instead of the `user-name`. Note that the term “user id” is
+sometimes referred to as “subscriber id” in the IBM Connection UI and documentation.
+
 ******
 ### Customizer Cache Management
 
