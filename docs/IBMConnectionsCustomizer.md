@@ -354,7 +354,7 @@ the extension.
 ```
 
 Listing 6 is an example of what's known as a whitelist, i.e. the application is applied 
-only for those users explicitly called out in the `user-name array`. To do the opposite,
+only for those users explicitly called out in the `user-name` array. To do the opposite,
 i.e. apply the customizations for everyone _except_ a list of specific users (a blacklist)
 you can use the `exclude` property instead as shown in Listing 7.
 
