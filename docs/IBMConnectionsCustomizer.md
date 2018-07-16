@@ -210,7 +210,7 @@ this:
 appregistry/api/v3/services/Customizer/extensions?type=com.ibm.customizer.ui&path=files
 ```
 
-… which translates as “get all UI extensions registered for the
+This API request translates as “get all UI extensions registered for the
 Customizer service that apply to Files”. This should clarify why
 Customizer extensions must contain both a `type` and `path` value.
 One caveat to note with regard to the `path` value is the existence of
