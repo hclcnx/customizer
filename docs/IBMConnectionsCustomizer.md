@@ -118,11 +118,15 @@ A more complete summary of the properties used in Listing 1 is shown below:
 |                  | */manage/subscribers/showInviteGuestDialog/input*                                            |
 |                  | */manage/account/user/input*                                                                 |
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.ui`** |  
-|`match:url`       | A regular expression used to provide more fine-grained target resource matching,             |
-|                  | i.e. beyond the broad match specified in the path property                                   |
-|`match:user-name` | String used to identify one or more users as the target for the customization.               |
+|`match|exclude`   | Test criterion that determines whether or not the nominated `include-files` are inserted into the response. |
+|                  | Either a `match` OR `exclude` condition can be applied to the `url` or one of the `user-xxxx` properties.   |
+|                  | If the criterion tests positive then the `include-files` are inserted on a `match` or omitted on an `èxclude`.   |
+|`url`             | A regular expression applied to the current Connections URL.                                 |
+|`user-name`       | String used to identify one or more users as the target for the customization.               |
 |                  | This  property is **not unique** within a given organization                                 |
-|`match:user-email`| String used to identify one or more users as the target for the customization.               |
+|`user-email`      | String used to identify one or more users as the target for the customization.               |
+|                  | This property **is unique** within a given organization                                      |
+|`user-id`         | IBM Connections user-id used to identify one or more users as the target for the customization. |
 |                  | This property **is unique** within a given organization                                      |
 |`include-files`   | List of files to be inserted into the response for a matched page request                    |
 |`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list: `cache-control, expires, last-modified, pragma` e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"`. All `cache-headers` values are treated as pass-through data that will be set **as-is** in the Customizer HTTP response and not validated.                                                                                  |
@@ -244,9 +248,11 @@ in this instance) for processing.
 #### Fine Grained URL Matching
 
 The `match url` property takes a regular expression and evaluates it
-against the current URL. If it matches then the extensions is applied.
-If no match occurs, the extension is not applied. This is a powerful
-feature as the following code snippets will demonstrate.
+against the current URL. If the expression matches then the extension is applied. 
+If no match occurs, the extension is not applied. Conversely the `exclude url` property
+will **not** insert the nominated `include-files` if the regular expression produces a match.
+
+This is a powerful feature as the following code snippets will demonstrate.
 
 Listing 4 shows a Communities extension that has a fine-grained URL
 match applied on lines 14 – 16. This extension is only applied if the
@@ -323,8 +329,8 @@ JSON content stored in App Reg.
 
 #### Fine Grained Matching based on the Active End-User
 
-The `match` property also accepts various user related conditions
-based on the current user’s name or id. In both cases single or
+The `match` and `èxclude` propertes also accept various user related conditions
+based on the current user’s name, email or id. In all cases single or
 multi-value parameters may be provided, or in JSON parlance a single
 string value or an array of strings can be specified. The fragment
 illustrated in Listing 6 shows how a Communities extension can be
@@ -334,7 +340,7 @@ Doe and Joe Schmoe in this example.
 It is important to realise that user names are not unique within an
 organization so it’s possible to inadvertently target unintended users
 by employing this technique, i.e. any users of the same name will see
-the extension.
+the extension. 
 
 ## Listing 6 – Customizer App Targetting Specific Users By Name
 ```json
@@ -349,6 +355,11 @@ the extension.
 }
 ```
 
+Listing 6 is an example of what's known as a whitelist, i.e. the application is applied 
+only for those users explicitly called out in the `user-name array`. To do the opposite,
+i.e. apply the customizations for everyone _except_ a list of specific users (a blacklist)
+you can use the `exclude` property instead as shown in Listing 7.
+
 To avoid possible ambiguity you can apply a precise filter by using the
 `user-id` match property instead. Note that the term “user id” is
 sometimes referred to as “subscriber id” in the IBM Connection UI and
@@ -358,7 +369,7 @@ documentation.
 ```json
 "path":"communities",
 "payload":{
-   "match":{
+   "exclude":{
       "user-id":[
          "20071635",
          "20071656"
