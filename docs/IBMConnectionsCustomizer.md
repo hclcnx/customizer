@@ -123,7 +123,7 @@ A more complete summary of the properties used in Listing 1 is shown below:
 | > `user-name`    | String used to identify one or more users as the target for the customization. This  property is **not unique** within a given organization |
 | > `user-email`   | String used to identify one or more users as the target for the customization. This property **is unique** within a given organization | 
 | > `user-id`      | IBM Connections user-id used to identify one or more users as the target for the customization. This property **is unique** within a given organization |
-|`include-files`   | List of files to be inserted into the response for a matched page request                    |
+|`include-files`   | List of files to be inserted into the response for a selected page request                    |
 |`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list: `cache-control, expires, last-modified, pragma` e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"`. All `cache-headers` values are treated as pass-through data that will be set **as-is** in the Customizer HTTP response and not validated.                                                                                  |
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.proxy`** |  
 |**TBC...**     | ... | 
