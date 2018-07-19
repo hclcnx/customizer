@@ -6,7 +6,7 @@
 
 # Table of Contents
 
-[IBM Connections Customizer 2](#ibm-connections-customizer)
+[Introducing Customizer](#introducing-customizer)
 
 [Listing 1 – Hello World Customizer App
 2](#listing-1-hello-world-customizer-app)
@@ -84,7 +84,7 @@
 
 [Useful Online References 24](#useful-online-references)
 
-# IBM Connections Customizer
+# Introducing Customizer
 
 IBM Connections Customizer is a middleware proxy service that enables
 the customization of the IBM Connections user experience. In essence
