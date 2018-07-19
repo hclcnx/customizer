@@ -1,8 +1,8 @@
-IBM Connections Customizer
+# IBM Connections Customizer
 
-Online Customizer documentation from the developer community
+## Online Customizer documentation from the developer community
 
-![](images/icc-lifecycle.png)
+![](images/icc-logo.png)
 
 # Table of Contents
 
