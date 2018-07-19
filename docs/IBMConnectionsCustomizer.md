@@ -1,3 +1,89 @@
+IBM Connections Customizer
+
+Online Customizer documentation from the developer community
+
+![](images/icc-lifecycle.png)
+
+# Table of Contents
+
+[IBM Connections Customizer 2](#ibm-connections-customizer)
+
+[Listing 1 – Hello World Customizer App
+2](#listing-1-hello-world-customizer-app)
+
+[Listing 2 – Customizer Application Properties
+3](#listing-2-customizer-application-properties)
+
+[A Closer Look at Customizer Properties
+5](#a-closer-look-at-customizer-properties)
+
+[Listing 3 – Examples of IBM Connections URLs
+6](#listing-3-examples-of-ibm-connections-urls)
+
+[Customizer Payload Properties 7](#customizer-payload-properties)
+
+[Listing 4 – Customizer App With URL Matching
+7](#listing-4-customizer-app-with-url-matching)
+
+[Listing 5 – Global Customizer App With URL Matching
+8](#listing-5-global-customizer-app-with-url-matching)
+
+[Listing 6 – Whitelist: Customizer App Targetting Specific Users By Name
+9](#listing-6-whitelist-customizer-app-targetting-specific-users-by-name)
+
+[Listing 7 – Blacklist: Customizer App Excluding Specific Users By Id
+9](#listing-7-blacklist-customizer-app-excluding-specific-users-by-id)
+
+[Customizer Cache Management 9](#customizer-cache-management)
+
+[Listing 8 - Controlling Caching of Include-Files
+10](#listing-8---controlling-caching-of-include-files)
+
+[The Request Life Cycle for IBM Connections Customizer
+12](#the-request-life-cycle-for-ibm-connections-customizer)
+
+[Figure 1 – IBM Customizer Request Life Cycle
+12](#figure-1-ibm-customizer-request-life-cycle)
+
+[Include Files for Code Injections
+14](#include-files-for-code-injections-1)
+
+[Figure 2 – IBM Connections Developers Organization on GitHub
+15](#figure-2-ibm-connections-developers-organization-on-github)
+
+[Listing 9 – Sample acl.ids file 16](#listing-9-sample-acl.ids-file)
+
+[A Peek Inside Some Samples 17](#a-peek-inside-some-samples)
+
+[Listing 10 – Hello World Include File
+17](#listing-10-hello-world-include-file)
+
+[Figure 3 Hello World Extension for IBM Connections Homepage
+18](#figure-3-hello-world-extension-for-ibm-connections-homepage)
+
+[Listing 11 – Customizer Script Injection
+19](#listing-11-customizer-script-injection)
+
+[Standard Samples 19](#standard-samples)
+
+[Figure 4 Communities Page before and after Flipcard Customization
+20](#figure-4-communities-page-before-and-after-flipcard-customization)
+
+[Figure 5 Multiple Extensions for IBM Connections Homepage
+21](#figure-5-multiple-extensions-for-ibm-connections-homepage)
+
+[Figure 6 Profile Page Extension 21](#figure-6-profile-page-extension)
+
+[Listing 12 – Multiple Include Files
+22](#listing-12-multiple-include-files)
+
+[Getting Up and Running 23](#getting-up-and-running)
+
+[Some Points to Note regarding Customizer Applications
+24](#some-points-to-note-regarding-customizer-applications)
+
+[Useful Online References 24](#useful-online-references)
+
 # IBM Connections Customizer
 
 IBM Connections Customizer is a middleware proxy service that enables
