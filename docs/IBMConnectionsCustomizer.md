@@ -8,7 +8,7 @@
 
 [Introducing Customizer](#introducing-customizer)
 
-[Hello World](#listing-1:-hello-world-customizer-app)
+[Hello World](#listing-1-hello-world-customizer-app)
 
 [Customizer Application Properties](#listing-2:-customizer-application-properties)
 
@@ -113,7 +113,7 @@ V6.0.0.4](http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca
 released in January 2018. As an administrator you can access App Reg
 On-Premises using this URL: `http://*yourConnectionsUrl.com*/appreg/`
 
-## Listing 1: Hello World Customizer App
+## Listing 1 Hello World Customizer App
 ```json
 {
    "services":[
