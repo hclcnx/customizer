@@ -44,7 +44,7 @@
 
 [19. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
 
-[20. Customizer Script Injection](#customizer-script-injection)
+[20. Customizer Script Injection](#listing-11-customizer-script-injection)
 
 [21. Standard Samples](#standard-samples)
 
