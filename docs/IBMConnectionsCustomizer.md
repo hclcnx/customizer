@@ -8,17 +8,13 @@
 
 [Introducing Customizer](#introducing-customizer)
 
-[Listing 1 – Hello World Customizer App
-2](#listing-1-hello-world-customizer-app)
+[Hello World](#listing-1:-hello-world-customizer-app)
 
-[Listing 2 – Customizer Application Properties
-3](#listing-2-customizer-application-properties)
+[Customizer Application Properties](#listing-2:-customizer-application-properties)
 
-[A Closer Look at Customizer Properties
-5](#a-closer-look-at-customizer-properties)
+[A Closer Look at Customizer Properties](#a-closer-look-at-customizer-properties)
 
-[Listing 3 – Examples of IBM Connections URLs
-6](#listing-3-examples-of-ibm-connections-urls)
+[Examples of IBM Connections URLs](#listing-3-examples-of-ibm-connections-urls)
 
 [Customizer Payload Properties 7](#customizer-payload-properties)
 
@@ -117,7 +113,7 @@ V6.0.0.4](http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca
 released in January 2018. As an administrator you can access App Reg
 On-Premises using this URL: `http://*yourConnectionsUrl.com*/appreg/`
 
-## Listing 1 – Hello World Customizer App
+## Listing 1: Hello World Customizer App
 ```json
 {
    "services":[
@@ -168,7 +164,7 @@ following points can be inferred by a quick inspection of the code:
 
 A more complete summary of the properties used in Listing 1 is shown below:
 
-## Listing 2 – Customizer Application Properties
+## Listing 2: Customizer Application Properties
 | Property         | Description                                                                                  |
 | -------------    | -------------                                                                                |
 | `name`           | String used to identify the extension                                                        |
