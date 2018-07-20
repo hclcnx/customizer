@@ -6,61 +6,61 @@
 
 # Table of Contents
 
-[Introducing Customizer](#introducing-customizer)
+[1.  Introducing Customizer](#introducing-customizer)
 
-[Hello World](#listing-1-hello-world-customizer-app)
+[2.  Hello World](#listing-1-hello-world-customizer-app)
 
-[Customizer Application Properties](#listing-2-customizer-application-properties)
+[3.  Customizer Application Properties](#listing-2-customizer-application-properties)
 
-[A Closer Look at Customizer Properties](#a-closer-look-at-customizer-properties)
+[4.  A Closer Look at Customizer Properties](#a-closer-look-at-customizer-properties)
 
-[Examples of IBM Connections URLs](#listing-3-examples-of-ibm-connections-urls)
+[5.  Examples of IBM Connections URLs](#listing-3-examples-of-ibm-connections-urls)
 
-[Customizer Payload Properties](#customizer-payload-properties)
+[6.  Customizer Payload Properties](#customizer-payload-properties)
 
-[Customizer App With URL Matching](#listing-4-customizer-app-with-url-matching)
+[7.  Customizer App With URL Matching](#listing-4-customizer-app-with-url-matching)
 
-[Global Customizer App With URL Matching](#listing-5-global-customizer-app-with-url-matching)
+[8.  Global Customizer App With URL Matching](#listing-5-global-customizer-app-with-url-matching)
 
-[Whitelisting Specific Users By Name](#listing-6-whitelisting-specific-users-by-name)
+[9.  Whitelisting Specific Users By Name](#listing-6-whitelisting-specific-users-by-name)
 
-[Blacklisting Users By Id](#listing-7-blacklisting-users-by-id)
+[10. Blacklisting Users By Id](#listing-7-blacklisting-users-by-id)
 
-[Customizer Cache Management](#customizer-cache-management)
+[11. Customizer Cache Management](#customizer-cache-management)
 
-[Controlling Caching of Include-Files](#listing-8-controlling-caching-of-include-files)
+[12. Controlling Caching of Include-Files](#listing-8-controlling-caching-of-include-files)
 
-[The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
+[13. The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
 
-[Include Files for Code Injections](#include-files-for-code-injections)
+[14. Include Files for Code Injections](#include-files-for-code-injections)
 
-[IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
+[15. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
 
-[Sample Access Control List](#listing-9-sample-acl.ids-file)
+[16. Sample Access Control List](#listing-9-sample-acl.ids-file)
 
-[A Peek Inside Some Samples](#a-peek-inside-some-samples)
+[17. A Peek Inside Some Samples](#a-peek-inside-some-samples)
 
-[Hello World Include File](#listing-10-hello-world-include-file)
+[18. Hello World Include File](#listing-10-hello-world-include-file)
 
-[Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
+[19. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
 
-[Customizer Script Injection](#customizer-script-injection)
+[20. Customizer Script Injection](#customizer-script-injection)
 
-[Standard Samples](#standard-samples)
+[21. Standard Samples](#standard-samples)
 
-[Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
+[22. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
 
-[Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
+[23. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
 
-[Profile Page Extension](#profile-page-extension)
+[24. Profile Page Extension](#profile-page-extension)
 
-[Multiple Include Files](#listing-12-multiple-include-files)
+[25. Multiple Include Files](#listing-12-multiple-include-files)
 
-[Getting Up and Running](#getting-up-and-running)
+[26. Getting Up and Running](#getting-up-and-running)
 
-[Some Points to Note regarding Customizer Applications](#some-points-to-note-regarding-customizer-applications)
+[27. Some Points to Note regarding Customizer Applications](#some-points-to-note-regarding-customizer-applications)
 
-[Useful Online References](#useful-online-references)
+[28. Useful Online References](#useful-online-references)
 
 # Introducing Customizer
 
