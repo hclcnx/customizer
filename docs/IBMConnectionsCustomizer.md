@@ -36,7 +36,7 @@
 
 [15. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
 
-[16. Sample Access Control List](#listing-9-sample-acl.ids-file)
+[16. Sample Access Control List](#listing-9-sample-access-control-list) 
 
 [17. A Peek Inside Some Samples](#a-peek-inside-some-samples)
 
@@ -670,7 +670,7 @@ is to provide an acl.ids file at the root of your project and populate
 it with the IBM Connections Cloud ids of the tenant organizations to
 whom you wish to grant access.
 
-## Listing 9 – Sample acl.ids file 
+## Listing 9 Sample Access Control List 
 ```
 60050207
 22716730
