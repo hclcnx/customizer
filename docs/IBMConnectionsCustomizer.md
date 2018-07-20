@@ -16,7 +16,7 @@
 
 [Examples of IBM Connections URLs](#listing-3-examples-of-ibm-connections-urls)
 
-[Customizer Payload Properties 7](#customizer-payload-properties)
+[Customizer Payload Properties](#customizer-payload-properties)
 
 [Customizer App With URL Matching](#listing-4-customizer-app-with-url-matching)
 
@@ -36,9 +36,9 @@
 
 [IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
 
-[Sample acl.ids file 16](#listing-9-sample-acl.ids-file)
+[Sample Access Control List](#listing-9-sample-acl.ids-file)
 
-[A Peek Inside Some Samples 17](#a-peek-inside-some-samples)
+[A Peek Inside Some Samples](#a-peek-inside-some-samples)
 
 [Hello World Include File](#listing-10-hello-world-include-file)
 
@@ -52,7 +52,7 @@
 
 [Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
 
-[Profile Page Extensio](#profile-page-extension)
+[Profile Page Extension](#profile-page-extension)
 
 [Multiple Include Files](#listing-12-multiple-include-files)
 
