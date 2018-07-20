@@ -905,12 +905,12 @@ All of the samples viewed so far are simple standalone projects.
 Typically with Customizer applications there is one main entry point,
 e.g. main.js, and this resource is referenced in the include-files
 payload property and rendered in the modified HTML output. However the
-include-files payload property is an array and can contain more than one
+`include-files` payload property is an array and can contain more than one
 file reference. The snippet shown in Listing 12 is an example from the
 enhanced-activity-stream project available on the [OpenCode4Connections
 GitHub repository](https://github.com/OpenCode4Connections/):
 
-## Listing 12 – Multiple Include Files
+## Listing 12 Multiple Include Files
 ```json
 "payload":{
    "include-files":[
