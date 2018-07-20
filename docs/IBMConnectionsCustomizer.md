@@ -10,7 +10,7 @@
 
 [Hello World](#listing-1-hello-world-customizer-app)
 
-[Customizer Application Properties](#listing-2:-customizer-application-properties)
+[Customizer Application Properties](#listing-2-customizer-application-properties)
 
 [A Closer Look at Customizer Properties](#a-closer-look-at-customizer-properties)
 
@@ -18,67 +18,49 @@
 
 [Customizer Payload Properties 7](#customizer-payload-properties)
 
-[Listing 4 – Customizer App With URL Matching
-7](#listing-4-customizer-app-with-url-matching)
+[Customizer App With URL Matching](#listing-4-customizer-app-with-url-matching)
 
-[Listing 5 – Global Customizer App With URL Matching
-8](#listing-5-global-customizer-app-with-url-matching)
+[Global Customizer App With URL Matching](#listing-5-global-customizer-app-with-url-matching)
 
-[Listing 6 – Whitelist: Customizer App Targetting Specific Users By Name
-9](#listing-6-whitelist-customizer-app-targetting-specific-users-by-name)
+[Whitelisting Specific Users By Name](#listing-6-whitelisting-specific-users-by-name)
 
-[Listing 7 – Blacklist: Customizer App Excluding Specific Users By Id
-9](#listing-7-blacklist-customizer-app-excluding-specific-users-by-id)
+[Blacklisting Users By Id](#listing-7-blacklisting-users-by-id)
 
-[Customizer Cache Management 9](#customizer-cache-management)
+[Customizer Cache Management](#customizer-cache-management)
 
-[Listing 8 - Controlling Caching of Include-Files
-10](#listing-8---controlling-caching-of-include-files)
+[Controlling Caching of Include-Files](#listing-8-controlling-caching-of-include-files)
 
-[The Request Life Cycle for IBM Connections Customizer
-12](#the-request-life-cycle-for-ibm-connections-customizer)
+[The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
 
-[Figure 1 – IBM Customizer Request Life Cycle
-12](#figure-1-ibm-customizer-request-life-cycle)
+[Include Files for Code Injections](#include-files-for-code-injections)
 
-[Include Files for Code Injections
-14](#include-files-for-code-injections-1)
+[IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
 
-[Figure 2 – IBM Connections Developers Organization on GitHub
-15](#figure-2-ibm-connections-developers-organization-on-github)
-
-[Listing 9 – Sample acl.ids file 16](#listing-9-sample-acl.ids-file)
+[Sample acl.ids file 16](#listing-9-sample-acl.ids-file)
 
 [A Peek Inside Some Samples 17](#a-peek-inside-some-samples)
 
-[Listing 10 – Hello World Include File
-17](#listing-10-hello-world-include-file)
+[Hello World Include File](#listing-10-hello-world-include-file)
 
-[Figure 3 Hello World Extension for IBM Connections Homepage
-18](#figure-3-hello-world-extension-for-ibm-connections-homepage)
+[Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
 
-[Listing 11 – Customizer Script Injection
-19](#listing-11-customizer-script-injection)
+[Customizer Script Injection](#customizer-script-injection)
 
-[Standard Samples 19](#standard-samples)
+[Standard Samples](#standard-samples)
 
-[Figure 4 Communities Page before and after Flipcard Customization
-20](#figure-4-communities-page-before-and-after-flipcard-customization)
+[Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
 
-[Figure 5 Multiple Extensions for IBM Connections Homepage
-21](#figure-5-multiple-extensions-for-ibm-connections-homepage)
+[Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
 
-[Figure 6 Profile Page Extension 21](#figure-6-profile-page-extension)
+[Profile Page Extensio](#profile-page-extension)
 
-[Listing 12 – Multiple Include Files
-22](#listing-12-multiple-include-files)
+[Multiple Include Files](#listing-12-multiple-include-files)
 
-[Getting Up and Running 23](#getting-up-and-running)
+[Getting Up and Running](#getting-up-and-running)
 
-[Some Points to Note regarding Customizer Applications
-24](#some-points-to-note-regarding-customizer-applications)
+[Some Points to Note regarding Customizer Applications](#some-points-to-note-regarding-customizer-applications)
 
-[Useful Online References 24](#useful-online-references)
+[Useful Online References](#useful-online-references)
 
 # Introducing Customizer
 
@@ -164,7 +146,7 @@ following points can be inferred by a quick inspection of the code:
 
 A more complete summary of the properties used in Listing 1 is shown below:
 
-## Listing 2: Customizer Application Properties
+## Listing 2 Customizer Application Properties
 | Property         | Description                                                                                  |
 | -------------    | -------------                                                                                |
 | `name`           | String used to identify the extension                                                        |
@@ -258,7 +240,7 @@ domain name identifies the Connections component or application handling
 the request. The possible values of this element map to the `path`
 values enumerated in Listing 2, i.e. homepage, communities, files, etc.
 
-## Listing 3 – Examples of IBM Connections URLs
+## Listing 3 Examples of IBM Connections URLs
 ```javascript
 /* homepage */
 //w3-connections.ibm.com/homepage/web/updates/#myStream/imFollowing/all
@@ -335,7 +317,7 @@ Communities followedcommunities URL is being processed, and so this
 extension is ignored for other Communities URLs like those shown in
 Listing 3, i.e. ownedcommunities, communityinvites, etc.
 
-## Listing 4 – Customizer App With URL Matching
+## Listing 4 Customizer App With URL Matching
 ```json
 {
    "services":[
@@ -368,7 +350,7 @@ Listing 3, i.e. ownedcommunities, communityinvites, etc.
 Similarly, the following fragment shows how a single global extension
 can be applied to Homepage and Communities but nothing else:
 
-##  Listing 5 – Global Customizer App With URL Matching
+## Listing 5 Global Customizer App With URL Matching
 ```json
 "path":"global",
 "payload":{
@@ -402,7 +384,7 @@ various braces contained in the regular expression would need to be
 escaped (i.e. preceded by a backslash character: \\) when entered into
 JSON content stored in App Reg.
 
-#### Fine Grained Matching based on the Active End-User
+#### Fine Grained Matching based on the Active End User
 
 The `match` and `èxclude` properties also accept various user related conditions
 based on the current user’s name, email or id. In all cases single or
@@ -417,7 +399,7 @@ organization so it’s possible to inadvertently target unintended users
 by employing this technique, i.e. any users of the same name will see
 the extension. 
 
-## Listing 6 – Whitelist: Customizer App Targetting Specific Users By Name
+## Listing 6 Whitelisting Specific Users By Name
 ```json
 "path":"communities",
 "payload":{
@@ -435,7 +417,7 @@ only for those users explicitly called out in the `user-name` array. To do the o
 i.e. apply the customizations for everyone _except_ a list of specific users (a blacklist)
 you can use the `exclude` property instead as shown in Listing 7.
 
-## Listing 7 – Blacklist: Customizer App Excluding Specific Users By Id
+## Listing 7 Blacklisting Users By Id
 ```json
 "path":"communities",
 "payload":{
@@ -504,15 +486,15 @@ with the updated repository, a new ETag is generated and the latest
 resources are served up and cached once again in the browser from that
 point forward.
 
-#### **The Cache-Headers Property**
+#### Applying a Custom Cache Policy
 
-The cache-headers property enables you to enforce your own (non-ETag
+The `cache-headers` property enables you to enforce your own (non-ETag
 based) caching policy. If you specify cache-headers values you
 effectively turn off the ETag mechanism and replace it with whatever
 HTTP cache headers are declared in the JSON payload. Listing 8 is a JSON
 fragment showing how a HTTP cache header can be applied.
 
-## Listing 8 - Controlling Caching of Include-Files
+## Listing 8 Controlling Caching of Include Files
 ```json
 "path":"communities",
 "payload":{
@@ -551,7 +533,7 @@ used to finally decide whether or not a customization should be applied.
 This request processing mechanism can be succinctly summarized in Figure
 1 as follows:
 
-## Figure 1 – IBM Customizer Request Life Cycle
+## Figure 1 The Customizer Request Life Cycle
   
   
 ![](images/icc-lifecycle.png)
@@ -658,7 +640,7 @@ of the customer who creates or adopts the customization. The review
 process by IBM provides no guarantee whatsoever of protection against
 adverse security or performance impacts.
 
-## Figure 2 – IBM Connections Developers Organization on GitHub
+## Figure 2 IBM Connections Developers Organization on GitHub
 
 ![](images/icc-ibmcnxdev.png)
 
@@ -732,7 +714,7 @@ does the helloWorld.user.js include file do? Listing 10 shows the code –
 certain variable names and comments have been trimmed for readability in
 this document but nothing that affects the execution of the script.
 
-## Listing 10 – Hello World Include File
+## Listing 10 Hello World Include File
 ```javascript
 if (typeof(dojo)\ != "undefined") {
   require(\["dojo/domReady\!"\], function() {
@@ -816,7 +798,7 @@ The code injection can be seen by viewing the source of the IBM
 Connections Homepage in the browser and scrolling to the bottom of the
 file. The following tag fragment should be evident:
 
-## Listing 11 – Customizer Script Injection
+## Listing 11 Customizer Script Injection
 ```html
 <script type='text/javascript'
 src='/files/customizer/helloWorld/helloWorld.user.js?repoName=global-samples'\>
