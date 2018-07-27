@@ -545,7 +545,7 @@ fragment showing how another HTTP cache header can be applied.
 }
 ```
 
-Properties like `cache-control`, `last-modified` and `pragma` can be set in the same way, and
+Other properties like `cache-control`, `last-modified` and `pragma` can be set in the same way, and
 can be can be mixed and matched to form a caching policy that meets your particular needs. 
 The values specified in JSON payload are not validated by Customizer – they are
 assumed to be valid and _passed through as-is_. There are many public
