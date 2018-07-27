@@ -521,10 +521,9 @@ be modified as you see fit. For more imformation on this topic refer to the
 [Include Files for Code Injections](#include-files-for-code-injections) section.
 
 
-If you set one or more of the HTTP `cache-headers` declared in Listing 2 then these
+If you set one or more of the HTTP `cache-headers` declared in Listing 2, then these
 specified values are _passed through_ by Customizer as headers in the HTTP
-response when the referenced `include-file` is requested from a browser client. 
-Theses `cache-headers` properties enable you to enforce your own (non-ETag
+response. These `cache-headers` properties enable you to enforce your own (non-ETag
 based) caching policy. If you specify custom cache header values you
 effectively turn off the ETag mechanism and replace it with whatever
 HTTP cache headers are declared in the JSON payload. Listing 9 is a JSON
