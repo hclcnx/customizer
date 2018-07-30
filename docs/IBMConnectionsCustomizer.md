@@ -459,10 +459,11 @@ the server to see if the artifact has changed. If so, the updated file will be s
 the level of client/server chit-chat is minimized to a daily check-up which will refresh 
 any stale resources. Thus the roundtrip is much more like a conditional ping to check 
 if a local cached resource is still valid and all responses, apart from the first
-one, will not include the JS/CSS payload. The payload of course is of arbitrary size – 
-and the larger the resource, the longer the response time.
+one, will not include the JS/CSS payload if it's not needed. The payload of course is of 
+arbitrary size – and the larger the resource, the longer the response time - so it pays
+to try to minimize both traffic and payload by default.
 
-While this default caching policy might be a good fit for production applications, 
+While this out-of-the-box caching policy might be a good fit for production applications, 
 it is unlikely to work well when an app in under development. Why? Because in all 
 likelihood the code that is being developed is subject to frequent updates and for 
 test purposes you will want to see the effects immediately - which will not occur 
@@ -515,10 +516,10 @@ ETags don't match) or a `304 Not Modified` response indicating that the local
 version is the latest and can be used.    
 
 As a separate note you should also observe that the `ìnclude-repo` no longer 
-points to "global-samples" repository as it did in Listing 1. To experiment with 
-these samples you should make your own copy (or "fork") and put that in your own repository to 
-be modified as you see fit. For more imformation on this topic refer to the 
-[Include Files for Code Injections](#include-files-for-code-injections) section.
+points to the "global-samples" repository as it did in Listing 1. To experiment with 
+these samples you should make your own copy (or "fork"), i.e. create your own repository to 
+be modified as you see fit and update the JSON to refer to it instead. For more imformation 
+on this topic refer to the [Include Files for Code Injections](#include-files-for-code-injections) section.
 
 
 If you set one or more of the HTTP `cache-headers` declared in Listing 2, then these
@@ -553,6 +554,11 @@ sources of information on the [syntax of the HTTP cache
 headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
 and how [they can be best applied to satisfy different use
 cases](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching).
+
+**Note:** When running Customizer on-premises only the `max-age` header value of 12 hours is set  by default. 
+The `ETag` header is not set because the `include-files` are laid down on a simple file system folder and there
+is no notification mechanism in place to alert Customizer when a resource is updated. For Customizer on cloud 
+this notification is performed by a GitHub web hook which kicks in when the containing repository is updated.
 
 ******
 
