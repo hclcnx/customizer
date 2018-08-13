@@ -525,10 +525,10 @@ on this topic refer to the [Include Files for Code Injections](#include-files-fo
 If you set one or more of the HTTP `cache-headers` declared in Listing 2, then these
 specified values are _passed through_ by Customizer as headers in the HTTP
 response. These `cache-headers` properties enable you to enforce your own (non-ETag
-based) caching policy. If you specify custom cache header values you
-effectively turn off the ETag mechanism and replace it with whatever
-HTTP cache headers are declared in the JSON payload. Listing 9 is a JSON
-fragment showing how another HTTP cache header can be applied.
+based) caching policy. If you specify custom cache header values you may
+effectively render the default ETag mechanism redundant or less-effective, e.g. by 
+instructing the browser to cache a resource for a long period of time. Listing 9 is a JSON
+fragment showing how alternative HTTP cache headers can be applied.
 
 ## Listing 9  Controlling Caching of Include Files
 ```json
