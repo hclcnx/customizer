@@ -95,7 +95,7 @@ V6.0.0.4](http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca
 released in January 2018. As an administrator you can access App Reg
 On-Premises using this URL: `http://*yourConnectionsUrl.com*/appreg/`
 
-## Listing 1 Hello World Customizer App
+### Listing 1 Hello World Customizer App
 ```json
 {
    "services":[
@@ -146,7 +146,7 @@ following points can be inferred by a quick inspection of the code:
 
 A more complete summary of the properties used in Listing 1 is shown below:
 
-## Listing 2 Customizer Application Properties
+### Listing 2 Customizer Application Properties
 | Property         | Description                                                                                  |
 | -------------    | -------------                                                                                |
 | `name`           | String used to identify the extension                                                        |
@@ -192,7 +192,7 @@ A more complete summary of the properties used in Listing 1 is shown below:
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.proxy`** |  
 |**TBC...**     | ... | 
 
-### A Closer Look at Customizer Properties
+## A Closer Look at Customizer Properties
 
 The properties outlined in Listing 2 can be broken down into two
 categories:
@@ -240,7 +240,7 @@ domain name identifies the Connections component or application handling
 the request. The possible values of this element map to the `path`
 values enumerated in Listing 2, i.e. homepage, communities, files, etc.
 
-## Listing 3 Examples of IBM Connections URLs
+### Listing 3 Examples of IBM Connections URLs
 ```javascript
 /* homepage */
 //w3-connections.ibm.com/homepage/web/updates/#myStream/imFollowing/all
@@ -292,7 +292,7 @@ then up to the Customizer service implementation to parse and apply the
 design metadata contained in the returned extensions – and that is where
 the `payload` data comes into play.
 
-### Customizer Payload Properties
+## Customizer Payload Properties
 
 As should now be evident, the generic `path` property provides a
 coarse means of querying the Application Registry for extensions
@@ -304,7 +304,7 @@ an extension should be applied to a given URL request or not. All
 always just passed back to the nominated service container (Customizer
 in this instance) for processing.
 
-#### Fine Grained URL Matching
+### Fine Grained URL Matching
 
 The `match url` property takes a regular expression and evaluates it
 against the current URL. If the expression matches then the extension is applied. 
@@ -317,7 +317,7 @@ Communities followedcommunities URL is being processed, and so this
 extension is ignored for other Communities URLs like those shown in
 Listing 3, i.e. ownedcommunities, communityinvites, etc.
 
-## Listing 4 Customizer App With URL Matching
+### Listing 4 Customizer App With URL Matching
 ```json
 {
    "services":[
@@ -350,7 +350,7 @@ Listing 3, i.e. ownedcommunities, communityinvites, etc.
 Similarly, the following fragment shows how a single global extension
 can be applied to Homepage and Communities but nothing else:
 
-## Listing 5 Global Customizer App With URL Matching
+### Listing 5 Global Customizer App With URL Matching
 ```json
 "path":"global",
 "payload":{
@@ -384,7 +384,7 @@ various braces contained in the regular expression would need to be
 escaped (i.e. preceded by a backslash character: \\) when entered into
 JSON content stored in App Reg.
 
-#### Fine Grained Matching based on the Active End User
+### Fine Grained Matching based on the Active End User
 
 The `match` and `èxclude` properties also accept various user related conditions
 based on the current user’s name, email or id. In all cases single or
@@ -399,7 +399,7 @@ organization so it’s possible to inadvertently target unintended users
 by employing this technique, i.e. any users of the same name will see
 the extension. 
 
-## Listing 6 Whitelisting Specific Users By Name
+### Listing 6 Whitelisting Specific Users By Name
 ```json
 "path":"communities",
 "payload":{
@@ -417,7 +417,7 @@ only for those users explicitly called out in the `user-name` array. To do the o
 i.e. apply the customizations for everyone _except_ a list of specific users (a blacklist)
 you can use the `exclude` property instead as shown in Listing 7.
 
-## Listing 7 Blacklisting Users By Id
+### Listing 7 Blacklisting Users By Id
 ```json
 "path":"communities",
 "payload":{
@@ -434,7 +434,7 @@ To avoid possible ambiguity you can apply a precise filter by using the
 sometimes referred to as “subscriber id” in the IBM Connection UI and documentation.
 
 ******
-### Customizer Cache Management
+## Customizer Cache Management
 
 On IBM Connections Cloud, when a JavaScript or CSS resource is first served up by Customizer it
 generates what's known as an entity tag ([ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)) 
@@ -469,13 +469,13 @@ likelihood the code that is being developed is subject to frequent updates and f
 test purposes you will want to see the effects immediately - which will not occur 
 when the default caching policy is set up to request a refresh just once a day! 
 
-#### Applying a Custom Cache Policy
+### Applying a Custom Cache Policy
 
 You can override the default caching policy by using the `cache-headers` property described 
 in Listing 2. By way of example, a revised version of the "Hello World" sample containing this 
 property is shown in Listing 8:
 
-## Listing 8 Hello World App with Automatic Caching Disabled
+### Listing 8 Hello World App with Automatic Caching Disabled
 ```json
 {
    "services":[
@@ -530,7 +530,7 @@ effectively render the default ETag mechanism redundant or less-effective, e.g. 
 instructing the browser to cache a resource for a long period of time. Listing 9 is a JSON
 fragment showing how alternative HTTP cache headers can be applied.
 
-## Listing 9  Controlling Caching of Include Files
+### Listing 9  Controlling Caching of Include Files
 ```json
 "path":"communities",
 "payload":{
@@ -562,7 +562,7 @@ this notification is performed by a GitHub web hook which kicks in when the cont
 
 ******
 
-### The Request Life Cycle for IBM Connections Customizer
+## The Request Life Cycle for IBM Connections Customizer
 
 To summarize what’s been discussed thus far, Customizer is a proxy and
 all Connections requests and responses flow through it. Customizer
@@ -574,7 +574,7 @@ used to finally decide whether or not a customization should be applied.
 This request processing mechanism can be succinctly summarized in Figure
 1 as follows:
 
-## Figure 1 The Customizer Request Life Cycle
+### Figure 1 The Customizer Request Life Cycle
   
   
 ![](images/icc-lifecycle.png)
@@ -584,7 +584,7 @@ queries and how request matching is performed based on the application
 payload data. The next thing to figure out is how the file resources
 listed in the include-files property are managed.
 ******
-### Include Files for Code Injections
+## Include Files for Code Injections
 
 The include-files payload property lists one or more files to be
 inserted into the Connections http response thus becoming part of the
@@ -681,7 +681,7 @@ of the customer who creates or adopts the customization. The review
 process by IBM provides no guarantee whatsoever of protection against
 adverse security or performance impacts.
 
-## Figure 2 IBM Connections Developers Organization on GitHub
+### Figure 2 IBM Connections Developers Organization on GitHub
 
 ![](images/icc-ibmcnxdev.png)
 
@@ -711,7 +711,7 @@ is to provide an acl.ids file at the root of your project and populate
 it with the IBM Connections Cloud ids of the tenant organizations to
 whom you wish to grant access.
 
-## Listing 10 Sample Access Control List 
+### Listing 10 Sample Access Control List 
 ```
 60050207
 22716730
@@ -746,7 +746,7 @@ will resolve the include-files location based on the tenant’s
 organization id.
 
 ******
-### A Peek Inside Some Samples
+## A Peek Inside Some Samples
 
 This journey started as most app dev stories do with a reference to a
 “Hello World” application, the point of which is to jump start the
@@ -755,7 +755,7 @@ does the helloWorld.user.js include file do? Listing 11 shows the code –
 certain variable names and comments have been trimmed for readability in
 this document but nothing that affects the execution of the script.
 
-## Listing 11 Hello World Include File
+### Listing 11 Hello World Include File
 ```javascript
 if (typeof(dojo)\ != "undefined") {
   require(\["dojo/domReady\!"\], function() {
@@ -824,7 +824,7 @@ successfully loaded within that time period will execute a callback
 function. If the page does not load within 10 seconds then an error is
 logged to the JS console.
 
-## Figure 3 Hello World Extension for IBM Connections Homepage
+### Figure 3 Hello World Extension for IBM Connections Homepage
 
 ![](images/icc-helloworld.png)
 
@@ -839,7 +839,7 @@ The code injection can be seen by viewing the source of the IBM
 Connections Homepage in the browser and scrolling to the bottom of the
 file. The following tag fragment should be evident:
 
-## Listing 12 Customizer Script Injection
+### Listing 12 Customizer Script Injection
 ```html
 <script type='text/javascript'
 src='/files/customizer/helloWorld/helloWorld.user.js?repoName=global-samples'\>
@@ -872,7 +872,7 @@ with **"Hello " + *lconn.homepage.userName* + " "** would dynamically
 include the current user in the Homepage customization. The lconn object
 and others like it should be explored and leveraged by your extensions.
 
-### Standard Samples
+## Standard Samples
 
 Besides Hello World, there are a number of other ready-made Customizer
 examples to be available for experimentation. The latest samples can
@@ -883,7 +883,7 @@ Each sample has its own subfolder which contains the App Reg design
 definition (JSON file) and the resources to be injected to perform the
 customization (JavaScript, CSS). Take a look at the following examples:
 
-#### flipcards
+### flipcards
 
 This extension provides an alternative rendering for the Communities
 pages so that a user’s communities can be displayed as flip cards rather
@@ -893,7 +893,7 @@ with the flip card layout on the right. Each flip card displays the
 Communities logo until the user hovers over it whereupon the card is
 flipped to display the details of the community in question.
 
-## Figure 4 Communities Page before and after Flipcard Customization
+### Figure 4 Communities Page before and after Flipcard Customization
 
 ![](images/icc-flipcard.png)
 
@@ -908,7 +908,7 @@ Look for the Toggle Extension control on the Communities page when this
 customization is applied. Clicking the button allows the user to switch
 back and forth between the standard row layout and the flip card format.
 
-#### newsRiver
+### newsRiver
 
 This extension targets the IBM Connections Homepage and reformats the
 layout of the activity stream updates by accentuating the space
@@ -919,11 +919,11 @@ to the Homepage? This shows how multiple App Reg extensions can target
 the same IBM Connections path - viewing the source of the page will show
 two JavaScript file injections in this case.
 
-## Figure 5 Multiple Extensions for IBM Connections Homepage
+### Figure 5 Multiple Extensions for IBM Connections Homepage
 
 ![](images/icc-hellonewsriver.png)
 
-#### profiles
+### profiles
 
 The Profiles extension delivers a more sophisticated rendering to the
 page that is displayed when the user selects the “**My Profile**”
@@ -936,7 +936,7 @@ look Profiles page is shown in Figure 6.
 Note the inclusion of a new page header graphic, the relocation of
 action buttons, and so forth.
 
-## Figure 6 Profile Page Extension
+### Figure 6 Profile Page Extension
 
 ![](images/icc-profiles.png)
 
@@ -951,7 +951,7 @@ file reference. The snippet shown in Listing 13 is an example from the
 enhanced-activity-stream project available on the [OpenCode4Connections
 GitHub repository](https://github.com/OpenCode4Connections/):
 
-## Listing 13 Multiple Include Files
+### Listing 13 Multiple Include Files
 ```json
 "payload":{
    "include-files":[
@@ -998,7 +998,7 @@ describes how the injection mechanism works so that you can plan and
 organize Customizer projects with that information in mind.
 
 ******
-### Getting Up and Running
+## Getting Up and Running
 
 The sample customizations discussed in this document are available to
 any IBM Connections Cloud tenant organization. Applying a sample
@@ -1063,7 +1063,7 @@ Customizer extension (just like the JSON files contained in the standard
 samples) in the Application Registry.
 
 ******
-### Some Points to Note regarding Customizer Applications
+## Some Points to Note regarding Customizer Applications
 
   - Support for Customizer applications follows the same
     [policy](https://www.ibm.com/support/knowledgecenter/en/SSYGQH_5.5.0/admin/customize/c_customize_overview.html)
@@ -1085,7 +1085,7 @@ samples) in the Application Registry.
     if they have been so invited, but they would not see any
     customizations added to such “external” communities.
 
-### Useful Online References
+## Useful Online References
 
 **User Script Technologies:**
 
