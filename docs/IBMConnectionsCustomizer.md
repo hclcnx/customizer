@@ -26,41 +26,45 @@
 
 [10. Blacklisting Users By Id](#listing-7-blacklisting-users-by-id)
 
-[11. Customizer Cache Management](#customizer-cache-management)
+[11. The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
 
-[12. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
+[12. Include Files for Code Injections](#include-files-for-code-injections)
 
-[13. The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
+[13. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
 
-[14. Include Files for Code Injections](#include-files-for-code-injections)
+[14. Sample Access Control List](#listing-8-sample-access-control-list) 
 
-[15. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
+[15. A Peek Inside Some Samples](#a-peek-inside-some-samples)
 
-[16. Sample Access Control List](#listing-9-sample-access-control-list) 
+[16. Hello World Include File](#listing-9-hello-world-include-file)
 
-[17. A Peek Inside Some Samples](#a-peek-inside-some-samples)
+[17. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
 
-[18. Hello World Include File](#listing-10-hello-world-include-file)
+[18. Customizer Script Injection](#listing-10-customizer-script-injection)
 
-[19. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
+[19. Standard Samples](#standard-samples)
 
-[20. Customizer Script Injection](#listing-11-customizer-script-injection)
+[20. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
 
-[21. Standard Samples](#standard-samples)
+[21. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
 
-[22. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
+[22. Profile Page Extension](#profile-page-extension)
 
-[23. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
+[23. Multiple Include Files](#listing-11-multiple-include-files)
 
-[24. Profile Page Extension](#profile-page-extension)
+[24. Customizer Cache Management](#customizer-cache-management)
 
-[25. Multiple Include Files](#listing-12-multiple-include-files)
+[25. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
 
-[26. Getting Up and Running](#getting-up-and-running)
+[26. Disabling Caching] (#listing-12-hello-world-app-with-automatic-caching-disabled)
 
-[27. Some Points to Note regarding Customizer Applications](#some-points-to-note-regarding-customizer-applications)
+[27. Cache-Headers Sample] (#listing-13-controlling-caching-of-include-files)
 
-[28. Useful Online References](#useful-online-references)
+[28. Getting Up and Running](#getting-up-and-running)
+
+[29. Some Points to Note regarding Customizer Applications](#some-points-to-note-regarding-customizer-applications)
+
+[30. Useful Online References](#useful-online-references)
 
 # Introducing Customizer
 
@@ -434,133 +438,6 @@ To avoid possible ambiguity you can apply a precise filter by using the
 sometimes referred to as “subscriber id” in the IBM Connection UI and documentation.
 
 ******
-## Customizer Cache Management
-
-On IBM Connections Cloud, when a JavaScript or CSS resource is first served up by Customizer it
-generates what's known as an entity tag ([ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)) 
-for the resource. This `ETag` value is in the form of a GUID or UUID (128-bit number) and 
-this unique identifier is set as the ETag header in the HTTP response for the JS/CSS request. 
-The next time the same resource is requested by an end-user, the client 
-browser will send back an `If-None-Match` HTTP header as part of the 
-request using the same ETag GUID value. The Customizer service will then 
-validate the ETag value against its own internal cache for the requested 
-resource and, if found, will send a `304 Not Modified` response back to 
-the browser. Effectively this tells the browser that the JS/CSS content 
-has not changed and the browser can use the version of the resource that
-it holds in its own local cache.
-
-As well as setting the ETag header in the response for the Customizer resource, 
-a `Max-Age` header with a value of 12 hours is also set. Effectively this 
-instructs the browser not to request the resource from the server again for that 
-time duration. This combination of HTTP headers enforces a caching policy whereby 
-JS and CSS resources are cached for 12 hours, after which time the browser will check with 
-the server to see if the artifact has changed. If so, the updated file will be sent 
-"across the wire" to the browser. Thus, after the Customizer app is first served up, 
-the level of client/server chit-chat is minimized to a daily check-up which will refresh 
-any stale resources. Thus the roundtrip is much more like a conditional ping to check 
-if a local cached resource is still valid and all responses, apart from the first
-one, will not include the JS/CSS payload if it's not needed. The payload of course is of 
-arbitrary size – and the larger the resource, the longer the response time - so it pays
-to try to minimize both traffic and payload by default.
-
-While this out-of-the-box caching policy might be a good fit for production applications, 
-it is unlikely to work well when an app in under development. Why? Because in all 
-likelihood the code that is being developed is subject to frequent updates and for 
-test purposes you will want to see the effects immediately - which will not occur 
-when the default caching policy is set up to request a refresh just once a day! 
-
-### Applying a Custom Cache Policy
-
-You can override the default caching policy by using the `cache-headers` property described 
-in Listing 2. By way of example, a revised version of the "Hello World" sample containing this 
-property is shown in Listing 8:
-
-### Listing 8 Hello World App with Automatic Caching Disabled
-```json
-{
-   "services":[
-      "Customizer"
-   ],
-   "name":"Simple Customizer Sample",
-   "title":"My First Customizer App",
-   "description":"Perform a modification to the Connections Homepage",
-   "extensions":[
-      {
-         "name":"Hello World Extension",
-         "type":"com.ibm.customizer.ui",
-         "path":"homepage",
-         "payload":{
-            "include-files":[
-               "helloWorld/helloWorld.user.js"
-            ],
-            "include-repo":{
-               "name":"my-test-repo"
-			
-            },
-            "cache-headers": {
-               "cache-control": "max-age=0"
-            }
-         }
-      }
-   ]
-}
-```
-
-Observe the addition of the `max-age=0` cache header in the JSON playload.
-This serves as an override to the 12 hour value that Customizer sets by default. 
-A value of 0 means the browser will always request the resource from the server. 
-A new ETag is generated by Customizer whenever an application resource contained 
-in the `include-repo` is updated. Thus the request from the browser will result 
-in forcing the latest version of the JS/CSS resources to be served  up afresh (if the 
-ETags don't match) or a `304 Not Modified` response indicating that the local 
-version is the latest and can be used.    
-
-As a separate note you should also observe that the `ìnclude-repo` no longer 
-points to the "global-samples" repository as it did in Listing 1. To experiment with 
-these samples you should make your own copy (or "fork"), i.e. create your own repository to 
-be modified as you see fit and update the JSON to refer to it instead. For more imformation 
-on this topic refer to the [Include Files for Code Injections](#include-files-for-code-injections) section.
-
-
-If you set one or more of the HTTP `cache-headers` declared in Listing 2, then these
-specified values are _passed through_ by Customizer as headers in the HTTP
-response. These `cache-headers` properties enable you to enforce your own (non-ETag
-based) caching policy. If you specify custom cache header values you may
-effectively render the default ETag mechanism redundant or less-effective, e.g. by 
-instructing the browser to cache a resource for a long period of time. Listing 9 is a JSON
-fragment showing how alternative HTTP cache headers can be applied.
-
-### Listing 9  Controlling Caching of Include Files
-```json
-"path":"communities",
-"payload":{
-   "include-files":[
-      " flipCard/commListCardsFlipStyle.user.js"
-   ],
-   "include-repo":{
-      "name":"global-samples"
-   },
-   "cache-headers":{
-      "expires":"Tue, 25 Dec 2018 00:00:00 GMT"
-   }
-}
-```
-
-Other properties like `cache-control`, `last-modified` and `pragma` can be set in the same way, and
-can be can be mixed and matched to form a caching policy that meets your particular needs. 
-The values specified in JSON payload are not validated by Customizer – they are
-assumed to be valid and _passed through as-is_. There are many public
-sources of information on the [syntax of the HTTP cache
-headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
-and how [they can be best applied to satisfy different use
-cases](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching).
-
-**Note:** When running Customizer on-premises only the `max-age` header value of 12 hours is set  by default. 
-The `ETag` header is not set because the `include-files` are laid down on a simple file system folder and there
-is no notification mechanism in place to alert Customizer when a resource is updated. For Customizer on cloud 
-this notification is performed by a GitHub web hook which kicks in when the containing repository is updated.
-
-******
 
 ## The Request Life Cycle for IBM Connections Customizer
 
@@ -579,12 +456,12 @@ This request processing mechanism can be succinctly summarized in Figure
   
 ![](images/icc-lifecycle.png)
 
+******
+## Include Files for Code Injections
 You have already read about how Customizer generates App Registry
 queries and how request matching is performed based on the application
 payload data. The next thing to figure out is how the file resources
 listed in the include-files property are managed.
-******
-## Include Files for Code Injections
 
 The include-files payload property lists one or more files to be
 inserted into the Connections http response thus becoming part of the
@@ -707,11 +584,11 @@ Access Control Lists (ACLs) are used to manage access to a particular
 object. IBM Connections Customizer provides a very simple
 implementation of an ACL which can control which tenant organizations
 are allowed to load include files from your repos. All you need to do
-is to provide an acl.ids file at the root of your project and populate
+is to provide an `acl.ids` file at the root of your project and populate
 it with the IBM Connections Cloud ids of the tenant organizations to
 whom you wish to grant access.
 
-### Listing 10 Sample Access Control List 
+### Listing 8 Sample Access Control List 
 ```
 60050207
 22716730
@@ -720,7 +597,7 @@ whom you wish to grant access.
 This is basically a whitelist for tenant access. Once you create an
 acl.ids file in your repository then only those tenant organizations
 listed in the file are allowed to use it - all others are denied
-access. If no acl.ids file exists then all tenants can potentially
+access. If no `acl.ids` file exists then all tenants can potentially
 leverage the repo in their Customizer apps.
 
 2.  **Private GitHub Repositories on github.com/ibmcnxdev**
@@ -751,11 +628,11 @@ organization id.
 This journey started as most app dev stories do with a reference to a
 “Hello World” application, the point of which is to jump start the
 enablement process which the simplest of extensions. So what exactly
-does the helloWorld.user.js include file do? Listing 11 shows the code –
+does the helloWorld.user.js include file do? Listing 9 shows the code –
 certain variable names and comments have been trimmed for readability in
 this document but nothing that affects the execution of the script.
 
-### Listing 11 Hello World Include File
+### Listing 9 Hello World Include File
 ```javascript
 if (typeof(dojo)\ != "undefined") {
   require(\["dojo/domReady\!"\], function() {
@@ -805,7 +682,7 @@ For a simple Hello World example, this may appear to be more complicated
 than expected, but a closer inspection will simplify matters. Before
 perusing the code be aware of the following points:
 
-  - Most of the code in Listing 11 is a re-usable template that any
+  - Most of the code in Listing 9 is a re-usable template that any
     injection code can sit inside
 
   - Just 1 line of code are needed for the actual Hello World UI update:
@@ -839,7 +716,7 @@ The code injection can be seen by viewing the source of the IBM
 Connections Homepage in the browser and scrolling to the bottom of the
 file. The following tag fragment should be evident:
 
-### Listing 12 Customizer Script Injection
+### Listing 10 Customizer Script Injection
 ```html
 <script type='text/javascript'
 src='/files/customizer/helloWorld/helloWorld.user.js?repoName=global-samples'\>
@@ -947,11 +824,11 @@ Typically with Customizer applications there is one main entry point,
 e.g. main.js, and this resource is referenced in the include-files
 payload property and rendered in the modified HTML output. However the
 `include-files` payload property is an array and can contain more than one
-file reference. The snippet shown in Listing 13 is an example from the
+file reference. The snippet shown in Listing 11 is an example from the
 enhanced-activity-stream project available on the [OpenCode4Connections
 GitHub repository](https://github.com/OpenCode4Connections/):
 
-### Listing 13 Multiple Include Files
+### Listing 11 Multiple Include Files
 ```json
 "payload":{
    "include-files":[
@@ -962,7 +839,7 @@ GitHub repository](https://github.com/OpenCode4Connections/):
 }
 ```
 
-The three JavaScript files referenced in Listing 13 will be injected in
+The three JavaScript files referenced in Listing 11 will be injected in
 the order they are listed.
 
 Another factor to bear in mind is that Customizer applications can
@@ -996,6 +873,133 @@ can view the order at any time by viewing the Connections page source
 and searching for the "/file/customizer" path. This section simply
 describes how the injection mechanism works so that you can plan and
 organize Customizer projects with that information in mind.
+
+******
+## Customizer Cache Management
+
+On IBM Connections Cloud, when a JavaScript or CSS resource is first served up by Customizer it
+generates what's known as an entity tag ([ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)) 
+for the resource. This `ETag` value is in the form of a GUID or UUID (128-bit number) and 
+this unique identifier is set as the ETag header in the HTTP response for the JS/CSS request. 
+The next time the same resource is requested by an end-user, the client 
+browser will send back an `If-None-Match` HTTP header as part of the 
+request using the same ETag GUID value. The Customizer service will then 
+validate the ETag value against its own internal cache for the requested 
+resource and, if found, will send a `304 Not Modified` response back to 
+the browser. Effectively this tells the browser that the JS/CSS content 
+has not changed and the browser can use the version of the resource that
+it holds in its own local cache.
+
+As well as setting the ETag header in the response for the Customizer resource, 
+a `Max-Age` header with a value of 12 hours is also set. Effectively this 
+instructs the browser not to request the resource from the server again for that 
+time duration. This combination of HTTP headers enforces a caching policy whereby 
+JS and CSS resources are cached for 12 hours, after which time the browser will check with 
+the server to see if the artifact has changed. If so, the updated file will be sent 
+"across the wire" to the browser. Thus, after the Customizer app is first served up, 
+the level of client/server chit-chat is minimized to a daily check-up which will refresh 
+any stale resources. Thus the roundtrip is much more like a conditional ping to check 
+if a local cached resource is still valid and all responses, apart from the first
+one, will not include the JS/CSS payload if it's not needed. The payload of course is of 
+arbitrary size – and the larger the resource, the longer the response time - so it pays
+to try to minimize both traffic and payload by default.
+
+While this out-of-the-box caching policy might be a good fit for production applications, 
+it is unlikely to work well when an app in under development. Why? Because in all 
+likelihood the code that is being developed is subject to frequent updates and for 
+test purposes you will want to see the effects immediately - which will not occur 
+when the default caching policy is set up to request a refresh just once a day! 
+
+### Applying a Custom Cache Policy
+
+You can override the default caching policy by using the `cache-headers` property described 
+in Listing 2. By way of example, a revised version of the "Hello World" sample containing this 
+property is shown in Listing 12:
+
+### Listing 12 Hello World App with Automatic Caching Disabled
+```json
+{
+   "services":[
+      "Customizer"
+   ],
+   "name":"Simple Customizer Sample",
+   "title":"My First Customizer App",
+   "description":"Perform a modification to the Connections Homepage",
+   "extensions":[
+      {
+         "name":"Hello World Extension",
+         "type":"com.ibm.customizer.ui",
+         "path":"homepage",
+         "payload":{
+            "include-files":[
+               "helloWorld/helloWorld.user.js"
+            ],
+            "include-repo":{
+               "name":"my-test-repo"
+			
+            },
+            "cache-headers": {
+               "cache-control": "max-age=0"
+            }
+         }
+      }
+   ]
+}
+```
+
+Observe the addition of the `max-age=0` cache header in the JSON playload.
+This serves as an override to the 12 hour value that Customizer sets by default. 
+A value of 0 means the browser will always request the resource from the server. 
+A new ETag is generated by Customizer whenever an application resource contained 
+in the `include-repo` is updated. Thus the request from the browser will result 
+in forcing the latest version of the JS/CSS resources to be served  up afresh (if the 
+ETags don't match) or a `304 Not Modified` response indicating that the local 
+version is the latest and can be used.    
+
+As a separate note you should also observe that the `ìnclude-repo` no longer 
+points to the "global-samples" repository as it did in Listing 1. To experiment with 
+these samples you should make your own copy (or "fork"), i.e. create your own repository to 
+be modified as you see fit and update the JSON to refer to it instead. For more imformation 
+on this topic refer to the [Include Files for Code Injections](#include-files-for-code-injections) section.
+
+
+If you set one or more of the HTTP `cache-headers` declared in Listing 2, then these
+specified values are _passed through_ by Customizer as headers in the HTTP
+response. These `cache-headers` properties enable you to enforce your own (non-ETag
+based) caching policy. If you specify custom cache header values you may
+effectively render the default ETag mechanism redundant or less-effective, e.g. by 
+instructing the browser to cache a resource for a long period of time. Listing 13 is a JSON
+fragment showing how alternative HTTP cache headers can be applied.
+
+### Listing 13  Controlling Caching of Include Files
+```json
+"path":"communities",
+"payload":{
+   "include-files":[
+      " flipCard/commListCardsFlipStyle.user.js"
+   ],
+   "include-repo":{
+      "name":"global-samples"
+   },
+   "cache-headers":{
+      "expires":"Tue, 25 Dec 2018 00:00:00 GMT"
+   }
+}
+```
+
+Other properties like `cache-control`, `last-modified` and `pragma` can be set in the same way, and
+can be can be mixed and matched to form a caching policy that meets your particular needs. 
+The values specified in JSON payload are not validated by Customizer – they are
+assumed to be valid and _passed through as-is_. There are many public
+sources of information on the [syntax of the HTTP cache
+headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
+and how [they can be best applied to satisfy different use
+cases](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching).
+
+**Note:** When running Customizer on-premises only the `max-age` header value of 12 hours is set  by default. 
+The `ETag` header is not set because the `include-files` are laid down on a simple file system folder and there
+is no notification mechanism in place to alert Customizer when a resource is updated. For Customizer on cloud 
+this notification is performed by a GitHub web hook which kicks in when the containing repository is updated.
 
 ******
 ## Getting Up and Running
