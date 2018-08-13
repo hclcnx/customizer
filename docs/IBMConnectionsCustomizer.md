@@ -971,7 +971,7 @@ effectively render the default ETag mechanism redundant or less-effective, e.g. 
 instructing the browser to cache a resource for a long period of time. Listing 13 is a JSON
 fragment showing how alternative HTTP cache headers can be applied.
 
-### Listing 13  Controlling Caching of Include Files
+### Listing 13 Controlling Caching of Include Files
 ```json
 "path":"communities",
 "payload":{
