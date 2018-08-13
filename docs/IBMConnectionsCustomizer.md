@@ -56,9 +56,9 @@
 
 [25. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
 
-[26. Disabling Caching] (#listing-12-hello-world-app-with-automatic-caching-disabled)
+[26. Disabling Caching](#listing-12-hello-world-app-with-automatic-caching-disabled)
 
-[27. Cache-Headers Sample] (#listing-13-controlling-caching-of-include-files)
+[27. Cache-Headers Sample](#listing-13-controlling-caching-of-include-files)
 
 [28. Getting Up and Running](#getting-up-and-running)
 
