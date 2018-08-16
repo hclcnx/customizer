@@ -12,7 +12,7 @@
 
 [3.  Customizer Application Properties](#listing-2-customizer-application-properties)
 
-[4.  A Closer Look at Customizer Properties](#a-closer-look-at-customizer-properties)
+[4.  Exploring Customizer Capabilities](#exploring-customizer-capabilities)
 
 [5.  Examples of IBM Connections URLs](#listing-3-examples-of-ibm-connections-urls)
 
@@ -32,39 +32,43 @@
 
 [13. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
 
-[14. Sample Access Control List](#listing-8-sample-access-control-list) 
+[14. Restricting Access to Include Files](#restricting-access-to-include-files)
 
-[15. A Peek Inside Some Samples](#a-peek-inside-some-samples)
+[15. Sample Access Control List](#listing-8-sample-access-control-list) 
 
-[16. Hello World Include File](#listing-9-hello-world-include-file)
+[16. A Peek Inside Some Samples](#a-peek-inside-some-samples)
 
-[17. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
+[17. Hello World Include File](#listing-9-hello-world-include-file)
 
-[18. Customizer Script Injection](#listing-10-customizer-script-injection)
+[18. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
 
-[19. Standard Samples](#standard-samples)
+[19. Customizer Script Injection](#listing-10-customizer-script-injection)
 
-[20. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
+[20. Standard Samples](#standard-samples)
 
-[21. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
+[21. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
 
-[22. Profile Page Extension](#profile-page-extension)
+[22. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
 
-[23. Multiple Include Files](#listing-11-multiple-include-files)
+[23. Profile Page Extension](#profile-page-extension)
 
-[24. Customizer Cache Management](#customizer-cache-management)
+[24. Multiple Include Files](#listing-11-multiple-include-files)
 
-[25. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
+[25. How Resources Are Loaded](#how-resources-are-loaded)
 
-[26. Disabling Caching](#listing-12-hello-world-app-with-automatic-caching-disabled)
+[26. Customizer Cache Management](#customizer-cache-management)
 
-[27. Cache-Headers Sample](#listing-13-controlling-caching-of-include-files)
+[27. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
 
-[28. Getting Up and Running](#getting-up-and-running)
+[28. Disabling Caching](#listing-12-hello-world-app-with-automatic-caching-disabled)
 
-[29. Some Points to Note regarding Customizer Applications](#some-points-to-note-regarding-customizer-applications)
+[29. Cache-Headers Sample](#listing-13-controlling-caching-of-include-files)
 
-[30. Useful Online References](#useful-online-references)
+[30. Getting Up and Running](#getting-up-and-running)
+
+[31. Some Points to Note regarding Customizer Applications](#some-points-to-note-regarding-customizer-applications)
+
+[32. Useful Online References](#useful-online-references)
 
 # Introducing Customizer
 
@@ -148,7 +152,9 @@ following points can be inferred by a quick inspection of the code:
 
   - `helloWorld.user.js` is retrieved from a global repository of Customizer samples
 
-A more complete summary of the properties used in Listing 1 is shown below:
+# Exploring Customizer Capabilities
+  
+Above and beyond the properties shown in the "Hello World" sample, a complete summary of all Customizer properties is shown below:
 
 ### Listing 2 Customizer Application Properties
 | Property         | Description                                                                                  |
@@ -195,8 +201,6 @@ A more complete summary of the properties used in Listing 1 is shown below:
 |`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list: `cache-control, expires, last-modified, pragma` e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"`. All `cache-headers` values are treated as pass-through data that will be set **as-is** in the Customizer HTTP response and not validated.                                                                                  |
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.proxy`** |  
 |**TBC...**     | ... | 
-
-## A Closer Look at Customizer Properties
 
 The properties outlined in Listing 2 can be broken down into two
 categories:
@@ -439,7 +443,7 @@ sometimes referred to as “subscriber id” in the IBM Connection UI and docume
 
 ******
 
-## The Request Life Cycle for IBM Connections Customizer
+# The Request Life Cycle for IBM Connections Customizer
 
 To summarize what’s been discussed thus far, Customizer is a proxy and
 all Connections requests and responses flow through it. Customizer
@@ -457,7 +461,7 @@ This request processing mechanism can be succinctly summarized in Figure
 ![](images/icc-lifecycle.png)
 
 ******
-## Include Files for Code Injections
+# Include Files for Code Injections
 You have already read about how Customizer generates App Registry
 queries and how request matching is performed based on the application
 payload data. The next thing to figure out is how the file resources
@@ -568,7 +572,7 @@ available in video for on opencode4connections.org:
 
 <https://opencode4connections.org/oc4c/customizer.xsp?key=ccc-episode2>
 
-***Restricting Access to Include-Files***
+## Restricting Access to Include Files
 
 By default the contents of any repository in either GitHub organization
 are available for use by Customizer apps by any IBM Cloud tenant. This
@@ -623,7 +627,7 @@ will resolve the include-files location based on the tenant’s
 organization id.
 
 ******
-## A Peek Inside Some Samples
+# A Peek Inside Some Samples
 
 This journey started as most app dev stories do with a reference to a
 “Hello World” application, the point of which is to jump start the
@@ -817,7 +821,7 @@ action buttons, and so forth.
 
 ![](images/icc-profiles.png)
 
-**Bringing Some Order To Proceedings**
+## How Resources Are Loaded
 
 All of the samples viewed so far are simple standalone projects.
 Typically with Customizer applications there is one main entry point,
@@ -875,7 +879,7 @@ describes how the injection mechanism works so that you can plan and
 organize Customizer projects with that information in mind.
 
 ******
-## Customizer Cache Management
+# Customizer Cache Management
 
 On IBM Connections Cloud, when a JavaScript or CSS resource is first served up by Customizer it
 generates what's known as an entity tag ([ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)) 
@@ -910,7 +914,7 @@ likelihood the code that is being developed is subject to frequent updates and f
 test purposes you will want to see the effects immediately - which will not occur 
 when the default caching policy is set up to request a refresh just once a day! 
 
-### Applying a Custom Cache Policy
+## Applying a Custom Cache Policy
 
 You can override the default caching policy by using the `cache-headers` property described 
 in Listing 2. By way of example, a revised version of the "Hello World" sample containing this 
@@ -1002,7 +1006,7 @@ is no notification mechanism in place to alert Customizer when a resource is upd
 this notification is performed by a GitHub web hook which kicks in when the containing repository is updated.
 
 ******
-## Getting Up and Running
+# Getting Up and Running
 
 The sample customizations discussed in this document are available to
 any IBM Connections Cloud tenant organization. Applying a sample
