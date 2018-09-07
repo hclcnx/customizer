@@ -193,7 +193,8 @@ Above and beyond the properties shown in the "Hello World" sample, a complete su
 |                  | */manage/account/user/input*                                                                 |
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.ui`** |  
 |`match/exclude`   | A test criterion that determines whether or not the nominated `include-files` are inserted into the response. Either a `match` **OR** an `exclude` test condition can be applied to an extension - not both, i.e. they are mutually exclusive!  Tests are evaluated against a `url` sub-property or one of the three `user-xxxx` sub-properties (see next four rows). If the test result is positive then the `include-files` are inserted on a `match` or omitted on an `exclude`.|
-| > `url`          | A [regular expression](https://www.regular-expressions.info/) applied to the active Connections URL.                                 |
+| > `header`       | An object containing two properties: a `name` property identifying a target request header and a `value` property containing a [regular expression](https://www.regular-expressions.info/) to be applied against the nominated header.  |
+| > `url`          | A regular expression applied to the active Connections URL. |
 | > `user-name`    | String used to identify one or more users as the target for the customization. This  property is **not unique** within a given organization |
 | > `user-email`   | String used to identify one or more users as the target for the customization. This property **is unique** within a given organization | 
 | > `user-id`      | IBM Connections user-id used to identify one or more users as the target for the customization. This property **is unique** within a given organization |
