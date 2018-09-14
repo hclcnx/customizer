@@ -64,7 +64,7 @@
 
 [28. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
 
-[29. Profile Page Extension](#profile-page-extension)
+[29. Profile Page Extension](#figure-6-profile-page-extension)
 
 [30. Multiple Include Files](#listing-15-multiple-include-files)
 
