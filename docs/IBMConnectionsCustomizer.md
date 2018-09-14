@@ -18,57 +18,71 @@
 
 [6.  Customizer Payload Properties](#customizer-payload-properties)
 
-[7.  Customizer App With URL Matching](#listing-4-customizer-app-with-url-matching)
+[7.  Fine Grained Filtering based on User Identity](#fine-grained-filtering-based-on-user-identity)
 
-[8.  Global Customizer App With URL Matching](#listing-5-global-customizer-app-with-url-matching)
+[8.  Whitelisting Specific Users By Name](#listing-4-whitelisting-specific-users-by-name)
 
-[9.  Whitelisting Specific Users By Name](#listing-6-whitelisting-specific-users-by-name)
+[8. Blacklisting Users By Id](#listing-5-blacklisting-users-by-id)
 
-[10. Blacklisting Users By Id](#listing-7-blacklisting-users-by-id)
+[9. Fine Grained Filtering based on URLs](#fine-grained-filtering-based-on-urls)
 
-[11. The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
+[10. Customizer App With URL Matching](#listing-6-customizer-app-with-url-matching)
 
-[12. Include Files for Code Injections](#include-files-for-code-injections)
+[11. Global Customizer App With URL Matching](#listing-7-global-customizer-app-with-url-matching)
 
-[13. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
+[12. Filtering based on Arbitrary Selection Criteria](#filtering-based-on-arbitrary-selection-criteria)
 
-[14. Restricting Access to Include Files](#restricting-access-to-include-files)
+[13. Selecting Users based on EMail Address Structure](#listing-8-selecting-users-based-on-email-address-structure)
 
-[15. Sample Access Control List](#listing-8-sample-access-control-list) 
+[14. Selecting Users based on Role](#listing-9-selecting-users-based-on-role)
 
-[16. A Peek Inside Some Samples](#a-peek-inside-some-samples)
+[15. Selecting Users based on Multiple Conditions](#listing-10-selecting-users-based-on-multiple-conditions)
 
-[17. Hello World Include File](#listing-9-hello-world-include-file)
+[16. Conditionalizing Extensions based on Browser Client](#listing-11-conditionalizing-extensions-based-on-browser-client)
 
-[18. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
+[17. The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
 
-[19. Customizer Script Injection](#listing-10-customizer-script-injection)
+[18. Include Files for Code Injections](#include-files-for-code-injections)
 
-[20. Standard Samples](#standard-samples)
+[19. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
 
-[21. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
+[20. Restricting Access to Include Files](#restricting-access-to-include-files)
 
-[22. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
+[21. Sample Access Control List](#listing-12-sample-access-control-list) 
 
-[23. Profile Page Extension](#profile-page-extension)
+[22. A Peek Inside Some Samples](#a-peek-inside-some-samples)
 
-[24. Multiple Include Files](#listing-11-multiple-include-files)
+[23. Hello World Include File](#listing-13-hello-world-include-file)
 
-[25. How Resources Are Loaded](#how-resources-are-loaded)
+[24. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
 
-[26. Customizer Cache Management](#customizer-cache-management)
+[25. Customizer Script Injection](#listing-14-customizer-script-injection)
 
-[27. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
+[26. Standard Samples](#standard-samples)
 
-[28. Disabling Caching](#listing-12-hello-world-app-with-automatic-caching-disabled)
+[27. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
 
-[29. Cache-Headers Sample](#listing-13-controlling-caching-of-include-files)
+[28. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
 
-[30. Getting Up and Running](#getting-up-and-running)
+[29. Profile Page Extension](#profile-page-extension)
 
-[31. Some Points to Note regarding Customizer Applications](#some-points-to-note-regarding-customizer-applications)
+[30. Multiple Include Files](#listing-15-multiple-include-files)
 
-[32. Useful Online References](#useful-online-references)
+[31. How Resources Are Loaded](#how-resources-are-loaded)
+
+[32. Customizer Cache Management](#customizer-cache-management)
+
+[33. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
+
+[34. Disabling Caching](#listing-16-hello-world-app-with-automatic-caching-disabled)
+
+[35. Cache-Headers Sample](#listing-17-controlling-caching-of-include-files)
+
+[36. Getting Up and Running](#getting-up-and-running)
+
+[37. Important Notes regarding Customizer Applications](#important-notes-regarding-customizer-applications)
+
+[38. Useful Online References](#useful-online-references)
 
 # Introducing Customizer
 
@@ -193,18 +207,15 @@ Above and beyond the properties shown in the "Hello World" sample, a complete su
 |                  | */manage/account/user/input*                                                                 |
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.ui`** |  
 |`match/exclude`   | A test criterion that determines whether or not the nominated `include-files` are inserted into the response. Either a `match` **OR** an `exclude` test condition can be applied to an extension - not both, i.e. they are mutually exclusive!  Tests are evaluated against a `url` sub-property or one of the three `user-xxxx` sub-properties (see next four rows). If the test result is positive then the `include-files` are inserted on a `match` or omitted on an `exclude`.|
-| > `header`       | An object containing two properties: a `name` property identifying a target request header and a `value` property containing a [regular expression](https://www.regular-expressions.info/) to be applied against the nominated header.  |
+| > `condition`    | The `match/exclude` is applied if the `condition` evaluates to true. The `condition` object has two sub-properties: a `keyword` string identifying the data item you want to test and a `regex` property containing a [regular expression](https://www.regular-expressions.info/) to be applied against the data item. |
 | > `url`          | A regular expression applied to the active Connections URL. |
 | > `user-name`    | String used to identify one or more users as the target for the customization. This  property is **not unique** within a given organization |
 | > `user-email`   | String used to identify one or more users as the target for the customization. This property **is unique** within a given organization | 
 | > `user-id`      | IBM Connections user-id used to identify one or more users as the target for the customization. This property **is unique** within a given organization |
 |`include-files`   | List of files to be inserted into the response for a selected page request                    |
 |`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list: `cache-control, expires, last-modified, pragma` e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"`. All `cache-headers` values are treated as pass-through data that will be set **as-is** in the Customizer HTTP response and not validated.                                                                                  |
-|**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.proxy`** |  
-|**TBC...**     | ... | 
 
-The properties outlined in Listing 2 can be broken down into two
-categories:
+The properties outlined in Listing 2 can be broken down into two categories:
 
 1.  Generic App Reg Properties
 
@@ -305,28 +316,88 @@ the `payload` data comes into play.
 
 As should now be evident, the generic `path` property provides a
 coarse means of querying the Application Registry for extensions
-pertaining to a given IBM Connections component. The optional `match`
-properties inside the Customizer `payload` provide a further means of
-fine-tuning the filtering of extensions and essentially deciding whether
-an extension should be applied to a given URL request or not. All
-`payload` properties are meaningless to the App Registry – they are
-always just passed back to the nominated service container (Customizer
-in this instance) for processing.
+pertaining to a given IBM Connections component. The optional `match` and 
+`exclude` properties inside the Customizer `payload` provide a further means 
+of fine-tuning the filtering of extensions and essentially deciding whether
+an extension should be applied to a given URL request or not. 
 
-### Fine Grained URL Matching
+It is important to note that the aggregated set of `payload` properties 
+have no particular meaning to the App Registry. The payload section is just 
+a blob of data that is always returned to whatever `service` is declared in the 
+application definition. The service container (in this case Customizer) can
+then process the payload data at runtime and carry out whatever instructions 
+are contained therein. 
 
-The `match url` property takes a regular expression and evaluates it
-against the current URL. If the expression matches then the extension is applied. 
+### Fine Grained Filtering based on User Identity
+
+The `match` and `èxclude` properties accept various user-centric criteria
+based on either the current user’s name, email or id. In all cases either single
+or multi-value parameters may be provided, or in JSON parlance a single
+string value or an array of strings can be specified. The fragment
+illustrated in Listing 4 shows how a Communities extension can be
+specifically targeted at specific users based on their user names: Jane
+Doe and Joe Schmoe in this example.
+
+It is important to realise that user names are not unique within an
+organization so it’s possible to inadvertently target unintended users
+by employing this technique, i.e. any users of the same name will see
+the customization. 
+
+### Listing 4 Whitelisting Specific Users By Name
+```json
+"path":"communities",
+"payload":{
+   "match":{
+      "user-name":[
+         "Jane Doe",
+         "Joe Schmoe"
+      ]
+   }
+}
+```
+
+Listing 4 is an example of what's known as a whitelist, i.e. the Customizer app is applied 
+only for those users explicitly called out in the `user-name` array. To do the opposite,
+i.e. apply the customizations for everyone _except_ a list of specific users (a blacklist),
+you can use the `exclude` property instead as shown in Listing 5.
+
+### Listing 5 Blacklisting Users By Id
+```json
+"path":"communities",
+"payload":{
+   "exclude":{
+      "user-id":[
+         "20071635",
+         "20071656"
+      ]
+   }
+}
+```
+To avoid possible ambiguity you can apply a precise filter by using the
+`user-id` sub-property instead of the `user-name`. Note that the term "user id" is
+sometimes referred to as "subscriber id" in the IBM Connection UI and documentation.
+
+As you would expect, you can susbstitute the `user-email` property as the match/exclude
+ criterion in Listings 4 and 5. Customizer performs the string comparisons on a case-sensitive 
+ exact match basis. 
+
+
+### Fine Grained Filtering based on URLs
+
+Beyond used-based filtering, the match/exclude property can also act on the current URL. In this 
+case the `url` criterion is a regular expression which is evaluated against the active URL. 
+For `match url` instances, if  the expression matches then the Customizer extension is applied. 
 If no match occurs, the extension is not applied. Conversely the `exclude url` property
-will **not** insert the nominated `include-files` if the regular expression produces a match. This is a powerful feature as the following code snippets will demonstrate.
+will **not** insert the nominated `include-files` if the regular expression produces a match. 
+This can be a very powerful feature, as the following code snippets will demonstrate.
 
-Listing 4 shows a Communities extension that has a fine-grained URL
+Listing 6 shows a Communities extension that has a fine-grained URL
 match applied on lines 14 – 16. This extension is only applied if the
-Communities followedcommunities URL is being processed, and so this
-extension is ignored for other Communities URLs like those shown in
-Listing 3, i.e. ownedcommunities, communityinvites, etc.
+Communities `followedcommunities` URL is being processed, and so this
+extension is ignored for other Communities URLs like those shown back in
+Listing 3, i.e. `ownedcommunities`, `communityinvites`, etc.
 
-### Listing 4 Customizer App With URL Matching
+### Listing 6 Customizer App With URL Matching
 ```json
 {
    "services":[
@@ -356,10 +427,10 @@ Listing 3, i.e. ownedcommunities, communityinvites, etc.
 }
 ```
 
-Similarly, the following fragment shows how a single global extension
-can be applied to Homepage and Communities but nothing else:
+Similarly, the following fragment shows how a single `global` extension
+can be applied to Homepage and Communities, but nothing else:
 
-### Listing 5 Global Customizer App With URL Matching
+### Listing 7 Global Customizer App With URL Matching
 ```json
 "path":"global",
 "payload":{
@@ -368,16 +439,17 @@ can be applied to Homepage and Communities but nothing else:
    }
 }
 ```
+
 **Note:** The design of some IBM Connections components like Homepage
 are based on the Single Page App paradigm. For example, look at the
-homepage URLs at the top of Listing 3 – all contain hashtags which means
+Homepage URLs at the top of Listing 3 – all contain hashtags which means
 that new http requests are not fired as the user navigates around the
 page. Thus Customizer is not notified for example when a user moves from
-imfollowing to atmentions. By contrast this is not the case in
-Communities when a user moves from ownedcommunities to
-followedcommunities. Thus a developer can target individual Communities
+`imfollowing` to `atmentions`. By contrast this is not the case in
+Communities when a user moves from `ownedcommunities` to
+`followedcommunities`. Thus a developer can target individual Communities
 URLs using the `match url` property but cannot use the same technique
-to match the Homepage hashtag URLs. Instead a homepage extension would
+to match the Homepage hashtag URLs. Instead a Homepage extension would
 need to inject a script that would listen for hash change events and
 respond accordingly. An example is included in the homepage samples:
 [newsRiverSectioned.user.js](https://github.com/ibmcnxdev/customizer/blob/master/samples/newsRiver/newsRiverSectioned.user.js). 
@@ -386,61 +458,112 @@ In particular take a look at the `handleHashChangeEvent()` function contained wi
 It’s easy to envisage many other use cases that would require
 fine-grained match criteria. For instance, if a customer wants to apply
 a customization to any Files URL that contains a GUID then this can be
-achieved by setting the path value to “files” and the match `url`
-value to “id=\[a-z0-9\]{8}-(\[a-z0-9\]{4}-){3}\[a-z0-9\]{12}” – refer
+achieved by setting the `path` value to "files" and the match `url`
+value to "id=\[a-z0-9\]{8}-(\[a-z0-9\]{4}-){3}\[a-z0-9\]{12}" – refer
 back to Listing 3 for an example of such a Files URL. Be aware that the
 various braces contained in the regular expression would need to be
 escaped (i.e. preceded by a backslash character: \\) when entered into
 JSON content stored in App Reg.
 
-### Fine Grained Matching based on the Active End User
+### Filtering based on Arbitrary Selection Criteria
 
-The `match` and `èxclude` properties also accept various user related conditions
-based on the current user’s name, email or id. In all cases single or
-multi-value parameters may be provided, or in JSON parlance a single
-string value or an array of strings can be specified. The fragment
-illustrated in Listing 6 shows how a Communities extension can be
-specifically targeted at specific users based on their user names: Jane
-Doe and Joe Schmoe in this example.
+So far you have seen how to refine the target of a Customizer app either  
+by specifically identifying one or more users, or by narrowing down the 
+selection criteria for the Connections URL. Both methods are highly convenient 
+and cover the most common use cases in a simple and straight-forward manner. 
+But there inevitably are edge cases that require more flexible handling and that 
+is where the more generic `condition` property comes in handy.
 
-It is important to realise that user names are not unique within an
-organization so it’s possible to inadvertently target unintended users
-by employing this technique, i.e. any users of the same name will see
-the extension. 
+Supposing you wanted to apply your Customizer app to a certain cohort of users 
+based on geography. One way of doing this might be to select users based on 
+the structure of their email addresses, e.g. match only users with "us.acme.com" 
+and exclude all others. Thus `john.doe@us.acme.com` would be a valid selection 
+but `sean.doe@ie.acme.com` would not. It could be far too cumbersome to handle 
+this using whitelists or blacklists due to a potentially very large numbers of users, 
+the need for on-going list maintenance, and so forth. Listing 8 shows how the `condition` property
+can deal with such a use case:
 
-### Listing 6 Whitelisting Specific Users By Name
+### Listing 8 Selecting Users based on EMail Address Structure
 ```json
 "path":"communities",
 "payload":{
    "match":{
-      "user-name":[
-         "Jane Doe",
-         "Joe Schmoe"
-      ]
+      "condition":{
+         "keyword": "user-email",
+         "regex": "@us.acme.com"
+      }
    }
 }
 ```
 
-Listing 6 is an example of what's known as a whitelist, i.e. the application is applied 
-only for those users explicitly called out in the `user-name` array. To do the opposite,
-i.e. apply the customizations for everyone _except_ a list of specific users (a blacklist)
-you can use the `exclude` property instead as shown in Listing 7.
+In this example, `keyword` identifies the piece of data that you want Customizer to act on. 
+The `regex` field value provides a regular expression to be applied against the contents of the 
+nominated field of interest. The term `keyword` is used here to identify the target item in a 
+general context, e.g. the `user-email` datum could be a http header on-cloud but the return value
+of an API on-premises. Customizer provides abstracted keywords to identify the item of interest in 
+a generic manner. 
 
-### Listing 7 Blacklisting Users By Id
+Another example would be targetting customizations to a set of users based on their role rather
+than their identity, as shown in Listing 9:
+
+### Listing 9 Selecting Users based on Role
 ```json
 "path":"communities",
 "payload":{
-   "exclude":{
-      "user-id":[
-         "20071635",
-         "20071656"
-      ]
+   "match":{
+      "condition":{
+         "keyword": "user-role",
+         "regex": "Admin|AppDev"
+      }
    }
 }
 ```
-To avoid possible ambiguity you can apply a precise filter by using the
-`user-id` sub-property instead of the `user-name`. Note that the term “user id” is
-sometimes referred to as “subscriber id” in the IBM Connection UI and documentation.
+
+The "user-role" keyword represents a list of groups to which a user may belong. This example will apply 
+the customization only to users listed in at least one the "AppDeveloper", "CustomerAdministrator" or 
+"CustomerAdministrator" groups in Connections. Be aware also that you can specify a single `condition` 
+(as has been the case thus far) or multiple conditions that are ANDed togther at runtime, i.e.
+the `condition` is applied only if _all_ regular expressions evaluate to true. By way of example, Listing 
+8 and Listing 9 could be merged together as shown in Listing 10:
+
+### Listing 10 Selecting Users based on Multiple Conditions
+```json
+"path":"communities",
+"payload":{
+   "match":{
+      "condition": [ {
+         "keyword": "user-email",
+         "regex": "@us.acme.com"
+        },
+	    {
+         "keyword": "user-role",
+         "regex": "Admin|AppDev"
+        }
+	  ]
+   }
+}
+```
+
+A final example would be to conditionalize the insertion of a Customizer app based on the browser client in use.
+For example you may have different extensions within a Customizer app that in essence are different versions of the 
+same logical application, but adapted for quirks across different browser clients. The `keyword` applied in this
+use case is "user-agent", as shown in the following code fragment:
+
+### Listing 11 Conditionalizing Extensions based on Browser Client
+```json
+"path":"communities",
+"payload":{
+   "match":{
+      "condition":{
+         "keyword": "user-agent",
+         "regex": "Firefox"
+      }
+   }
+}
+```
+
+This match condition will apply to any browser that identifies itself as a "Firefox" client. Obviously you can get 
+more granular by including versioning information in the regular expression. 
 
 ******
 
@@ -593,7 +716,7 @@ is to provide an `acl.ids` file at the root of your project and populate
 it with the IBM Connections Cloud ids of the tenant organizations to
 whom you wish to grant access.
 
-### Listing 8 Sample Access Control List 
+### Listing 12 Sample Access Control List 
 ```
 60050207
 22716730
@@ -633,11 +756,11 @@ organization id.
 This journey started as most app dev stories do with a reference to a
 “Hello World” application, the point of which is to jump start the
 enablement process which the simplest of extensions. So what exactly
-does the helloWorld.user.js include file do? Listing 9 shows the code –
+does the helloWorld.user.js include file do? Listing 13 shows the code –
 certain variable names and comments have been trimmed for readability in
 this document but nothing that affects the execution of the script.
 
-### Listing 9 Hello World Include File
+### Listing 13 Hello World Include File
 ```javascript
 if (typeof(dojo)\ != "undefined") {
   require(\["dojo/domReady\!"\], function() {
@@ -687,7 +810,7 @@ For a simple Hello World example, this may appear to be more complicated
 than expected, but a closer inspection will simplify matters. Before
 perusing the code be aware of the following points:
 
-  - Most of the code in Listing 9 is a re-usable template that any
+  - Most of the code in Listing 13 is a re-usable template that any
     injection code can sit inside
 
   - Just 1 line of code are needed for the actual Hello World UI update:
@@ -721,7 +844,7 @@ The code injection can be seen by viewing the source of the IBM
 Connections Homepage in the browser and scrolling to the bottom of the
 file. The following tag fragment should be evident:
 
-### Listing 10 Customizer Script Injection
+### Listing 14 Customizer Script Injection
 ```html
 <script type='text/javascript'
 src='/files/customizer/helloWorld/helloWorld.user.js?repoName=global-samples'\>
@@ -829,11 +952,11 @@ Typically with Customizer applications there is one main entry point,
 e.g. main.js, and this resource is referenced in the include-files
 payload property and rendered in the modified HTML output. However the
 `include-files` payload property is an array and can contain more than one
-file reference. The snippet shown in Listing 11 is an example from the
+file reference. The snippet shown in Listing 15 is an example from the
 enhanced-activity-stream project available on the [OpenCode4Connections
 GitHub repository](https://github.com/OpenCode4Connections/):
 
-### Listing 11 Multiple Include Files
+### Listing 15 Multiple Include Files
 ```json
 "payload":{
    "include-files":[
@@ -844,7 +967,7 @@ GitHub repository](https://github.com/OpenCode4Connections/):
 }
 ```
 
-The three JavaScript files referenced in Listing 11 will be injected in
+The three JavaScript files referenced in Listing 15 will be injected in
 the order they are listed.
 
 Another factor to bear in mind is that Customizer applications can
@@ -919,9 +1042,9 @@ when the default caching policy is set up to request a refresh just once a day!
 
 You can override the default caching policy by using the `cache-headers` property described 
 in Listing 2. By way of example, a revised version of the "Hello World" sample containing this 
-property is shown in Listing 12:
+property is shown in Listing 16:
 
-### Listing 12 Hello World App with Automatic Caching Disabled
+### Listing 16 Hello World App with Automatic Caching Disabled
 ```json
 {
    "services":[
@@ -973,10 +1096,10 @@ specified values are _passed through_ by Customizer as headers in the HTTP
 response. These `cache-headers` properties enable you to enforce your own (non-ETag
 based) caching policy. If you specify custom cache header values you may
 effectively render the default ETag mechanism redundant or less-effective, e.g. by 
-instructing the browser to cache a resource for a long period of time. Listing 13 is a JSON
+instructing the browser to cache a resource for a long period of time. Listing 17 is a JSON
 fragment showing how alternative HTTP cache headers can be applied.
 
-### Listing 13 Controlling Caching of Include Files
+### Listing 17 Controlling Caching of Include Files
 ```json
 "path":"communities",
 "payload":{
@@ -1072,7 +1195,7 @@ Customizer extension (just like the JSON files contained in the standard
 samples) in the Application Registry.
 
 ******
-## Some Points to Note regarding Customizer Applications
+## Important Notes regarding Customizer Applications
 
   - Support for Customizer applications follows the same
     [policy](https://www.ibm.com/support/knowledgecenter/en/SSYGQH_5.5.0/admin/customize/c_customize_overview.html)
