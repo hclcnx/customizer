@@ -22,67 +22,67 @@
 
 [8.  Whitelisting Specific Users By Name](#listing-4-whitelisting-specific-users-by-name)
 
-[8. Blacklisting Users By Id](#listing-5-blacklisting-users-by-id)
+[9. Blacklisting Users By Id](#listing-5-blacklisting-users-by-id)
 
-[9. Fine Grained Filtering based on URLs](#fine-grained-filtering-based-on-urls)
+[10. Fine Grained Filtering based on URLs](#fine-grained-filtering-based-on-urls)
 
-[10. Customizer App With URL Matching](#listing-6-customizer-app-with-url-matching)
+[11. Customizer App With URL Matching](#listing-6-customizer-app-with-url-matching)
 
-[11. Global Customizer App With URL Matching](#listing-7-global-customizer-app-with-url-matching)
+[12. Global Customizer App With URL Matching](#listing-7-global-customizer-app-with-url-matching)
 
-[12. Filtering based on Arbitrary Selection Criteria](#filtering-based-on-arbitrary-selection-criteria)
+[13. Filtering based on Arbitrary Selection Criteria](#filtering-based-on-arbitrary-selection-criteria)
 
-[13. Selecting Users based on EMail Address Structure](#listing-8-selecting-users-based-on-email-address-structure)
+[14. Selecting Users based on EMail Address Structure](#listing-8-selecting-users-based-on-email-address-structure)
 
-[14. Selecting Users based on Role](#listing-9-selecting-users-based-on-role)
+[15. Selecting Users based on Role](#listing-9-selecting-users-based-on-role)
 
-[15. Selecting Users based on Multiple Conditions](#listing-10-selecting-users-based-on-multiple-conditions)
+[16. Selecting Users based on Multiple Conditions](#listing-10-selecting-users-based-on-multiple-conditions)
 
-[16. Conditionalizing Extensions based on Browser Client](#listing-11-conditionalizing-extensions-based-on-browser-client)
+[17. Conditionalizing Extensions based on Browser Client](#listing-11-conditionalizing-extensions-based-on-browser-client)
 
-[17. The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
+[18. The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
 
-[18. Include Files for Code Injections](#include-files-for-code-injections)
+[19. Include Files for Code Injections](#include-files-for-code-injections)
 
-[19. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
+[20. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
 
-[20. Restricting Access to Include Files](#restricting-access-to-include-files)
+[21. Restricting Access to Include Files](#restricting-access-to-include-files)
 
-[21. Sample Access Control List](#listing-12-sample-access-control-list) 
+[22. Sample Access Control List](#listing-12-sample-access-control-list) 
 
-[22. A Peek Inside Some Samples](#a-peek-inside-some-samples)
+[23. A Peek Inside Some Samples](#a-peek-inside-some-samples)
 
-[23. Hello World Include File](#listing-13-hello-world-include-file)
+[24. Hello World Include File](#listing-13-hello-world-include-file)
 
-[24. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
+[25. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
 
-[25. Customizer Script Injection](#listing-14-customizer-script-injection)
+[26. Customizer Script Injection](#listing-14-customizer-script-injection)
 
-[26. Standard Samples](#standard-samples)
+[27. Standard Samples](#standard-samples)
 
-[27. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
+[28. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
 
-[28. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
+[29. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
 
-[29. Profile Page Extension](#figure-6-profile-page-extension)
+[30. Profile Page Extension](#figure-6-profile-page-extension)
 
-[30. Multiple Include Files](#listing-15-multiple-include-files)
+[31. Multiple Include Files](#listing-15-multiple-include-files)
 
-[31. How Resources Are Loaded](#how-resources-are-loaded)
+[32. How Resources Are Loaded](#how-resources-are-loaded)
 
-[32. Customizer Cache Management](#customizer-cache-management)
+[33. Customizer Cache Management](#customizer-cache-management)
 
-[33. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
+[34. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
 
-[34. Disabling Caching](#listing-16-hello-world-app-with-automatic-caching-disabled)
+[35. Disabling Caching](#listing-16-hello-world-app-with-automatic-caching-disabled)
 
-[35. Cache-Headers Sample](#listing-17-controlling-caching-of-include-files)
+[36. Cache-Headers Sample](#listing-17-controlling-caching-of-include-files)
 
-[36. Getting Up and Running](#getting-up-and-running)
+[37. Getting Up and Running](#getting-up-and-running)
 
-[37. Important Notes regarding Customizer Applications](#important-notes-regarding-customizer-applications)
+[38. Important Notes regarding Customizer Applications](#important-notes-regarding-customizer-applications)
 
-[38. Useful Online References](#useful-online-references)
+[39. Useful Online References](#useful-online-references)
 
 # Introducing Customizer
 
