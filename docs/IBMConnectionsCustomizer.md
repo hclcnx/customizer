@@ -205,13 +205,13 @@ Above and beyond the properties shown in the "Hello World" sample, a complete su
 |                  | *survey*                                                                                     |
 |                  | *viewer*                                                                                     |
 |                  | *wikis*                                                                                      |
-|                  | \* There are a number of error-related paths that can be specified, namely "error", "error502" and "error503"  |
-|                  | \*\* Unlike the other path values, global does not represent a real URL path element but is a keyword meaning match all URLs. |
-|                  | \*\*\* The manage path covers a subset of the Connections `manage` URLs, namely:               | 
+|                  | \* There are a number of error-related paths that can be specified, namely `error`, `error502` and `error503`  |
+|                  | \*\* Unlike most other path values, global does not represent a real URL path element but is a keyword meaning match all URLs. |
+|                  | \*\*\* The `manage` path covers a subset of the Connections `manage` URLs, namely:               | 
 |                  | */manage/subscribers/showInviteGuestDialog/input*                                            |
 |                  | */manage/account/user/input*                                                                 |
 |**`payload`**     | **The properties described below can be applied in the `payload` object definition when the extension point is `com.ibm.customizer.ui`** |  
-|`match/exclude`   | A test criterion that determines whether or not the nominated `include-files` are inserted into the response. Either a `match` **OR** an `exclude` test condition can be applied to an extension - not both, i.e. they are mutually exclusive!  Tests are evaluated against a `url` sub-property or one of the three `user-xxxx` sub-properties (see next four rows). If the test result is positive then the `include-files` are inserted on a `match` or omitted on an `exclude`.|
+|`match/exclude`   | A test criterion that determines whether or not the nominated `include-files` are inserted into the response. Either a `match` **OR** an `exclude` test condition can be applied to an extension - not both, i.e. they are mutually exclusive!  Tests can be evaluated using any of the following five sub-properties. If the test result is positive then the `include-files` are inserted on a `match` or omitted on an `exclude`.|
 | > `condition`    | The `match/exclude` is applied if the `condition` evaluates to true. The `condition` object has two sub-properties: a `keyword` string identifying the data item you want to test and a `regex` property containing a [regular expression](https://www.regular-expressions.info/) to be applied against the data item. |
 | > `url`          | A regular expression applied to the active Connections URL. |
 | > `user-name`    | String used to identify one or more users as the target for the customization. This  property is **not unique** within a given organization |
