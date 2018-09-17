@@ -328,14 +328,14 @@ an extension should be applied to a given URL request or not.
 
 It is important to note that the aggregated set of `payload` properties 
 have no particular meaning to the App Registry. The payload section is just 
-a blob of data that is always returned to whatever `service` is declared in the 
+a blob of data that is always returned to the `service` declared in the 
 application definition. The service container (in this case Customizer) can
 then process the payload data at runtime and carry out whatever instructions 
 are contained therein. 
 
 ### Fine Grained Filtering based on User Identity
 
-The `match` and `èxclude` properties accept various user-centric criteria
+The `match` and `exclude` properties accept various user-centric criteria
 based on either the current user’s name, email or id. In all cases either single
 or multi-value parameters may be provided, or in JSON parlance a single
 string value or an array of strings can be specified. The fragment
@@ -380,7 +380,7 @@ you can use the `exclude` property instead as shown in Listing 5.
 ```
 To avoid possible ambiguity you can apply a precise filter by using the
 `user-id` sub-property instead of the `user-name`. Note that the term "user id" is
-sometimes referred to as "subscriber id" in the IBM Connection UI and documentation.
+sometimes referred to as "subscriber id" in the IBM Connections UI and documentation.
 
 As you would expect, you can susbstitute the `user-email` property as the match/exclude
  criterion in Listings 4 and 5. Customizer performs the string comparisons on a case-sensitive 
@@ -389,7 +389,7 @@ As you would expect, you can susbstitute the `user-email` property as the match/
 
 ### Fine Grained Filtering based on URLs
 
-Beyond used-based filtering, the match/exclude property can also act on the current URL. In this 
+Beyond user-based filtering, the match/exclude property can also act on the current URL. In this 
 case the `url` criterion is a regular expression which is evaluated against the active URL. 
 For `match url` instances, if  the expression matches then the Customizer extension is applied. 
 If no match occurs, the extension is not applied. Conversely the `exclude url` property
@@ -472,14 +472,14 @@ JSON content stored in App Reg.
 
 ### Filtering based on Arbitrary Selection Criteria
 
-So far you have seen how to refine the target of a Customizer app either  
+So far you have seen how to refine the target of a Customizer app either 
 by specifically identifying one or more users, or by narrowing down the 
 selection criteria for the Connections URL. Both methods are highly convenient 
 and cover the most common use cases in a simple and straight-forward manner. 
 But there inevitably are edge cases that require more flexible handling and that 
 is where the more generic `condition` property comes in handy.
 
-Supposing you wanted to apply your Customizer app to a certain cohort of users 
+Supposing you wanted to apply your Customizer app to a certain set of users 
 based on geography. One way of doing this might be to select users based on 
 the structure of their email addresses, e.g. match only users with "us.acme.com" 
 and exclude all others. Thus `john.doe@us.acme.com` would be a valid selection 
@@ -537,14 +537,14 @@ the `condition` is applied only if _all_ regular expressions evaluate to true. B
 "payload":{
    "match":{
       "condition": [ {
-         "keyword": "user-email",
-         "regex": "@us.acme.com"
+          "keyword": "user-email",
+          "regex": "@us.acme.com"
         },
-	    {
-         "keyword": "user-role",
-         "regex": "Admin|AppDev"
+	{
+          "keyword": "user-role",
+          "regex": "Admin|AppDev"
         }
-	  ]
+      ]
    }
 }
 ```

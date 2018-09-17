@@ -11,6 +11,9 @@
         },
         "cache-headers": {
           "cache-control": "max-age=0"
+        },
+        "match": {
+          "url": "rofileView.do"
         }
       },
       "name": "Profiles Customization Extension",
