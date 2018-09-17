@@ -1,26 +1,26 @@
-#_profilesViewWelcome_div {
+.lotusFrame #_profilesViewWelcome_div {
   display: none;
 }
 
-.lotusWrapper {
+.lotusFrame .lotusWrapper {
   display: none
 }
 
 /** Heading **/
 
 
-.lotusui30 .lotusTitleBar2 {
+.lotusui30 .lotusFrame .lotusTitleBar2 {
   padding-bottom: 0;
 }
 
-.lotusWrapper .lotusHeading {
+.lotusFrame .lotusWrapper .lotusHeading {
   display: none;
 }
 
 
 /** Profile Photo **/
 
-.lotusui .lotusColLeft .lconnProfilePortrait {
+.lotusui .lotusFrame .lotusColLeft .lconnProfilePortrait {
   width: 138px;
   border: 5px solid #0b7180;
   margin-top: -20px;
@@ -28,18 +28,23 @@
 
 /** Main section **/
 
-#lotusMain, #lotusFrame {
+div#lotusMain, div#lotusFrame {
   background: #f4f4f4;
 }
 
 
 /** Chunk **/
 
-.lotusui30_layout .lotusColLeft .lotusSection,
-.lotusui30_layout .lotusColLeft .lotusTips,
-.lotusui30_layout .lotusColLeft .lotusWidget,
-.lotusui30_layout .lotusColLeft .lotusWidget2,
-.lotusui30_layout .lotusColRight .lotusInfoBox, .lotusui30_layout .lotusColRight .lotusSection, .lotusui30_layout .lotusColRight .lotusSection2, .lotusui30_layout .lotusColRight .lotusTips, .lotusui30_layout .lotusColRight .lotusWidget, .lotusui30_layout .lotusColRight .lotusWidget2
+.lotusFrame.lotusui30_layout .lotusColLeft .lotusSection,
+.lotusFrame.lotusui30_layout .lotusColLeft .lotusTips,
+.lotusFrame.lotusui30_layout .lotusColLeft .lotusWidget,
+.lotusFrame.lotusui30_layout .lotusColLeft .lotusWidget2,
+.lotusFrame.lotusui30_layout .lotusColRight .lotusInfoBox,
+.lotusFrame.lotusui30_layout .lotusColRight .lotusSection,
+.lotusFrame.lotusui30_layout .lotusColRight .lotusSection2,
+.lotusFrame.lotusui30_layout .lotusColRight .lotusTips,
+.lotusFrame.lotusui30_layout .lotusColRight .lotusWidget,
+.lotusFrame.lotusui30_layout .lotusColRight .lotusWidget2
 {
   margin: 0;
   padding: 10px 20px;
@@ -49,30 +54,30 @@
   background: white;
 }
 
-.lotusWidget2 {
+.lotusFrame .lotusWidget2 {
   padding-bottom: 25px!important;
   margin-bottom: 35px!important;
 }
 
-.lotusui30 #socialTagsSubArea {
+.lotusui30 .lotusFrame #socialTagsSubArea {
   padding: 0 20px;
 }
 
-.lotusChunk {
+.lotusFrame .lotusChunk {
   padding-top: 10px!important;
 }
 
 /** Chunk heading **/
 
-.lotusui30 .lotusColLeft .dijitTitlePaneTitle,
-.lotusui30 .lotusColLeft .lotusSection h2,
-.lotusui30 .lotusColLeft .lotusSection2 .lotusHeading,
-.lotusui30 .lotusColLeft .lotusWidget h2,
-.lotusui30 .lotusColLeft .lotusWidget2 h2,
-.lotusui30 .lotusColRight .dijitTitlePaneTitle,
-.lotusui30 .lotusColRight .lotusSection h2,
-.lotusui30 .lotusColRight .lotusWidget h2,
-.lotusui30 .lotusColRight .lotusWidget2 h2 {
+.lotusui30 .lotusFrame .lotusColLeft .dijitTitlePaneTitle,
+.lotusui30 .lotusFrame .lotusColLeft .lotusSection h2,
+.lotusui30 .lotusFrame .lotusColLeft .lotusSection2 .lotusHeading,
+.lotusui30 .lotusFrame .lotusColLeft .lotusWidget h2,
+.lotusui30 .lotusFrame .lotusColLeft .lotusWidget2 h2,
+.lotusui30 .lotusFrame .lotusColRight .dijitTitlePaneTitle,
+.lotusui30 .lotusFrame .lotusColRight .lotusSection h2,
+.lotusui30 .lotusFrame .lotusColRight .lotusWidget h2,
+.lotusui30 .lotusFrame .lotusColRight .lotusWidget2 h2 {
   border-bottom: 1px solid #e8e8e8;
   margin-left: -20px;
   margin-right: -20px;
@@ -82,7 +87,7 @@
   margin-bottom: 15px;
 }
 
-.lotusWidget2 h2::before {
+.lotusFrame .lotusWidget2 h2::before {
   content: '';
   height: 12px; width: 18px;
   display:block;
@@ -93,45 +98,48 @@
   margin-right: 10px
 }
 
-.lotusActionMenu {
+.lotusFrame .lotusActionMenu {
   display: none
 }
 
 /** Columns **/
 
-.lotusui30_layout .lotusColLeft, .lotusui30_layout .lotusColRight {
+.lotusFrame.lotusui30_layout .lotusColLeft,
+.lotusFrame.lotusui30_layout .lotusColRight {
   width: 350px;
 }
 
-.lotusui30_layout .lotusColLeft:after {
+.lotusFrame.lotusui30_layout .lotusColLeft:after {
   display: none;
 }
 
-.lotusui30_layout .lotusColLeft {
+.lotusFrame.lotusui30_layout .lotusColLeft {
   background: #f4f4f4;
   margin-left: 16px;
   margin-right: 10px;
 }
 
-.lotusui30_layout .lotusColRight {
+.lotusFrame.lotusui30_layout .lotusColRight {
   margin-right: 16px;
   margin-left: 30px;
   margin-top: 332px;
 }
 
 /** People Widget **/
-.lotusNetworkPerson {
+.lotusFrame .lotusNetworkPerson {
   height: 110px;
   width: 64px;
   margin-right: 4px;
   margin-left: 3px
 }
 
-.lotusNetworkPerson:nth-child(4), .lotusNetworkPerson:nth-child(8), .lotusNetworkPerson:nth-child(12) {
+.lotusFrame .lotusNetworkPerson:nth-child(4),
+.lotusFrame .lotusNetworkPerson:nth-child(8),
+.lotusFrame .lotusNetworkPerson:nth-child(12) {
   margin-right:0;
 }
 
-.lotusNetworkPerson .lotusAltText {
+.lotusFrame .lotusNetworkPerson .lotusAltText {
   display: block!important;
   text-align: center;
   color: black;
@@ -142,7 +150,7 @@
   overflow: hidden;
 }
 
-.lotusNetworkPerson a.lotusPerson img {
+.lotusFrame .lotusNetworkPerson a.lotusPerson img {
   height: 50px!important;
   width: 50px;
   display: block;
@@ -151,7 +159,7 @@
 
 /** Updates section **/
 
-#lconn_tabsWidget1_CenterTabContent {
+.lotusFrame #lconn_tabsWidget1_CenterTabContent {
     margin-top: 277px;
 }
 
@@ -162,11 +170,11 @@
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
-.lotusui30 .lotusBoard ul.lotusCommentList li.lotusCommentItem {
+.lotusui30 .lotusFrame .lotusBoard ul.lotusCommentList li.lotusCommentItem {
   background:#fff;
 }
 
-#UpdatesSection::before {
+.lotusFrame #UpdatesSection::before {
   content: 'Recent Updates';
   padding: 0 20px;
   font-weight: bold;
@@ -178,31 +186,32 @@
   margin-top:-5px;
 }
 
-#UpdatesSection .lotusInlinelist {
+.lotusFrame #UpdatesSection .lotusInlinelist {
   padding: 0 20px;
 }
 
-.lconnRTE {
+.lotusFrame .lconnRTE {
   padding: 20px 20px;
 }
 
-#tabsWidget1_widgetId_moreActions {
+.lotusFrame #tabsWidget1_widgetId_moreActions {
   display:none!important;
 }
 
-.lotusui30 .lotusFeeds a.lotusFeed {
+.lotusui30 .lotusFrame .lotusFeeds a.lotusFeed {
   background: none;
 }
 
-.filterAreaInner {
+.lotusFrame .filterAreaInner {
   display:none;
 }
 
-#shareboxContainer {
+.lotusFrame #shareboxContainer {
   margin-bottom: -20px!important
 }
 
-.pagingHandler, .pagingHandler * {
+.lotusFrame .pagingHandler,
+.lotusFrame .pagingHandler * {
   border: none!important;
   margin: 0!important;
   border-radius: 0!important;
@@ -210,8 +219,9 @@
 
 /** Center sections **/
 
-#contactInfoSection, #backgroundInfoSection,
-#filesReaderSection {
+.lotusFrame #contactInfoSection,
+.lotusFrame #backgroundInfoSection,
+.lotusFrame #filesReaderSection {
   padding: 10px 20px 25px;
   background: #fff;
     border: 1px solid #e8e8e8;
@@ -220,15 +230,16 @@
 
 
 /** New Menu section **/
-.lotusColLeft {
+.lotusFrame .lotusColLeft {
     margin-top: 185px
 }
 
-.lotusColRight {
+.lotusFrame .lotusColRight {
   margin-top: 343px
 }
 
-#lotusMain::before {
+div#lotusFrame #lotusMain::before {
+  box-sizing: content-box !important;
   content: '';
   width: 100%;
   height: 192px;
@@ -245,88 +256,88 @@
   border-right: 1px solid #ddd;
 }
 
-#profileHeader {
+.lotusFrame #profileHeader {
   position: absolute;
   width: 100%;
   left: 0;
 }
 
-#businessCardDetails {
+.lotusFrame #businessCardDetails {
   position: absolute;
 }
 
-#businessCardActions {
+.lotusFrame #businessCardActions {
   margin-top: 105px
 }
 
-.lotusActionBar{
+.lotusFrame .lotusActionBar{
   position: absolute!important;
-  width: 100px;
+  width: 100%;
   margin-top: 55px
 }
 
-.lotusui30 .lotusBtn {
+.lotusui30 .lotusFrame .lotusBtn {
   margin-right: 20px;
 }
 
-.lotusui30 #moreActionsBtn_lconn_profiles_actionBar_ActionBar_0 {
+.lotusui30 .lotusFrame #moreActionsBtn_lconn_profiles_actionBar_ActionBar_0 {
   margin-right: 0;
 }
 
-#lconn_profiles_actionBar_ActionBar_0 {
+.lotusFrame #lconn_profiles_actionBar_ActionBar_0 {
   float: right;
   margin-right: 40px;
 }
 
-#lconn_tabsWidget1_CenterTabsDiv {
+.lotusFrame #lconn_tabsWidget1_CenterTabsDiv {
   top: 245px
 }
 
-.lotusui30 .lotusTabContainer {
+.lotusui30 .lotusFrame .lotusTabContainer {
   border: none;
 }
 
-.lotusui30 .lotusTabs li {
+.lotusui30 .lotusFrame .lotusTabs li {
   margin-right: 48px
 }
 
-
-#tabsWidget1_widgetId_container li a {
+.lotusFrame #tabsWidget1_widgetId_container li a {
    padding: 16px 0;
 }
 
-.lotusSection2 {
+.lotusFrame .lotusSection2 {
   width: 138px;
-  position: absolute;
   left: 0px
 }
 
-#businessCardContent {
+.lotusFrame #businessCardContent {
   top: 190px;
   left: 220px
 }
 
-
-#businessCardDetails {
+.lotusFrame #businessCardDetails {
   top: 210px;
   left: 220px;
 }
 
-#awarenessArea, #businessCardDetails a, #connectionIndicator, a.menu_drop_icon, .lotusAltText {
+.lotusFrame #awarenessArea,
+.lotusFrame #businessCardDetails a,
+.lotusFrame #connectionIndicator,
+.lotusFrame a.menu_drop_icon, .lotusAltText {
   display:none!important;
 }
 
-#profilePaneLeft .lotusSection2 {
+.lotusFrame #profilePaneLeft .lotusSection2 {
   margin-bottom: 10px
 }
 
-#icSearchPaneButton {
+.lotusFrame #icSearchPaneButton {
   top: 200px!important;
   z-index: 100!important;
 }
 
 /** My profile view **/
-#_profilesMyViewWelcome_div {
+.lotusFrame #_profilesMyViewWelcome_div {
   display: none;
 }
 
@@ -335,9 +346,18 @@
   width: 138px;
 }
 
-#profilePaneLeft .lotusSection2 #editProfileButtonDiv {
+.lotusFrame #profilePaneLeft .lotusSection2 #editProfileButtonDiv {
   position:absolute;
   top: -138px;
   right: -350px;
   z-index: 5;
+}
+
+/* Edit profile page */
+.lotusui .lotusFrame #_profileEditScene_div {
+    margin-top: 333px;
+    background: #fff;
+    padding: 20px 16px 0;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
 }
