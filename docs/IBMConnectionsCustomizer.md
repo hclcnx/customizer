@@ -206,7 +206,7 @@ Above and beyond the properties shown in the "Hello World" sample, a complete su
 |                  | *viewer*                                                                                     |
 |                  | *wikis*                                                                                      |
 |                  | \* There are a number of error-related paths that can be specified, namely `error`, `error502` and `error503`  |
-|                  | \*\* Unlike most other path values, global does not represent a real URL path element but is a keyword meaning match all URLs. |
+|                  | \*\* Unlike most other path values, `global` does not represent a real URL path element but is a keyword meaning match all URLs. |
 |                  | \*\*\* The `manage` path covers a subset of the Connections `manage` URLs, namely:               | 
 |                  | */manage/subscribers/showInviteGuestDialog/input*                                            |
 |                  | */manage/account/user/input*                                                                 |
