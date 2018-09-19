@@ -4,26 +4,27 @@
       "application": "Profiles Customization Sample",
       "payload": {
         "include-files": [
-          "profiles/profilesCustomization.css"
+          "global/global.js",
+          "global/global.css"
         ],
         "include-repo": {
-          "name": "customizer-repo"
+          "name": "customizer"
         },
         "cache-headers": {
           "cache-control": "max-age=0"
         },
         "match": {
-          "url": "rofileView.do"
+          "user-name": ["Jarkko Pietikäinen"]
         }
       },
-      "name": "Profiles Customization Extension",
+      "name": "Global Customization Extension",
       "type": "com.ibm.customizer.ui",
-      "path": "profiles"
+      "path": "global"
     }
   ],
-  "name": "Profiles Customization Sample",
-  "description": "Alternative Profiles Page Design & Layout",
-  "title": "Profiles Customization Sample",
+  "name": "Global Customization",
+  "description": "Global Design & Layout",
+  "title": "Global Customization",
   "services": [
     "Customizer"
   ]
