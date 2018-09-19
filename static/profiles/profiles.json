@@ -1,0 +1,30 @@
+{
+  "extensions": [
+    {
+      "application": "Profiles Customization Sample",
+      "payload": {
+        "include-files": [
+          "profiles/profilesCustomization.css"
+        ],
+        "include-repo": {
+          "name": "customizer-repo"
+        },
+        "cache-headers": {
+          "cache-control": "max-age=0"
+        },
+        "match": {
+          "url": "rofileView.do"
+        }
+      },
+      "name": "Profiles Customization Extension",
+      "type": "com.ibm.customizer.ui",
+      "path": "profiles"
+    }
+  ],
+  "name": "Profiles Customization Sample",
+  "description": "Alternative Profiles Page Design & Layout",
+  "title": "Profiles Customization Sample",
+  "services": [
+    "Customizer"
+  ]
+}
