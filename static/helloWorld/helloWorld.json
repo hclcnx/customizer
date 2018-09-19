@@ -12,7 +12,7 @@
           "helloWorld/helloWorld.user.js"
         ],
         "include-repo":{
-          "name": "global-samples"
+          "name": "customizer-repo"
         },
         "cache-headers": {
           "cache-control": "max-age=0"
