@@ -570,6 +570,14 @@ use case is "user-agent", as shown in the following code fragment:
 This match condition will apply to any browser that identifies itself as a "Firefox" client. Obviously you can get 
 more granular by including versioning information in the regular expression. 
 
+>> **<span class="underline">TIP:</span>** As you may suspect, the Customizer `keyword` value typically maps to an 
+internal Connections header and the regular expression is then applied against the value of that header. The 
+actual header names can be a little esoteric and can also vary between IBM Connections on-cloud and on-premises, so the 
+intent of the `keyword` is both to provide an intuitive identifier and a protection against platform implementation 
+differences. There are cuurently four keywords recognised by Customizer conditional filtering, namely: `user-name`, 
+`user-id`, `user-email`, `user-role`. If you specify a value that is not in this list then Customizer treats it as a 
+header name and if this is true it will apply the regular expression against the header value.  
+
 ******
 
 # The Request Life Cycle for IBM Connections Customizer
