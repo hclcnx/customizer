@@ -8,9 +8,6 @@
   "extensions": [
     {
       "payload": {
-        "match":{
-          "user-name":["Jarkko Pietikäinen"]
-        },
         "include-files": [
           "helloWorld/helloWorld.user.js"
         ],
