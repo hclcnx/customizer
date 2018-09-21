@@ -574,7 +574,7 @@ more granular by including versioning information in the regular expression.
 internal Connections header and the regular expression is then applied against the value of that header. The 
 actual header names can be a little esoteric and can also vary between IBM Connections on-cloud and on-premises, so the 
 intent of the `keyword` is both to provide an intuitive identifier and a protection against platform implementation 
-differences. There are cuurently four keywords recognised by Customizer conditional filtering, namely: `user-name`, 
+differences. There are currently four keywords recognised by Customizer conditional filtering, namely: `user-name`, 
 `user-id`, `user-email`, `user-role`. If you specify a value that is not in this list then Customizer treats it as a 
 header name and if this is true it will apply the regular expression against the header value.  
 
