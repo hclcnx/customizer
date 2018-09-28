@@ -183,10 +183,7 @@ Above and beyond the properties shown in the "Hello World" sample, a complete su
 |                  | *com.ibm.customizer.api*                                                                     |
 |                  | *com.ibm.customizer.proxy*                                                                   |
 | `path`           | String value used to identify the component to be customized:                                                            |
-|                  | ``activities     `` ``blogs          `` ``contacts         `` ``downloads      `` ``error*         `` ``files          ``
- ``forums         `` ``gadgets        `` ``global**         `` ``homepage       `` ``manage***      `` ``meetings       ``
- ``metrics        `` ``mycontacts     `` ``news             `` ``profiles       `` ``reports        `` ``search         ``
- ``social         `` ``survey         `` ``viewer           `` ``wikis          `` ``               `` ``               ``|
+|                  | ``activities     `` ``blogs          `` ``contacts         `` ``downloads      `` ``error*         `` ``files          `` ``forums         `` ``gadgets       `` ``global**         `` ``homepage       `` ``manage***      `` ``meetings       `` ``metrics        `` ``mycontacts     `` ``news             `` ``profiles       `` ``reports      `` ``search         `` ``social         `` ``survey         `` ``viewer           `` ``wikis |
 |                  | \* There are a number of error-related paths that can be specified, namely `error`, `error502` and `error503`                    |
 |                  | \*\* Unlike most other path values, `global` does not represent a real URL path element but is a keyword meaning match all URLs. |
 |                  | \*\*\* The `manage` path covers a subset of the Connections `manage` URLs, namely:                                               | 
