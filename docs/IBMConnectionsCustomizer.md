@@ -22,7 +22,7 @@
 
 [8.  Whitelisting Specific Users By Name](#listing-4-whitelisting-specific-users-by-name)
 
-[9. Blacklisting Users By Id](#listing-5-blacklisting-users-by-id)
+[9.  Blacklisting Users By Id](#listing-5-blacklisting-users-by-id)
 
 [10. Fine Grained Filtering based on URLs](#fine-grained-filtering-based-on-urls)
 
@@ -83,6 +83,8 @@
 [38. Important Notes regarding Customizer Applications](#important-notes-regarding-customizer-applications)
 
 [39. Useful Online References](#useful-online-references)
+
+[40. Appendix 1 Customizer Payload Errors](#appendix-1-customizer-payload-errors)
 
 # Introducing Customizer
 
@@ -1228,7 +1230,7 @@ samples) in the Application Registry.
 <https://github.com/ibmcnxdev/customizer>
 
 ******
-## Appendix 1 - Customizer Payload Errors
+## Appendix 1 Customizer Payload Errors
 
 The Application Registry does not have any inside knowledge of the semantics of the properties defined in the `payload` section of an application. The `payload` data is only meaningful to the service which the application is extending. A service can however provide a schema validator for its own `payload` properties and the Customizer team have been kind enough to do so. This means that error reporting can be more granular when mistakes are made in the `payload` JSON.
 
@@ -1241,9 +1243,9 @@ When attemping to save the application, the App Reg IDE calls the Customizer sch
 
 ![](images/icc-payload-err.png)
 
-The full list of Payload error messages is shown in List 18:
+The full list of Payload error messages is shown in Listing 18:
 
-### Listing 18 Customizer Application Properties
+### Listing 18 Customizer Payload Errors
 | Error Message         | Notes                                                                                                      |
 | -------------         | -------------                                                                                              |
 | Incorrect property data type: 'xxx' - should be 'yyy' data type          |                                                    |
