@@ -1226,3 +1226,55 @@ samples) in the Application Registry.
 <https://opencode4connections.org/>
  
 <https://github.com/ibmcnxdev/customizer>
+
+******
+## Appendix 1 - Customizer Payload Errors
+
+The Application Registry does not have any inside knowledge of the semantics of the properties defined in the `payload` section of an application. The `payload` data is only meaningful to the service which the application is extending. A service can however provide a schema validator for its own `payload` properties and the Customizer team have been kind enough to do so. This means that error reporting can be more granular when mistakes are made in the `payload` JSON.
+
+To take an example, suppose a couple of errors are made in the `match` clause of a Customizer app, e.g.
+1. The wrong data type is assigned to the `user-name` property (boolean rather than string): ``"user-name": true``
+2. There is a typo in the `user-email` property name: "user-smail"
+When attemping to save the application, the App Reg IDE calls the Customizer schema validator to ensure that the payload data makes sense. These errors are detected and reported in the editor header area as shown in Figure 7:
+
+### Figure 7 Customizer Payload Validation Errors
+
+![](images/icc-payload-err.png)
+
+The full list of Payload error messages is shown in List 18:
+
+### Listing 18 Customizer Application Properties
+| Error Message         | Notes                                                                                                      |
+| -------------         | -------------                                                                                              |
+| Incorrect property data type: 'xxx' - should be 'yyy' data type          |                                                    |
+| Invalid property '{1}' found in the payload                              |                                                         |
+| Property is not any of the allowed list: '{xxx,yyy, etc}'         |                                                                           |
+| Property does not match the specified schema as follows: '{1}' with '{2}' errors |                                                 |
+| Property is not exactly one of the allowed list: '{xxx,yyy, etc}' |                                                 |
+| Payload property should have a minimum of one property |                                                 |
+| Payload property should have a maximum of one property |                                                 |
+| Payload property should have a minimum of '{x}' properties |                                                 |
+| Payload property should have a maximum of '{y}' properties |                                                 |
+| Additional nested properties are not permitted                           |                                                         |
+| Property should have a minimum value of '{x}'                              |                                                         |
+| Property should have a maximum value of '{y}'                              |                                                         |
+| Property does not match specified pattern: '{XxxYyy}'                                              |                                                          |
+| Property does not conform to the specified format: '{xxx/yyy}'                                              |                                                          |
+| Property does not meet the minimum length of '{x}'                                              |                                                          |
+| Property does not meet the maximum length of '{y}'                                              |                                                          |
+| The property's nested items does not meet the minimum number of one item                                              |                                                          |
+| The property's nested items does not meet the minimum number of '{x}' items    |                                                          |
+| The property's nested items exceeds the maximum number of '{y}' items|                                                          |
+| Duplicate '{a}' {b} properties are not permitted: {property}                                              |                                                          |
+| Property does not meet the dependency specified by the '{xxx}' property                                             |                                                          |
+| Property is not one of the specified enum values: '{xxx,yyy, etc}'                                              |                                                          |
+| Property does not match the specified constant: '{xxx}'                                              |                                                          |
+| Property is a prohibited type: '{xxx}'                                             |                                                          |
+
+
+
+
+
+
+
+
