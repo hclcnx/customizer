@@ -1232,7 +1232,7 @@ samples) in the Application Registry.
 
 The Application Registry does not have any inside knowledge of the semantics of the properties defined in the `payload` section of an application. The `payload` data is only meaningful to the service which the application is extending. A service can however provide a schema validator for its own `payload` properties and the Customizer team have been kind enough to do so. This means that error reporting can be more granular when mistakes are made in the `payload` JSON.
 
-To take an example, suppose a couple of errors are made in the `match` clause of a Customizer app, e.g.
+To take an example, suppose a couple of user errors are made in the `match` clause of a Customizer app, e.g.
 1. The wrong data type is assigned to the `user-name` property (boolean rather than string): ``"user-name": true``
 2. There is a typo in the `user-email` property name: "user-smail"
 When attemping to save the application, the App Reg IDE calls the Customizer schema validator to ensure that the payload data makes sense. These errors are detected and reported in the editor header area as shown in Figure 7:
