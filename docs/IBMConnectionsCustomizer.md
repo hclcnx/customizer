@@ -1237,6 +1237,7 @@ The Application Registry does not have any inside knowledge of the semantics of 
 To take an example, suppose a couple of user errors are made in the `match` clause of a Customizer app, e.g.
 1. The wrong data type is assigned to the `user-name` property (boolean rather than string): ``"user-name": true``
 2. There is a typo in the `user-email` property name: "user-smail"
+
 When attemping to save the application, the App Reg IDE calls the Customizer schema validator to ensure that the payload data makes sense. These errors are detected and reported in the editor header area as shown in Figure 7:
 
 ### Figure 7 Customizer Payload Validation Errors
