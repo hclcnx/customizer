@@ -9,6 +9,9 @@
       "type": "com.ibm.customizer.ui",
       "payload": {
         "include-files": ["samples/smoothLoad/smoothLoad.js", "samples/smoothLoad/smoothLoad.css"],
+        "include-repo": {
+           "name": "customizer"
+        },
         "cache-headers": {
           "cache-control": "max-age=0"
         }
