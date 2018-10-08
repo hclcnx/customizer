@@ -1,11 +1,11 @@
 {
-  "name": "smoothLoad",
-  "title": "smoothLoad",
+  "name": "SmoothLoad",
+  "title": "Smooth Loader",
   "description": "Hides UI until page has fully loaded, giving a smoother loading experience",
   "services": ["Customizer"],
   "extensions": [
     {
-      "name": "Smooth Loader",
+      "name": "!SmoothLoader",
       "type": "com.ibm.customizer.ui",
       "payload": {
         "include-files": ["samples/smoothLoad/smoothLoad.js", "samples/smoothLoad/smoothLoad.css"],
