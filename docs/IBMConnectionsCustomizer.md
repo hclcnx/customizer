@@ -601,7 +601,7 @@ nominated folders under the `/pv-connections/customizations` directory (this is 
 and can be modified for a given Connections installation).
 
 In both cases, the `include-repo` payload property value identifies 
-the name of the top level location, i.e. a repository for Connections cloud 
+the name of the top level location, i.e. a repository for Connections Cloud 
 or a folder for Connections On-Premises.
 
 For example, in Listing 1 you see an `include-repo` reference with a value
@@ -619,7 +619,7 @@ in the [Standard Samples](#standard-samples) section.
 integrate your Customizer include files with IBM Connections Cloud is
 available in video for on opencode4connections.org:
 
-	<https://opencode4connections.org/oc4c/customizer.xsp?key=ccc-episode2>
+	https://opencode4connections.org/oc4c/customizer.xsp?key=ccc-episode2
 
 At any given time IBM Customizer has an up to date snapshot of all the code
 contained in the repositories under [github.com/ibmcnxdev](https://github.com/ibmcnxdev) - see Figure 2.
@@ -627,7 +627,7 @@ You can freely explore the assets available in the public repositories and try t
 your Connections organization. 
  
 Apart from these public repositories you can also create one or more repositories of your own and 
-then those projects will become available on IBM Connections Cloud. If you create a GitHub repo with 
+then those projects will become available to Customizer on IBM Connections Cloud. If you create a GitHub repo with 
 Customizer content then the procedure to make it available under [github.com/ibmcnxdev](https://github.com/ibmcnxdev)
 is outlined as follows:
 
