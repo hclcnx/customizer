@@ -148,7 +148,7 @@ On-Premises using this URL: `http://*yourConnectionsUrl.com*/appreg/`
 Whether On-Cloud or On-Premises, the **Apps Manager** workspace provides
 a single consistent user interface for [managing Customizer
 apps](https://rtpdoc01.rtp.raleigh.ibm.com:9443/kc/SSYGQH_test/admin/customize/customize_manage_customizer_apps.html).
-A Customizer app is nothing more than a JSON file containing design
+A Customizer app is nothing more than a plain old JSON file containing design
 metadata that identifies the components that need to be targeted and the
 actions that need to be performed. Listing 1 is an illustration of a
 rudimentary Customizer application.
@@ -579,77 +579,63 @@ This request processing mechanism can be succinctly summarized in Figure
 ******
 # Include Files for Code Injections
 You have already read about how Customizer generates App Registry
-queries and how request matching is performed based on the application
-payload data. The next thing to figure out is how the file resources
-listed in the include-files property are managed.
+queries and how request matching is performed based on criteria defined in 
+the application `payload` data. The next thing to figure out is how the file 
+resources listed in the `include-files` property are managed.
 
-The include-files payload property lists one or more files to be
-inserted into the Connections http response thus becoming part of the
-DOM structure loaded in the end-user’s browser. Listing 1 shows a simple
-single-item value for this parameter: "helloWorld/helloWorld.user.js",
-where helloWorld is a folder and helloWorld.user.js is a JavaScript file
+The `include-files` payload property lists one or more files to be
+inserted into the Connections http response and which consequently become
+part of the DOM structure loaded in the end-user’s browser. Listing 1 
+shows a simple single-item value for this parameter: `'helloWorld/helloWorld.user.js'`,
+where `'helloWorld'` is a folder and `'helloWorld.user.js'` is a JavaScript file
 contained within. This raises a number of interesting questions:
 
 1.  **Where do these files reside?**
 
 For IBM Connections Cloud, any files declared in the `include-files`
-property list are stored in one of two locations:
+property list are stored in a named repository under the public IBM 
+Connections GitHub organization - https://github.com/ibmcnxdev
 
-1)  a private IBM [GitHub](https://github.com/) organization (i.e.
-    github.ibm.com - accessible only to IBM)
+For IBM Connections On-Premises, `include-files` are stored in 
+nominated folders under the `/pv-connections/customizations` directory (this is a default path
+and can be modified for a given Connections installation).
 
-2)  a public IBM Connections GitHub organization -
-    <https://github.com/ibmcnxdev>
+In both cases, the `include-repo` payload property value identifies 
+the name of the top level location, i.e. a repository for Connections cloud 
+or a folder for Connections On-Premises.
 
-The include-repo payload property value identifies the name of the
-actual repository. For example, in Listing 1 and Listing 4 you see an
-include-repo object with a name value of "global-samples" being used.
-This is a reference to a repository on github.ibm.com that contains
-ready-made samples that any IBM Cloud tenant can use in a Customizer
-app. "Hello World", "FlipCard" and the other samples featured later in
-the [Standard Samples](#standard-samples) section are all located in
-this repository. IBM Customizer resolves the GitHub organization
-referred to in the JSON markup –i.e. whether it is in the private or
-public location. IBM has control over the repositories that are
-created in both locations so no duplicate names are allowed.
+For example, in Listing 1 you see an `include-repo` reference with a value
+of `'global-samples'` being used. In the case of IBM Connections Cloud this 
+maps directly to https://github.com/ibmcnxdev/global-samples. This a 
+repository containing ready-made samples that can be used by _any_ IBM Cloud 
+tenant, e.g. `'Hello World'`, `'FlipCard'` etc. Most samples are explained later 
+in the [Standard Samples](#standard-samples) section. 
 
-2.  **How do they get there?**
+### Figure 2 IBM Connections Developers Organization on GitHub
 
-Customizer assets like the aforementioned global-samples are directly
-provisioned to github.ibm.com by the IBM Customizer team. Since this
-is a private GitHub organization you cannot explore it to discover
-what repositories are available, but you become aware of them through
-public samples, documentation and other enablement materials (such as
-this). It is envisaged that an enhanced App Reg IDE may expose these
-repositories through the UI in a future release.
+![](images/icc-ibmcnxdev.png)
+
+>> **<span class="underline">TIP:</span>** More information on how to
+integrate your Customizer include files with IBM Connections Cloud is
+available in video for on opencode4connections.org:
+
+	<https://opencode4connections.org/oc4c/customizer.xsp?key=ccc-episode2>
+
+At any given time IBM Customizer has an up to date snapshot of all the code
+contained in the repositories under [github.com/ibmcnxdev](https://github.com/ibmcnxdev) - see Figure 2.
+You can freely explore the assets available in the public repositories and try them out in
+your Connections organization. 
  
-On the other hand you can freely explore the assets available on the
-public IBM Connections Developers GitHub organization (see Figure 2).
-By default you are free to leverage any Customizer repository within
-this organization or to collaborate with the IBM Customizer team to
-create your own repo in this location. This could be a fork of an
-existing repository or a brand new repo created for you from scratch,
-depending on your needs.
- 
-If you are familiar with GitHub and have a GitHub account then you are
-already well on your way. If not, then you can start learning about
-GitHub here using this [quick 10 minute
-guide](https://guides.github.com/activities/hello-world/). Once you
-know the rudiments, then [creating a GitHub
-account](https://help.github.com/articles/signing-up-for-a-new-github-account/)
-is straight-forward and free for public and open-source projects.
- 
-In order to inject *your own include-files* into a Customizer app you
-need a GitHub repository on the public
-[github.com/ibmcnxdev](https://github.com/ibmcnxdev) organization.
-Typically developers have their own repo that they share with IBM –
-the step by step procedure is as follows:
+Apart from these public repositories you can also create one or more repositories of your own and 
+then those projects will become available on IBM Connections Cloud. If you create a GitHub repo with 
+Customizer content then the procedure to make it available under [github.com/ibmcnxdev](https://github.com/ibmcnxdev)
+is outlined as follows:
 
 1.  Share your repo with IBM – [add "ibmcndev" as a
     collaborator](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
 
-2.  IBM (ibmcnxdev) then creates a fork of your repository under
-    github.com/ibmcnxdev and grants you read access by default.
+2.  IBM then creates a fork of your repository under
+    [github.com/ibmcnxdev](https://github.com/ibmcnxdev) and grants you read access by default.
 
 3.  You can continue to work on your extension using your original repo
     for your source code activity, but once you are ready to deliver to
@@ -662,39 +648,36 @@ the step by step procedure is as follows:
 5.  Upon merge, the repo files are automatically pushed to IBM
     Customizer via a webhook.
 
-6.  Rinse & repeat starting at Step (c) for extension updates.
+6.  Rinse & repeat starting at Step (3) for extension updates.
 
-Step (c) requires you to issue a Pull Request *across forks* (in
+Step (3) requires you to issue a Pull Request *across forks* (in
 GitHub parlance). The key thing to remember is that your original repo
-which contains the latest changes is always the “head fork”, while the
-“base fork” must refer to the repo on
-[github.com/ibmcnxdev](https://github.com/ibmcnxdev).
+which contains the latest changes is always the `'head fork'`, while the
+`'base fork'` must refer to the repo on [github.com/ibmcnxdev](https://github.com/ibmcnxdev).
 
-Step (d) involves an initial lightweight summary review by IBM which
+Step (4) involves an initial lightweight summary review by IBM which
 looks at various aspects of the proposed customization, primarily from
 a performance, security and documentation standpoint. However ultimate
 responsibility for the quality and behaviour of the app remains that
 of the customer who creates or adopts the customization. The review
-process by IBM provides no guarantee whatsoever of protection against
+process by IBM provides _no guarantee whatsoever_ of protection against
 adverse security or performance impacts.
 
-### Figure 2 IBM Connections Developers Organization on GitHub
-
-![](images/icc-ibmcnxdev.png)
-
->> **<span class="underline">TIP:</span>** More information on how to
-integrate your Customizer include files with IBM Connections Cloud is
-available in video for on opencode4connections.org:
-
-<https://opencode4connections.org/oc4c/customizer.xsp?key=ccc-episode2>
+If you are familiar with GitHub then these steps are probably quite intuitive.
+If not then you can start learning about GitHub here using this [quick 10 minute
+guide](https://guides.github.com/activities/hello-world/). Once you
+know the rudiments, then [creating a GitHub
+account](https://help.github.com/articles/signing-up-for-a-new-github-account/)
+is straight-forward and free for public and open-source projects. Any issues or queries 
+with this aspect of customization integration can be directed to [ibmcndev@us.ibm.com](mailto:ibmcndev@us.ibm.com).
 
 ## Restricting Access to Include Files
 
-By default the contents of any repository in either GitHub organization
+By default the contents of any repository in the `ibmcnxdev` GitHub organization
 are available for use by Customizer apps by any IBM Cloud tenant. This
 is a very flexible and convenient model but may not always be the
 desired solution for every situation. Some tenants may prefer to keep
-the include-files for Customizer apps private to themselves, or restrict
+the `include-files` for Customizer apps private to themselves, or restrict
 usage to a subset of tenants. Different solutions exist to address these
 needs:
 
@@ -715,7 +698,7 @@ whom you wish to grant access.
 10034583
 ``` 
 This is basically a whitelist for tenant access. Once you create an
-acl.ids file in your repository then only those tenant organizations
+`acl.ids` file in your repository then only those tenant organizations
 listed in the file are allowed to use it - all others are denied
 access. If no `acl.ids` file exists then all tenants can potentially
 leverage the repo in their Customizer apps.
@@ -727,20 +710,11 @@ repositories. Private repositories can still be shared with the IBM
 Connections Developers organization. The private repository will
 appear in the list of projects under
 [github.com/ibmcnxdev](https://github.com/ibmcnxdev) but only
-administrators of ibmcnxdev will be able to see the contents – i.e.
+administrators of the `ibmcnxdev` site will be able to see the contents – i.e.
 the repo files have no visibility to regular users or to the general
 public. Even though read access of the source files is restricted via
-the repository, you will also need to add an acl.ids file should you
+the repository, you will also need to add an `acl.ids` file should you
 also wish to prevent runtime access from other tenant organizations.
-
-3.  **Private Repositories on github.ibm.com**
-
-If you have privacy needs that are not satisfied by the previous two
-options you can request a private repository for your organization’s
-include-files on github.ibm.com. In this situation the JSON definition
-would typically not contain any include-repo reference as Customizer
-will resolve the include-files location based on the tenant’s
-organization id.
 
 ******
 # A Peek Inside Some Samples
@@ -857,7 +831,7 @@ this format:
 The [profiles](#profiles) sample that you will see shortly uses a
 JavaScript code injection to load a CSS file from the profiles folder
 under the global-samples repository. Be aware that this type of broad
-access to repositories can also be prevented using the acl.ids mechanism
+access to repositories can also be prevented using the `acl.ids` mechanism
 described earlier.
 
 >> **<span class="underline">TIP:</span>** IBM Connections web pages
@@ -1117,7 +1091,7 @@ and how [they can be best applied to satisfy different use
 cases](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching).
 
 **Note:** When running Customizer on-premises only the `max-age` header value of 12 hours is set  by default. 
-The `ETag` header is not set because the `include-files` are laid down on a simple file system folder and there
+The `ETag` header is not set because the `include-files` are laid down on a plain file system folder and there
 is no notification mechanism in place to alert Customizer when a resource is updated. For Customizer on cloud 
 this notification is performed by a GitHub web hook which kicks in when the containing repository is updated.
 
