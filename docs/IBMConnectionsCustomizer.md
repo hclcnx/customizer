@@ -280,7 +280,7 @@ appregistry/api/v3/services/Customizer/extensions?type=com.ibm.customizer.ui&pat
 
 This API request translates as “get all UI extensions registered for the
 Customizer service that apply to Files”. This should clarify why
-Customizer extensions must contain both a `type` and `path` value.
+Customizer UI extensions must contain both a `type` and `path` value.
 One caveat to note with regard to the `path` value is the existence of
 the special `global` key word. This is designed to address the use case
 where an extension needs to apply to *all* requests and it would be
@@ -957,7 +957,7 @@ When your application has more than one extension and is
 sensitive to the load order of the include files then you can control
 this by applying an ordered naming convention to your extensions. 
 
-By way of example take the ([Nifty Scripties](https://github.com/ibmcnxdev/global-samples/tree/master/nifty-scripties)) sample app. It contains _ten_ separate 
+By way of example take the [Nifty Scripties](https://github.com/ibmcnxdev/global-samples/tree/master/nifty-scripties) sample app. It contains _ten_ separate 
 extensions - all small individual samples designed for educational purposes. One of 
 these extensions is entitled "Smooth Loader" as it is designed to reduce
 screen jitter that can occur when many UI threads are updating the same
