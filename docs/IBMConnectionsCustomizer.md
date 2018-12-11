@@ -961,7 +961,7 @@ By way of example take the [Nifty Scripties](https://github.com/ibmcnxdev/global
 extensions - all small individual samples designed for educational purposes. One of 
 these extensions is entitled "Smooth Loader" as it is designed to reduce
 screen jitter that can occur when many UI threads are updating the same
-IBM Connections page at load time. While extension `title` is "Smooth Loader", 
+IBM Connections page at load time. While the extension `title` is "Smooth Loader", 
 the extension `name` is set to "!!SmoothLoader" which forces it to be loaded before 
 any other extensions in that application. You can glean from this that the
 `title` property is used for UI display purposes and can be translated and so forth. 
