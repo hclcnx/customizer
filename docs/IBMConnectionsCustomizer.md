@@ -147,7 +147,7 @@ On-Premises using this URL: `http://*yourConnectionsUrl.com*/appreg/`
 ```
 Whether On-Cloud or On-Premises, the **Apps Manager** workspace provides
 a single consistent user interface for [managing Customizer
-apps](https://rtpdoc01.rtp.raleigh.ibm.com:9443/kc/SSYGQH_test/admin/customize/customize_manage_customizer_apps.html).
+apps](https://www.ibm.com/support/knowledgecenter/en/SSYGQH_6.0.0/admin/customize/customize_manage_customizer_apps.html).
 A Customizer app is nothing more than a plain old JSON file containing design
 metadata that identifies the components that need to be targeted and the
 actions that need to be performed. Listing 1 is an illustration of a
@@ -166,7 +166,7 @@ following points can be inferred by a quick inspection of the code:
 
   - A file named `helloWorld.user.js` is to be injected into the homepage (line \#15)
 
-  - `helloWorld.user.js` is retrieved from a global repository of Customizer samples
+  - `helloWorld.user.js` is retrieved from a global repository of Customizer samples (`global-samples`)
 
 # Exploring Customizer Capabilities
   
@@ -436,7 +436,7 @@ URLs using the `match url` property but cannot use the same technique
 to match the Homepage hashtag URLs. Instead a Homepage extension would
 need to inject a script that would listen for hash change events and
 respond accordingly. An example is included in the homepage samples:
-[newsRiverSectioned.user.js](https://github.com/ibmcnxdev/customizer/blob/master/samples/newsRiver/newsRiverSectioned.user.js). 
+[newsRiverSectioned.user.js](https://github.com/ibmcnxdev/global-samples/blob/master/newsRiver/newsRiverSectioned.user.js). 
 In particular take a look at the `handleHashChangeEvent()` function contained within.
 
 It’s easy to envisage many other use cases that would require
@@ -847,8 +847,8 @@ and others like it should be explored and leveraged by your extensions.
 
 Besides Hello World, there are a number of other ready-made Customizer
 examples to be available for experimentation. The latest samples can
-always be found in the samples folder of the Customizer GitHub
-repository: <https://github.com/ibmcnxdev/customizer>
+always be found in the `global-samples` folder of the IBMCnxDev GitHub
+organization: <https://github.com/ibmcnxdev/global-samples>
 
 Each sample has its own subfolder which contains the App Reg design
 definition (JSON file) and the resources to be injected to perform the
@@ -919,12 +919,14 @@ e.g. main.js, and this resource is referenced in the include-files
 payload property and rendered in the modified HTML output. However the
 `include-files` payload property is an array and can contain more than one
 file reference. The snippet shown in Listing 15 is an example from the
-enhanced-activity-stream project available on the [OpenCode4Connections
-GitHub repository](https://github.com/OpenCode4Connections/):
+`enhanced-activity-stream` project (https://github.com/ibmcnxdev/enhanced-activity-stream):
 
 ### Listing 15 Multiple Include Files
 ```json
 "payload":{
+   "include-repo": {
+      "name": "enhanced-activity-stream"
+   },
    "include-files":[
       "enhanced-activity-stream/core.js",
       "enhanced-activity-stream/scroller.js",
@@ -940,20 +942,30 @@ Another factor to bear in mind is that Customizer applications can
 contain many extensions, even though the samples described here all have
 just one single extension each. An extension should ideally represent a
 project which carries out a specific task or a tightly related set of
-tasks. The include-files referenced in the extension must be contained
-in a single include-repo, i.e. it is a strict one-to-one mapping. This
+tasks. The `include-files` referenced in the extension must be contained
+in a single `include-repo`, i.e. it is a strict one-to-one mapping. This
 makes sense from an organizational standpoint. Extensions do specific
 jobs and the tools for these jobs are typically found in a single
-dedicated repository. If your application consists of many related tasks
-and the tools to carry out the work are many and varied then it would
+dedicated repository. 
+
+If your application consists of many separate but related tasks then it would
 make sense for your application to have multiple extensions, where each
 extension manages a discrete function and maps to a repo designed for
 that purpose. Be aware though that the extensions are loaded by
-Customizer in the alphabetical order of the extension names, and not the
-order in which they are entered into the JSON definition of the
-application. If your application has multiple extensions and is
+Customizer _in the alphabetical order of the extension names_.
+When your application has more than one extension and is
 sensitive to the load order of the include files then you can control
-this by applying an ordered naming convention to your extensions.
+this by applying an ordered naming convention to your extensions. 
+
+By way of example take the ([Nifty Scripties](https://github.com/ibmcnxdev/global-samples/tree/master/nifty-scripties)) sample app. It contains _ten_ separate 
+extensions - all small individual samples designed for educational purposes. One of 
+these extensions is entitled "Smooth Loader" as it is designed to reduce
+screen jitter that can occur when many UI threads are updating the same
+IBM Connections page at load time. While extension `title` is "Smooth Loader", 
+the extension `name` is set to "!!SmoothLoader" which forces it to be loaded before 
+any other extensions in that application. You can glean from this that the
+`title` property is used for UI display purposes and can be translated and so forth. 
+The `name` property on the other hand is a lookup key for extensions.
 
 **Note:** The alphabetical order of extensions applies *across all
 applications*. For example, you may have two separate apps that target
@@ -1104,12 +1116,12 @@ customization is an easy way to get started with IBM Connections
 Customizer and help you get familiar with the process. Any sample can be
 used put through its paces by importing the relevant JSON file into an
 organization’s Application Registry. So for example, you could take a
-copy of the helloWorld.json file from the helloWorld samples project
-published on the [Customizer GitHub
-repo](https://github.com/ibmcnxdev/customizer/tree/master/samples/helloWorld)
+copy of the `helloWorld.json` file from the `helloWorld` sample project
+published on the [`global-samples` GitHub
+repo](https://github.com/ibmcnxdev/global-samples/tree/master/helloWorld)
 and import it into App Reg as follows:
 
-1.  Go to <https://github.com/ibmcnxdev/customizer>
+1.  Go to <https://github.com/ibmcnxdev/global-samples>
 
 2.  Navigate to the helloWorld.json file and copy/paste the contents to
     a local file
@@ -1201,7 +1213,7 @@ samples) in the Application Registry.
 
 <https://opencode4connections.org/>
  
-<https://github.com/ibmcnxdev/customizer>
+<https://github.com/ibmcnxdev/global-samples>
 
 ******
 ## Appendix 1 Customizer Payload Errors
