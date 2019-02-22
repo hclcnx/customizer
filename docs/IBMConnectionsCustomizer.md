@@ -70,21 +70,53 @@
 
 [32. How Resources Are Loaded](#how-resources-are-loaded)
 
-[33. Customizer Cache Management](#customizer-cache-management)
+[33. Accessing 3rd Party Web Services via Customizer](#accessing-3rd-party-web-services-via-customizer)
 
-[34. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
+[34. Customizer Proxy Extension Point Properties](#listing-16-customizer-proxy-extension-point-properties)
 
-[35. Disabling Caching](#listing-16-hello-world-app-with-automatic-caching-disabled)
+[35. Sample External Service](#figure-7-sample-external-service)
 
-[36. Cache-Headers Sample](#listing-17-controlling-caching-of-include-files)
+[36. Simple Customizer Proxy Extension](#listing-17-simple-customizer-proxy-extension)
 
-[37. Getting Up and Running](#getting-up-and-running)
+[37. Creating a Customizer Proxy Extension in App Registry](#figure-8-creating-a-customizer-proxy-extension-in-app-registry)
 
-[38. Important Notes regarding Customizer Applications](#important-notes-regarding-customizer-applications)
+[38. Generated JSON for Proxy Extension Point](#listing-18-generated-json-for-proxy-extension-point)
 
-[39. Useful Online References](#useful-online-references)
+[39. Making a Customizer Proxy Request](#listing-19-making-a-customizer-proxy-request)
 
-[40. Appendix 1 Customizer Payload Errors](#appendix-1-customizer-payload-errors)
+[40. Homepage with Proxied Update](#figure-9-homepage-with-proxied-update)
+
+[41. Handling Authentication](#handling-authentication)
+
+[42. Basic Authentication Info for a Customizer App](#listing-20-basic-authentication-info-for-a-customizer-app)
+
+[43. JavaScript Code for Watson Tone Analysis](#listing-21-javascript-code-for-watson-tone-analysis)
+
+[44. Homepage with Watson Services](#figure-10-homepage-with-watson-services)
+
+[45. Displaying 3rd Party Content using Customizer](#displaying-3rd-party-content-using-customizer)
+
+[46. Customizer Container Extension Point Properties](#listing-22-customizer-container-extension-point-properties)
+
+[47. Simple Customizer UI Container Extension](#listing-23-simple-customizer-ui-container-extension)
+
+[48. Homepage with Weather Content Included](#figure-11-homepage-with-weather-content-included)
+
+[49. Customizer Cache Management](#customizer-cache-management)
+
+[50. Applying a Custom Cache Policy](#applying-a-custom-cache-policy)
+
+[51. Disabling Caching](#listing-16-hello-world-app-with-automatic-caching-disabled)
+
+[52. Cache-Headers Sample](#listing-17-controlling-caching-of-include-files)
+
+[53. Getting Up and Running](#getting-up-and-running)
+
+[54. Important Notes regarding Customizer Applications](#important-notes-regarding-customizer-applications)
+
+[55. Useful Online References](#useful-online-references)
+
+[56. Appendix 1 Customizer Payload Errors](#appendix-1-customizer-payload-errors)
 
 # Introducing Customizer
 
@@ -156,9 +188,9 @@ rudimentary Customizer application.
 The application JSON in Listing 1 requires little explanation. The
 following points can be inferred by a quick inspection of the code:
 
-  - The app is named “Simple Customizer Sample” and it extends the `Customizer` service
+  - The app is named "Simple Customizer Sample" and it extends the `Customizer` service
 
-  - It contains **one** extension named “Hello World Extension” (apps can have many)
+  - It contains **one** extension named "Hello World Extension" (apps can have many)
 
   - The extension is a customization of the UI (line \#11 - `"type": "com.ibm.customizer.ui"`)
 
@@ -278,8 +310,8 @@ this:
 appregistry/api/v3/services/Customizer/extensions?type=com.ibm.customizer.ui&path=files
 ```
 
-This API request translates as “get all UI extensions registered for the
-Customizer service that apply to Files”. This should clarify why
+This API request translates as "get all UI extensions registered for the
+Customizer service that apply to Files". This should clarify why
 Customizer UI extensions must contain both a `type` and `path` value.
 One caveat to note with regard to the `path` value is the existence of
 the special `global` key word. This is designed to address the use case
@@ -720,7 +752,7 @@ also wish to prevent runtime access from other tenant organizations.
 # A Peek Inside Some Samples
 
 This journey started as most app dev stories do with a reference to a
-“Hello World” application, the point of which is to jump start the
+"Hello World" application, the point of which is to jump start the
 enablement process which the simplest of extensions. So what exactly
 does the helloWorld.user.js include file do? Listing 13 shows the code –
 certain variable names and comments have been trimmed for readability in
@@ -802,7 +834,7 @@ logged to the JS console.
 This `waitFor()` function is thus called passing in the callback function
 to manipulate the DOM and modify the UI. The interesting part of the
 callback function (Line 31 as already highlighted) locates a DOM element
-and assigns “Hello World” as the text content. When this extension is
+and assigns "Hello World" as the text content. When this extension is
 loaded and run by Customizer then the IBM Connections Homepage is
 modified in the manner shown in Figure 3.
 
@@ -897,7 +929,7 @@ two JavaScript file injections in this case.
 ### profiles
 
 The Profiles extension delivers a more sophisticated rendering to the
-page that is displayed when the user selects the “**My Profile**”
+page that is displayed when the user selects the "**My Profile**"
 dropdown menu option in IBM Connections. The new UI look and feel is
 achieved via stylesheet updates. There are two files in the profiles
 subfolder - the JS file profilesCustomization.js simply inserts a link
@@ -981,6 +1013,306 @@ describes how the injection mechanism works so that you can plan and
 organize Customizer projects with that information in mind.
 
 ******
+# Accessing 3rd Party Web Services via Customizer
+
+The use cases discussed thus far have focused on leveraging resources provided directly by IBM
+Connections Cloud itself, e.g. calling Connections REST APIs, modifying the Connections DOM etc. 
+No special permissions are required to perform such tasks as any JavaScript injected by Customizer 
+becomes part of the end-user's browser Connections client session and runs with that the authorization
+profile associated with that user account. But what if a customization needs to access 3rd party web services?
+Such external requests typically require secure authorization and authentication in order to "bless" the sites 
+being accessed and protect access information such as passwords or other restricted keys. This section
+describes how Customizer can lend a helping hand to resolve these challenges.
+
+An extension point named `com.ibm.customizer.proxy` was called out back in Listing 2. This 
+extension point has associated metadata which can control access to third party web services. 
+Think of Listing 16 (as follows) as an extension to table of Customizer properties outlined in Listing 2.
+
+### Listing 16 Customizer Proxy Extension Point Properties
+| Property         | Description                                                                                  |
+| -------------    | -------------                                                                                |
+| `type`           | *com.ibm.customizer.proxy*                                                                   |
+|                  |                                                                                              |
+|**`payload`**     | Metadata used to control proxy request behavior                                              |   
+| `whitelist`      | Object that defines an approved 3rd party service subject to restrictions defined below      |
+|   > `url`        | One or more URLs that are approved for access via the Customizer proxy                       |
+|   > `method`     | A list defining the type of access that is approved: `GET`, `PUT`, `POST`, `DELETE`               |
+|   > `domain`     | One or more domain names, e.g. "ibm.com". This is to allow broader access than the `url` property |
+
+As usual it's best to explain how this extension point works by way of an example and so what better place to 
+start than with a variation of the "Hello World" sample used earlier to introduce you to Customizer basics. Rather 
+than replace the "Share Something" field value on the Connections homepage with a static "Hello World" text string stored 
+inside some JavaScript code, the proxy sample will reach out to a 3rd party web service and retrieve the replacement text from there. 
+
+So first you need an external site to work with, namely the `JSONPlaceholder` service which acts as an online REST API 
+for testing and prototyping. You can see some sample JSON data by visiting this URL https://jsonplaceholder.typicode.com/todos - 
+a snapshot of which is shown as follows in Figure 7
+
+### Figure 7 Sample External Service
+
+![](images/icc-jsonservice.png)
+
+The object of this exercise is to replace the "Share Something" text with the title of the first item in the sample 
+JSON array shown in Figure 7, i.e. "delectus aut autem". You can _enable_ a request to fetch this data via Customizer 
+(known as a proxy request) by declaring the necessary access details in a `com.ibm.customizer.proxy` extension point 
+in the Application Registry. Listing 17 shows how this is done:
+
+### Listing 17 Simple Customizer Proxy Extension
+```json
+{
+   "name":"Basic JSON Proxy Sample",
+   "type":"com.ibm.customizer.proxy",
+   "payload":{
+      "whitelist":[
+         {
+            "method":[
+               "GET"
+            ],
+            "url":"https://jsonplaceholder.typicode.com/todos/1"
+         }
+      ]
+   }
+} 
+```
+
+In summary:
++ The `type` property refers to the extension point - `com.ibm.customizer.proxy`	
++ The `whitelist` property requires at least two sub-properties: a `method` value and either a `url` or `domain` value
++ This particular `whitelist` instance indicates that it's okay to perform a GET operation (read) on the nominated JSONPlaceholder URL
++ Only this precise URL is approved for access (unless other `url` instances are declared in other separate extensions)
++ If you wish to approve broad general access to the JSONPlaceholder service you could use the `domain` property instead, i.e. ```"domain": "typicode.com"```   
+
+For your convenience the App Registry UI provides some help in generating the JSON for the proxy extension point.For example, 
+from the App Registry home page if you click *New App > Extensions > New Extension* you are presented with a proxy form
+like that shown in Figure 8. Filling out the fields as shown below generates the appropriate proxy JSON, as outlined in Listing 18.
+
+### Figure 8 Creating a Customizer Proxy Extension in App Registry
+
+![](images/icc-proxy-appregux.png)
+
+### Listing 18 Generated JSON for Proxy Extension Point
+```json
+{
+    "name": "CorporateNewsFeed",
+    "type": "com.ibm.customizer.proxy",
+    "payload": {
+        "whitelist": [
+            {
+                "method": [
+                    "GET"
+                ],
+                "url": "http://feeds.reuters.com/reuters/businessNews"
+            }
+        ]
+    }
+}
+```
+															
+The proxy extension only _enables_ a proxy request - it does not make the actual request, and for that you need to some JavaScript code, 
+like the sample shown in Listing 19:
+
+### Listing 19 Making a Customizer Proxy Request
+```javascript
+require(["dojo/request", "dojo/topic", "dojo/domReady!"], function(request, topic) {
+  var proxyApiCall = function() {
+    request('/files/customizer/proxy?reponame=customizer-sample-apps&proxyFile=proxySample/basicProxy/jsonTestAPI.json',
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        handleAs: 'json',
+        method: 'GET',
+      }).then((response) => {
+        dojo.query("span.shareSome-title")[0].textContent=response.title;
+    });
+  }
+
+  proxyApiCall();
+}); 
+```
+
+The code in Listing 19 constructs a request for Customizer to proxy. Any request starting with `/files/customizer/proxy` 
+is recognised as a proxy request to be handled by Customizer. The URL to proxy can be identified inline using a `proxyUrl` 
+parameter or it can be stored in a JSON file inside the Customizer repo. For the latter you must identify the JSON file 
+using a `proxyFile` parameter and that is option applied here in this sample (ref. proxyFile=proxySample/basicProxy/jsonTestAPI.json above). 
+There are two advantages to taking this approach:
+
+1. The proxy URL is not visible to the end-user (e.g. if they inspect the HTML source code in the browser client)
+2. The URL specified within the JSON file can be spelled out in plain text without need to escape various characters - as you need to do with the inline `proxyUrl` option
+
+Apart from the optional `url` property, the proxy JSON file would typically contain other authentication related properties. 
+You will see these in the next example but they are not required here since the JSONPlaceholder service is not restricted in
+any way and thus requires no authentication to occur. As you might expect, the `url` property specified in the `proxyFile` for
+this example matches the `url` property contained in the `whitelist` object in Listing 17, i.e. https://jsonplaceholder.typicode.com/todos/1
+
+Observe how the REST API allows you to pick out elements of the JSON array using the trailing index number. The request fetches the 
+first element of the ToDos array (`todos/1`) and the JavaScript code extracts the title value (`response.title`) with which it overwrites
+the "Share Something" UI string. The net result of all this highlighted by the `JSON Title` callout in Figure 9:
+
+### Figure 9 Homepage with Proxied Update
+
+![](images/icc-basicproxy.png)
+
+## Handling Authentication
+
+The JSONPlaceholder service does not require any authentication but many 3rd party services do, so the question remaining is how can 
+Customizer help handle that scenario? The example put forward in this section leverages a Watson service that parses 
+text and provides tone analysis based on its content. This particular service requires basic authentication (i.e. a username and password) 
+in order to use it. You could insert the username and password data directly into the JavaScript code in order to authenticate *but* any 
+user could then read and re-use those credentials by simply inspecting the source of the rendered Connections HTML page. This can be avoided by storing the 
+user credentials within Customizer and have it perform the authentication on your behalf. Remember that the aforementioned `proxyFile` parameter 
+can point to any JSON file within your Customizer app and extract the basic authentication information from there. Listing 20 shows the content 
+of the `proxyFile` referenced in this example (i.e. `watsonToneAnalyzer.json`):
+
+### Listing 20 Basic Authentication Info for a Customizer App
+```json
+{
+   "authType": "Basic",
+   "username": "be4077ba-35fd-45a6-8455-797c75e3ecc5",
+   "password": "iknoEXEn7RAD"
+}
+```
+
+Just like in the previous example, the JavaScript code builds a request that is proxied to Customizer and in this instance the URL looks like so :
+
+	/files/customizer/proxy?reponame=global-sample-apps
+		&proxyFile=proxySample/watsonProxy/watsonToneAnalyzer.json
+		&proxyUrl=https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2017-09-21&text=${encodedText}
+
+In order to process this request Customizer needs to find a file named `proxySample/watsonProxy/watsonToneAnalyzer.json` inside a folder named
+`global-sample-apps`. Given an `authType` of `Basic`, it will then look for a `username` and `password` in the JSON object and apply these credentials
+when challenged to authenticate when accessing the `proxyUrl`. The text to analyze is appended to the end of the request via the `text` parameter 
+(`text=${encodedText}`). To see how it all hangs together take a look at the JavaScript fragment below
+
+### Listing 21 JavaScript Code for Watson Tone Analysis
+```javascript
+require(["dojo/request", "dojo/topic", "dojo/domReady!"], function(request, topic) {
+
+  var proxyApiCall = function() {
+    var editorText = document.getElementsByClassName("cke_wysiwyg_frame")[0].contentDocument.childNodes[1].childNodes[1].childNodes[0].textContent;
+    var encodedText = encodeURI(editorText);
+
+    if(editorText && editorText.length > 0) {    request('/files/customizer/proxy?reponame=customizer-sample-apps&proxyFile=proxySample/watsonProxy/watsonToneAnalyzer.json&proxyUrl=https%3A%2F%2Fgateway.watsonplatform.net%2Ftone-analyzer%2Fapi%2Fv3%2Ftone%3Fversion%3D2017-09-21%26text%3D${encodedText}',
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          handleAs: 'json',
+          method: 'GET'
+        }).then((data) => {
+          var resultTextBox = dojo.byId("toneResult");
+          if (data && data.document_tone && data.document_tone.tones && data.document_tone.tones.length > 0) {
+            var toneResultText = "<strong>Tone: </strong>";
+            data.document_tone.tones.forEach(function(tone, index) {
+              if (index != 0) {
+                toneResultText += ", ";
+              }
+              toneResultText += tone.tone_name;
+            });
+            resultTextBox.innerHTML = toneResultText;
+          } else {
+            resultTextBox.innerHTML = "Insufficient data";
+          }
+      });
+    }
+  };
+
+  var setupToneAnalyzer = function() {
+    //add analyse link
+    dojo.place(`<li><a id="analyseTone" role="button" style="cursor: pointer">Analyse</a></li>`, dojo.query(".lotusStream .lotusBoard .lotusActions .lotusLeft")[0], "last");
+    dojo.place(`<li><div id="toneResult" style="display: inline-block"></div></li>`, dojo.query(".lotusStream .lotusBoard .lotusActions .lotusLeft")[0], "last");
+
+    // add onclick event listener
+    var analyseLink = dojo.query("#analyseTone");
+    analyseLink.onclick(function() {
+      var resultText = dojo.byId("toneResult");
+      resultText.innerHTML = "Loading...";
+      proxyApiCall();
+    });
+  };
+});
+```
+
+Customizer will insert this script into the Connections homepage and then the `setupToneAnalyzer()` function is called. 
+This adds an `Analyse` link to the page next to the `Post` and `Clear` actions on the status update text field. A `<div>`
+is also added to contain the tone analysis results. An event handler on the `Analyse` link is set up to call a function 
+named `proxyApiCall()`. The text entered by the user is then read from the editor and sent to the Watson service as part of 
+the proxy request. Finally the response from Watson is parsed and posted to the results area. A screen shot of a sample interaction 
+is featured in Figure 10.
+
+### Figure 10 Homepage with Watson Services
+
+![](images/icc-watsonproxy.png)
+ 
+The following list summarizes the key details pertaining to the Customizer proxy extension point.
+
++ Create one or more App Registry customizer proxy extensions to whitelist the external services you wish to access
++ Create JavaScript code to proxy the request(s) through Customizer, as shown in the samples
++ You can specify the proxy URL inline using the `proxyUrl`parameter _or_ put the url inside a Customizer JSON file
++ The Customizer JSON file is identified via a `proxyFile` parameter on the Customizer proxy request
++ Apart from the `url` property, the `proxyFile` can also contain `authType`, `username` and `password` properties
++ At this point in time Customizer only supports 'Basic' authorization as the `authType` - not OAuth.
++ Customizer proxy requests must start with a `/files/customizer/proxy` path
++ The Proxy samples discussed here are available here: https://github.com/ibmcnxdev/global-sample-apps/tree/master/proxySample
+
+**Note:** Even though the proxy samples are available for demo purposes on a _public_ repository, if you wish to restrict access
+to the authentication information contained in the JSON file then the file itself should be placed within a `.private` folder and 
+the repository itself should also be _private_ (as of 2019 GitHub users can get [unlimited private repositories for free](https://github.blog/2019-01-07-new-year-new-github/))
+Access to the file can then be limited to those with administrative access to the private repository on the `ibmcnxdev` GitHub org. 
+
+******
+# Displaying 3rd Party Content using Customizer
+
+In certain circumstances it may be desirable to display 3rd party web content on an IBM Connections page. 
+To facilitate this an extension point named `com.ibm.customizer.ui.container` has been provided. 
+This extension point has associated metadata which allows injection of 3rd party web content using a container div 
+with an inner `iframe`. Listing 22 details the properties of this extension point.
+
+
+### Listing 22 Customizer Container Extension Point Properties
+| Property         |Description                                                                                   |
+| -------------    | -------------                                                                                |
+| `type`           | *com.ibm.customizer.ui.container*                                                            |
+|                  |                                                                                              |
+|**`payload`**     | Metadata used to control proxy request behavior                                              |   
+| `url`            | The URL of the web content to be injected                                                    |
+|   > `locator`        | The anchor point where the container will be placed on the IBM Connections page, default ".lotusMain .lotusContent"                       |
+|   > `position`     | The position relative to the locator where the container will be injected, default "first"               |
+|   > `heading`     | An optional label for the container. If specified a div containing a heading will be placed inside the container div above the iframe |
+|   > `sandbox`     | By default, the iframe is set to the highest restriction level. This property allows the removal of specified restrictions e.g. "allow-scripts" will allow the 3rd party web content to execute scripts. It should be used with great care as misuse could lead to potential security risks.  |
+|   > `iframeContainerClass`     | An optional CSS class for controlling the style of the outer container div |
+|   > `iframeHeaderClass`     | An optional CSS class for controlling the style of the heading div |
+|   > `iframeHeaderTitleClass`     | An optional CSS class for controlling the style of the heading |
+|   > `iframeContentClass`     | An optional CSS class for controlling the style of the iframe |
+|   > `width`     | The width of the iframe |
+|   > `height`    | The height of the iframe |
+
+### Listing 23 Simple Customizer UI Container Extension
+```json
+{
+   "name":"Weather Update",
+   "type":"com.ibm.customizer.ui.container",
+   "path":"homepage",
+   "payload":{
+        "url": "//forecast.io/embed/#lat=53.3498&lon=6.2603&name=Dublin&units=uk",
+        "sandbox": "allow-scripts allow-same-origin",
+        "height": "250px"
+    }
+}
+```
+
+In summary:
++ This extension will inject a container on the IBM Connections Homepage 
++ Its height will be 250px
++ It will be allowed to execute scripts and the content is treated as from the same origin
++ The iframe content will be from http://forecast.io
+
+### Figure 11 Homepage with Weather Content Included
+
+![](images/icc-weather-iframe.png)
+
+
+******
 # Customizer Cache Management
 
 On IBM Connections Cloud, when a JavaScript or CSS resource is first served up by Customizer it
@@ -1020,9 +1352,9 @@ when the default caching policy is set up to request a refresh just once a day!
 
 You can override the default caching policy by using the `cache-headers` property described 
 in Listing 2. By way of example, a revised version of the "Hello World" sample containing this 
-property is shown in Listing 16:
+property is shown in Listing 24:
 
-### Listing 16 Hello World App with Automatic Caching Disabled
+### Listing 24 Hello World App with Automatic Caching Disabled
 ```json
 {
    "services":[
@@ -1074,10 +1406,10 @@ specified values are _passed through_ by Customizer as headers in the HTTP
 response. These `cache-headers` properties enable you to enforce your own (non-ETag
 based) caching policy. If you specify custom cache header values you may
 effectively render the default ETag mechanism redundant or less-effective, e.g. by 
-instructing the browser to cache a resource for a long period of time. Listing 17 is a JSON
+instructing the browser to cache a resource for a long period of time. Listing 25 is a JSON
 fragment showing how alternative HTTP cache headers can be applied.
 
-### Listing 17 Controlling Caching of Include Files
+### Listing 25 Controlling Caching of Include Files
 ```json
 "path":"communities",
 "payload":{
@@ -1193,7 +1525,7 @@ samples) in the Application Registry.
     in which they have been added. For example, users from one
     organization may have access to communities in other organizations
     if they have been so invited, but they would not see any
-    customizations added to such “external” communities.
+    customizations added to such "external" communities.
 
 ## Useful Online References
 
@@ -1224,15 +1556,15 @@ To take an example, suppose a couple of user errors are made in the `match` clau
 1. The wrong data type is assigned to the `user-name` property (boolean rather than string): ``"user-name": true``
 2. There is a typo in the `user-email` property name: "user-smail"
 
-When attemping to save the application, the App Reg IDE calls the Customizer schema validator to ensure that the payload data makes sense. These errors are detected and reported in the editor header area as shown in Figure 7:
+When attemping to save the application, the App Reg IDE calls the Customizer schema validator to ensure that the payload data makes sense. These errors are detected and reported in the editor header area as shown in Figure 12:
 
-### Figure 7 Customizer Payload Validation Errors
+### Figure 12 Customizer Payload Validation Errors
 
 ![](images/icc-payload-err.png)
 
-The full list of Payload error messages is shown in Listing 18:
+The full list of Payload error messages is shown in Listing 26:
 
-### Listing 18 Customizer Payload Errors
+### Listing 26 Customizer Payload Errors
 | Error Message         | Notes                                                                                                      |
 | -------------         | -------------                                                                                              |
 | Incorrect property data type: 'xxx' - should be 'yyy' data type          |                                                    |
