@@ -42,13 +42,25 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
   sample-repo:
-    service_id: hostedgit
-    parameters:
-      repo_name: '{{toolchain.name}}'
-      repo_url: 'https://github.com/open-toolchain/node-hello-world'
-      type: clone
-      has_issues: true
-      enable_traceability: true
+    $selection:
+      $parameter: 'source_provider'
+      $options:
+      - $ifdef: 'hostedgit'
+        service_id: hostedgit
+        parameters:
+          repo_name: '{{toolchain.name}}'
+          repo_url: 'https://github.com/open-toolchain/node-hello-world'
+          type: clone
+          has_issues: true
+          enable_traceability: true
+      - $ifdef: 'githubpublic'
+        service_id: githubpublic
+        parameters:
+          repo_name: 'java-app-{{timestamp}}'
+          repo_url: 'https://www.git.com/open-toolchain/java-spring-microservice'
+          type: clone
+          has_issues: true
+          enable_traceability: true
   sample-build:
     service_id: pipeline
     parameters:
