@@ -23,7 +23,6 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
   sample-repo:
-    $selection:
       $parameter: 'source_provider'
       $options:
       - $ifdef: 'hostedgit'
