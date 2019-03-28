@@ -37,7 +37,7 @@ services:
         service_id: githubpublic
         parameters:
           repo_name: 'java-app-{{timestamp}}'
-          repo_url: 'https://github.com/open-toolchain/node-hello-world'
+          repo_url: 'https://github.com/open-toolchain/hello-node'
           type: existing
           enable_traceability: true
   sample-build:
