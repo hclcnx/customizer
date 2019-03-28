@@ -30,7 +30,7 @@ services:
         parameters:
           repo_name: '{{toolchain.name}}'
           repo_url: 'https://gitlab.com/git-toolchain/hello-world'
-          type: clone
+          type: existing
           has_issues: true
           enable_traceability: true
       - $ifdef: 'githubpublic'
@@ -38,8 +38,7 @@ services:
         parameters:
           repo_name: 'java-app-{{timestamp}}'
           repo_url: 'https://github.com/open-toolchain/node-hello-world'
-          type: clone
-          has_issues: true
+          type: existing
           enable_traceability: true
   sample-build:
     service_id: pipeline
