@@ -1,22 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@MartinDonnelly Sign out
-13
-0 54 open-toolchain/simple-toolchain-hosted
- Code  Issues 0  Pull requests 2  Projects 0  Wiki  Insights
-simple-toolchain-hosted/.bluemix/toolchain.yml
-@jasmsing jasmsing Update toolchain.yml
-c1a0fd8 on 4 Jul 2018
-@skaegi @jasmsing @hmagph @bogg @mamacdon @lwhinson
-59 lines (58 sloc)  1.68 KB
-    
 version: '2'
 messages:
   $i18n: locales.yml
@@ -49,7 +30,7 @@ services:
         service_id: hostedgit
         parameters:
           repo_name: '{{toolchain.name}}'
-          repo_url: 'https://github.com/open-toolchain/node-hello-world'
+          repo_url: 'https://gitlab.com/git-toolchain/hello-world'
           type: clone
           has_issues: true
           enable_traceability: true
@@ -57,7 +38,7 @@ services:
         service_id: githubpublic
         parameters:
           repo_name: 'java-app-{{timestamp}}'
-          repo_url: 'https://www.git.com/open-toolchain/java-spring-microservice'
+          repo_url: 'https://github.com/open-toolchain/node-hello-world'
           type: clone
           has_issues: true
           enable_traceability: true
