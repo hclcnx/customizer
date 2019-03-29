@@ -24,6 +24,7 @@ toolchain:
 services:
   sample-repo:
       $parameter: 'source_provider'
+      $default: 'hostedgit'
       $options:
       - $ifdef: 'hostedgit'
         service_id: hostedgit
