@@ -1,4 +1,4 @@
-# IBM Connections Customizer
+# HCL Connections Customizer
 
 ## Online Customizer documentation from the developer community
 
@@ -14,7 +14,7 @@
 
 [4.  Exploring Customizer Capabilities](#exploring-customizer-capabilities)
 
-[5.  Examples of IBM Connections URLs](#listing-3-examples-of-ibm-connections-urls)
+[5.  Examples of HCL Connections URLs](#listing-3-examples-of-hcl-connections-urls)
 
 [6.  Customizer Payload Properties](#customizer-payload-properties)
 
@@ -40,11 +40,11 @@
 
 [17. Conditionalizing Extensions based on Browser Client](#listing-11-conditionalizing-extensions-based-on-browser-client)
 
-[18. The Request Life Cycle for IBM Connections Customizer](#the-request-life-cycle-for-ibm-connections-customizer)
+[18. The Request Life Cycle for HCL Connections Customizer](#the-request-life-cycle-for-hcl-connections-customizer)
 
 [19. Include Files for Code Injections](#include-files-for-code-injections)
 
-[20. IBM Connections Developers Organization on GitHub](#figure-2-ibm-connections-developers-organization-on-github)
+[20. HCL Connections Developers Organization on GitHub](#figure-2-hcl-connections-developers-organization-on-github)
 
 [21. Restricting Access to Include Files](#restricting-access-to-include-files)
 
@@ -54,7 +54,7 @@
 
 [24. Hello World Include File](#listing-13-hello-world-include-file)
 
-[25. Hello World Extension for IBM Connections Homepage](#figure-3-hello-world-extension-for-ibm-connections-homepage)
+[25. Hello World Extension for HCL Connections Homepage](#figure-3-hello-world-extension-for-hcl-connections-homepage)
 
 [26. Customizer Script Injection](#listing-14-customizer-script-injection)
 
@@ -62,7 +62,7 @@
 
 [28. Communities Page before and after Flipcard Customization](#figure-4-communities-page-before-and-after-flipcard-customization)
 
-[29. Multiple Extensions for IBM Connections Homepage](#figure-5-multiple-extensions-for-ibm-connections-homepage)
+[29. Multiple Extensions for HCL Connections Homepage](#figure-5-multiple-extensions-for-hcl-connections-homepage)
 
 [30. Profile Page Extension](#figure-6-profile-page-extension)
 
@@ -120,32 +120,32 @@
 
 # Introducing Customizer
 
-IBM Connections Customizer is a middleware proxy service that enables
-the customization of the IBM Connections user experience. In essence
-Customizer acts as a proxy between IBM Connections and the end-user,
+HCL Connections Customizer is a middleware proxy service that enables
+the customization of the HCL Connections user experience. In essence
+Customizer acts as a proxy between HCL Connections and the end-user,
 which gives it the ability to intercept and modify requests and
 responses, and thus customize anything that flows through it, e.g. the
 behaviour of APIs, the presentation of the user interface, etc. This
 document focuses on customizations of the user interface.
 
-The IBM Connections Customizer model is simple: the service can perform
+The HCL Connections Customizer model is simple: the service can perform
 customizations by injecting JavaScript or CSS into the HTML pages
-returned by IBM Connections in response to end-user requests – where
+returned by HCL Connections in response to end-user requests – where
 requests are defined as the URLs generated according as the end-user
 navigates within standard components like Communities, Profiles, Files,
 Blogs, Homepage etc. The customization details, i.e. typically the code
 that should be inserted and on particular requests, are defined by
-application extensions stored inside the IBM Connections Application
+application extensions stored inside the HCL Connections Application
 Registry (or App Reg for short).
 
 App Reg is a centralized design repository used to store and retrieve
-applications that customize and extend a variety of different IBM
+applications that customize and extend a variety of different HCL
 Connections services. There are many defined services, Customizer is
 just one instance. In the cloud, App Reg is available to organization
 *administrators* via the **Admin \> Manage Organization \> Organization
 Extensions** menu path. From here it’s possible to create and manage
 Customizer applications by clicking the **new Apps Manager** link on the
-workspace. App Reg is also available for IBM Connections On-Premises as
+workspace. App Reg is also available for HCL Connections On-Premises as
 part of the [Component Pack for
 V6.0.0.4](http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/3/877/ENUSZP18-0053/index.html&lang=en&request_locale=en)
 released in January 2018. As an administrator you can access App Reg
@@ -227,7 +227,7 @@ Above and beyond the properties shown in the "Hello World" sample, a complete su
 | > `url`          | A regular expression applied to the active Connections URL. |
 | > `user-name`    | String used to identify one or more users as the target for the customization. This  property is **not unique** within a given organization |
 | > `user-email`   | String used to identify one or more users as the target for the customization. This property **is unique** within a given organization | 
-| > `user-id`      | IBM Connections user-id used to identify one or more users as the target for the customization. This property **is unique** within a given organization |
+| > `user-id`      | HCL Connections user-id used to identify one or more users as the target for the customization. This property **is unique** within a given organization |
 |`include-files`   | List of files to be inserted into the response for a selected page request                    |
 |`cache-headers`   | One or more string values corresponding to standard HTTP cache header name/value pairs. Value(s) must be from the following list: `cache-control, expires, last-modified, pragma` e.g. `"expires": "Tue, 25 Dec 2018 00:00:00 GMT"`. All `cache-headers` values are treated as pass-through data that will be set **as-is** in the Customizer HTTP response and not validated.                                                                                  |
 
@@ -258,7 +258,7 @@ Of the generic properties outlined in Listing 2, only `type` and
 to an extension point defined by a service. At present Customizer only
 defines two extension points, com.ibm.customizer.ui and
 com.ibm.customizer.api. The former is a declaration that a given
-Customizer extension performs a modification to the IBM Connections UI,
+Customizer extension performs a modification to the HCL Connections UI,
 and thus will be handled in accordance with a prescribed UI extension
 pattern – for example any `include-files` specified in the `payload`
 are always injected into the response document. The latter is reserved
@@ -267,38 +267,38 @@ capable of modifying API behaviours, but that use case is not catered
 for in the current Customizer release.
 
 For Customizer applications, the `path` property value is used to
-identify a path element in the IBM Connections request URL, which in
-most use cases corresponds to a standard IBM Connections component.
+identify a path element in the HCL Connections request URL, which in
+most use cases corresponds to a standard HCL Connections component.
 
 Consider the URLs displayed in Listing 3 - these sample URLs follow a
-clear pattern where the next element after the IBM Connections cloud
+clear pattern where the next element after the HCL Connections cloud
 domain name identifies the Connections component or application handling
 the request. The possible values of this element map to the `path`
 values enumerated in Listing 2, i.e. homepage, communities, files, etc.
 
-### Listing 3 Examples of IBM Connections URLs
+### Listing 3 Examples of HCL Connections URLs
 ```javascript
 /* homepage */
-//w3-connections.ibm.com/homepage/web/updates/#myStream/imFollowing/all
-//w3-connections.ibm.com/homepage/web/updates/#myStream/statusUpdates/all
-//w3-connections.ibm.com/homepage/web/updates/#myStream/discover/all
-//w3-connections.ibm.com/homepage/web/updates/#atMentions/atMentions
+//myconnections.com/homepage/web/updates/#myStream/imFollowing/all
+//myconnections.com/homepage/web/updates/#myStream/statusUpdates/all
+//myconnections.com/homepage/web/updates/#myStream/discover/all
+//myconnections.com/homepage/web/updates/#atMentions/atMentions
 
 /* communities */
-//w3-connections.ibm.com/communities/service/html/ownedcommunities
-//w3-connections.ibm.com/communities/service/html/followedcommunities
-//w3-connections.ibm.com/communities/service/html/communityinvites
+//myconnections.com/communities/service/html/ownedcommunities
+//myconnections.com/communities/service/html/followedcommunities
+//myconnections.com/communities/service/html/communityinvites
 
 /* files */
-//w3-connections.ibm.com/files/app#/pinnedfiles
-//w3-connections.ibm.com/files/app#/person/7f37da40-8f0a-1028-938d-db07163b51b2
+//myconnections.com/files/app#/pinnedfiles
+//myconnections.com/files/app#/person/7f37da40-8f0a-1028-938d-db07163b51b2
 
 /* blogs */
-//w3-connections.ibm.com/blogs/roller-ui/allblogs?email=joe_schmoe
-//w3-connections.ibm.com/blogs/roller-ui/homepage?lang=en_us
+//myconnections.com/blogs/roller-ui/allblogs?email=joe_schmoe
+//myconnections.com/blogs/roller-ui/homepage?lang=en_us
 
 /* wikis */
-//w3-connections.ibm.com/wikis/home?lang=en-us#!/mywikis?role=editor
+//myconnections.com/wikis/home?lang=en-us#!/mywikis?role=editor
 ```
 It follows that according as http requests flow through Customizer it
 can query the Application Registry for any extensions relating to a
@@ -318,7 +318,7 @@ the special `global` key word. This is designed to address the use case
 where an extension needs to apply to *all* requests and it would be
 clearly inefficient to have to create an extension for every possible
 `path` value. For example, should a customer need to display some
-corporate footer text at the bottom of every page in IBM Connections
+corporate footer text at the bottom of every page in HCL Connections
 then a global extension would facilitate that.
 
 In response to the request shown above, App Reg returns whatever number
@@ -332,7 +332,7 @@ the `payload` data comes into play.
 
 As should now be evident, the generic `path` property provides a
 coarse means of querying the Application Registry for extensions
-pertaining to a given IBM Connections component. The optional `match` and 
+pertaining to a given HCL Connections component. The optional `match` and 
 `exclude` properties inside the Customizer `payload` provide a further means 
 of fine-tuning the filtering of extensions and essentially deciding whether
 an extension should be applied to a given URL request or not. 
@@ -391,7 +391,7 @@ you can use the `exclude` property instead as shown in Listing 5.
 ```
 To avoid possible ambiguity you can apply a precise filter by using the
 `user-id` sub-property instead of the `user-name`. Note that the term "user id" is
-sometimes referred to as "subscriber id" in the IBM Connections UI and documentation.
+sometimes referred to as "subscriber id" in the HCL Connections UI and documentation.
 
 As you would expect, you can susbstitute the `user-email` property as the match/exclude
  criterion in Listings 4 and 5. Customizer performs the string comparisons on a case-sensitive 
@@ -456,7 +456,7 @@ can be applied to Homepage and Communities, but nothing else:
 }
 ```
 
-**Note:** The design of some IBM Connections components like Homepage
+**Note:** The design of some HCL Connections components like Homepage
 are based on the Single Page App paradigm. For example, look at the
 Homepage URLs at the top of Listing 3 – all contain hashtags which means
 that new http requests are not fired as the user navigates around the
@@ -583,7 +583,7 @@ more granular by including versioning information in the regular expression.
 
 >> **<span class="underline">TIP:</span>** As you may suspect, the Customizer `keyword` value typically maps to an 
 internal Connections header and the regular expression is then applied against the value of that header. The 
-actual header names can be a little esoteric and can also vary between IBM Connections on-cloud and on-premises, so the 
+actual header names can be a little esoteric and can also vary between HCL Connections on-cloud and on-premises, so the 
 intent of the `keyword` is both to provide an intuitive identifier and a protection against platform implementation 
 differences. There are currently four keywords recognised by Customizer conditional filtering, namely: `user-name`, 
 `user-id`, `user-email`, `user-role`. If you specify a value that is not in this list then Customizer treats it as a 
@@ -591,7 +591,7 @@ header name and if this is true it will apply the regular expression against the
 
 ******
 
-# The Request Life Cycle for IBM Connections Customizer
+# The Request Life Cycle for HCL Connections Customizer
 
 To summarize what’s been discussed thus far, Customizer is a proxy and
 all Connections requests and responses flow through it. Customizer
@@ -624,11 +624,11 @@ contained within. This raises a number of interesting questions:
 
 1.  **Where do these files reside?**
 
-For IBM Connections Cloud, any files declared in the `include-files`
-property list are stored in a named repository under the public IBM 
+For Connections Cloud, any files declared in the `include-files`
+property list are stored in a named repository under the public HCL 
 Connections GitHub organization - https://github.com/ibmcnxdev
 
-For IBM Connections On-Premises, `include-files` are stored in 
+For HCL Connections On-Premises, `include-files` are stored in 
 nominated folders under the `/pv-connections/customizations` directory (this is a default path
 and can be modified for a given Connections installation).
 
@@ -637,47 +637,47 @@ the name of the top level location, i.e. a repository for Connections Cloud
 or a folder for Connections On-Premises.
 
 For example, in Listing 1 you see an `include-repo` reference with a value
-of `'global-samples'` being used. In the case of IBM Connections Cloud this 
+of `'global-samples'` being used. In the case of Connections Cloud this 
 maps directly to https://github.com/ibmcnxdev/global-samples. This a 
-repository containing ready-made samples that can be used by _any_ IBM Cloud 
+repository containing ready-made samples that can be used by _any_ Connections Cloud 
 tenant, e.g. `'Hello World'`, `'FlipCard'` etc. Most samples are explained later 
 in the [Standard Samples](#standard-samples) section. 
 
-### Figure 2 IBM Connections Developers Organization on GitHub
+### Figure 2 HCL Connections Developers Organization on GitHub
 
 ![](images/icc-ibmcnxdev.png)
 
 >> **<span class="underline">TIP:</span>** More information on how to
-integrate your Customizer include files with IBM Connections Cloud is
+integrate your Customizer include files with Connections Cloud is
 available in video for on opencode4connections.org:
 
 	https://opencode4connections.org/oc4c/customizer.xsp?key=ccc-episode2
 
-At any given time IBM Customizer has an up to date snapshot of all the code
+At any given time HCL Customizer has an up to date snapshot of all the code
 contained in the repositories under [github.com/ibmcnxdev](https://github.com/ibmcnxdev) - see Figure 2.
 You can freely explore the assets available in the public repositories and try them out in
 your Connections organization. 
  
 Apart from these public repositories you can also create one or more repositories of your own and 
-then those projects will become available to Customizer on IBM Connections Cloud. If you create a GitHub repo with 
+then those projects will become available to Customizer on Connections Cloud. If you create a GitHub repo with 
 Customizer content then the procedure to make it available under [github.com/ibmcnxdev](https://github.com/ibmcnxdev)
 is outlined as follows:
 
-1.  Share your repo with IBM – [add "ibmcndev" as a
+1.  Share your repo with HCL – [add "hclcnxdev" as a
     collaborator](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
 
-2.  IBM then creates a fork of your repository under
+2.  HCL then creates a fork of your repository under
     [github.com/ibmcnxdev](https://github.com/ibmcnxdev) and grants you read access by default.
 
 3.  You can continue to work on your extension using your original repo
     for your source code activity, but once you are ready to deliver to
-    IBM Cloud you must issue a [pull
+    Connections Cloud you must issue a [pull
     request](https://help.github.com/articles/creating-a-pull-request/#changing-the-branch-range-and-destination-repository)
-    to IBM.
+    to HCL.
 
-4.  IBM merges your pull request once acceptance criteria are met.
+4.  HCL merges your pull request once acceptance criteria are met.
 
-5.  Upon merge, the repo files are automatically pushed to IBM
+5.  Upon merge, the repo files are automatically pushed to HCL
     Customizer via a webhook.
 
 6.  Rinse & repeat starting at Step (3) for extension updates.
@@ -687,12 +687,12 @@ GitHub parlance). The key thing to remember is that your original repo
 which contains the latest changes is always the `'head fork'`, while the
 `'base fork'` must refer to the repo on [github.com/ibmcnxdev](https://github.com/ibmcnxdev).
 
-Step (4) involves an initial lightweight summary review by IBM which
+Step (4) involves an initial lightweight summary review by HCL which
 looks at various aspects of the proposed customization, primarily from
 a performance, security and documentation standpoint. However ultimate
 responsibility for the quality and behaviour of the app remains that
 of the customer who creates or adopts the customization. The review
-process by IBM provides _no guarantee whatsoever_ of protection against
+process by HCL provides _no guarantee whatsoever_ of protection against
 adverse security or performance impacts.
 
 If you are familiar with GitHub then these steps are probably quite intuitive.
@@ -701,12 +701,12 @@ guide](https://guides.github.com/activities/hello-world/). Once you
 know the rudiments, then [creating a GitHub
 account](https://help.github.com/articles/signing-up-for-a-new-github-account/)
 is straight-forward and free for public and open-source projects. Any issues or queries 
-with this aspect of customization integration can be directed to [ibmcndev@us.ibm.com](mailto:ibmcndev@us.ibm.com).
+with this aspect of customization integration can be directed to [hclcnxdev@pnp-hcl.com](mailto:hclcnxdev@pnp-hcl.com).
 
 ## Restricting Access to Include Files
 
 By default the contents of any repository in the `ibmcnxdev` GitHub organization
-are available for use by Customizer apps by any IBM Cloud tenant. This
+are available for use by Customizer apps by any Connections Cloud tenant. This
 is a very flexible and convenient model but may not always be the
 desired solution for every situation. Some tenants may prefer to keep
 the `include-files` for Customizer apps private to themselves, or restrict
@@ -716,11 +716,11 @@ needs:
 1.  **Access Control Lists for Tenant Organizations**
 
 Access Control Lists (ACLs) are used to manage access to a particular
-object. IBM Connections Customizer provides a very simple
+object. HCL Connections Customizer provides a very simple
 implementation of an ACL which can control which tenant organizations
 are allowed to load include files from your repos. All you need to do
 is to provide an `acl.ids` file at the root of your project and populate
-it with the IBM Connections Cloud ids of the tenant organizations to
+it with the Connections Cloud ids of the tenant organizations to
 whom you wish to grant access.
 
 ### Listing 12 Sample Access Control List 
@@ -738,7 +738,7 @@ leverage the repo in their Customizer apps.
 2.  **Private GitHub Repositories on github.com/ibmcnxdev**
 
 GitHub users on a paid GitHub plan have the option of creating private
-repositories. Private repositories can still be shared with the IBM
+repositories. Private repositories can still be shared with the HCL
 Connections Developers organization. The private repository will
 appear in the list of projects under
 [github.com/ibmcnxdev](https://github.com/ibmcnxdev) but only
@@ -814,7 +814,7 @@ perusing the code be aware of the following points:
   - Just 1 line of code are needed for the actual Hello World UI update:
     See the `dojo.query` statment on line 30
 
-  - IBM Connections classic UI uses Dojo so code is injected into a Dojo
+  - HCL Connections classic UI uses Dojo so code is injected into a Dojo
     structured page
 
 The JavaScript code initially validates that Dojo itself is loaded and
@@ -827,7 +827,7 @@ successfully loaded within that time period will execute a callback
 function. If the page does not load within 10 seconds then an error is
 logged to the JS console.
 
-### Figure 3 Hello World Extension for IBM Connections Homepage
+### Figure 3 Hello World Extension for HCL Connections Homepage
 
 ![](images/icc-helloworld.png)
 
@@ -835,10 +835,10 @@ This `waitFor()` function is thus called passing in the callback function
 to manipulate the DOM and modify the UI. The interesting part of the
 callback function (Line 31 as already highlighted) locates a DOM element
 and assigns "Hello World" as the text content. When this extension is
-loaded and run by Customizer then the IBM Connections Homepage is
+loaded and run by Customizer then the HCL Connections Homepage is
 modified in the manner shown in Figure 3.
 
-The code injection can be seen by viewing the source of the IBM
+The code injection can be seen by viewing the source of the HCL
 Connections Homepage in the browser and scrolling to the bottom of the
 file. The following tag fragment should be evident:
 
@@ -852,7 +852,7 @@ URLs leading with the '/files/customizer'path are processed by the
 Customizer service. In this example it fetches the
 '/helloWorld/helloWorld.user.js' script from the 'global-samples'
 repository. You can use the same technique in your own JS code to
-directly load resources from any repository you have access to in IBM
+directly load resources from any repository you have access to in HCL
 Connections Cloud. For instance, since the 'global-samples' is a public
 repository is available to all organizations then any Customizer
 application can reference resources contained inside it, using links of
@@ -866,7 +866,7 @@ under the global-samples repository. Be aware that this type of broad
 access to repositories can also be prevented using the `acl.ids` mechanism
 described earlier.
 
->> **<span class="underline">TIP:</span>** IBM Connections web pages
+>> **<span class="underline">TIP:</span>** HCL Connections web pages
 contain a lot of predefined JS variables which can be leveraged by
 Customizer extensions. For instance, there is an lconn (**L**otus
 **Conn**ections) object with many properties defined that any extension
@@ -913,16 +913,16 @@ back and forth between the standard row layout and the flip card format.
 
 ### newsRiver
 
-This extension targets the IBM Connections Homepage and reformats the
+This extension targets the HCL Connections Homepage and reformats the
 layout of the activity stream updates by accentuating the space
 surrounding each entry. Figure 5 shows the Homepage when the newsRiver
 customization is run – note how the entries display as sections against
 a pink backdrop. Notice that the Hello World extension is also applied
 to the Homepage? This shows how multiple App Reg extensions can target
-the same IBM Connections path - viewing the source of the page will show
+the same HCL Connections path - viewing the source of the page will show
 two JavaScript file injections in this case.
 
-### Figure 5 Multiple Extensions for IBM Connections Homepage
+### Figure 5 Multiple Extensions for HCL Connections Homepage
 
 ![](images/icc-hellonewsriver.png)
 
@@ -930,7 +930,7 @@ two JavaScript file injections in this case.
 
 The Profiles extension delivers a more sophisticated rendering to the
 page that is displayed when the user selects the "**My Profile**"
-dropdown menu option in IBM Connections. The new UI look and feel is
+dropdown menu option in HCL Connections. The new UI look and feel is
 achieved via stylesheet updates. There are two files in the profiles
 subfolder - the JS file profilesCustomization.js simply inserts a link
 to the profilesCustomization.css file which does all the work. The new
@@ -993,7 +993,7 @@ By way of example take the [Nifty Scripties](https://github.com/ibmcnxdev/global
 extensions - all small individual samples designed for educational purposes. One of 
 these extensions is entitled "Smooth Loader" as it is designed to reduce
 screen jitter that can occur when many UI threads are updating the same
-IBM Connections page at load time. While the extension `title` is "Smooth Loader", 
+HCL Connections page at load time. While the extension `title` is "Smooth Loader", 
 the extension `name` is set to "!!SmoothLoader" which forces it to be loaded before 
 any other extensions in that application. You can glean from this that the
 `title` property is used for UI display purposes and can be translated and so forth. 
@@ -1001,10 +1001,10 @@ The `name` property on the other hand is a lookup key for extensions.
 
 **Note:** The alphabetical order of extensions applies *across all
 applications*. For example, you may have two separate apps that target
-the IBM Connections homepage. The extensions defined within both
+the HCL Connections homepage. The extensions defined within both
 applications will be sorted as a single alphabetical list by the App
 Registry and returned to Customizer and then injected in that order into
-the IBM Connections homepage.
+the HCL Connections homepage.
 
 In most cases the ordering of injections does not present a problem. You
 can view the order at any time by viewing the Connections page source
@@ -1015,7 +1015,7 @@ organize Customizer projects with that information in mind.
 ******
 # Accessing 3rd Party Web Services via Customizer
 
-The use cases discussed thus far have focused on leveraging resources provided directly by IBM
+The use cases discussed thus far have focused on leveraging resources provided directly by HCL
 Connections Cloud itself, e.g. calling Connections REST APIs, modifying the Connections DOM etc. 
 No special permissions are required to perform such tasks as any JavaScript injected by Customizer 
 becomes part of the end-user's browser Connections client session and runs with that the authorization
@@ -1263,7 +1263,7 @@ Access to the file can then be limited to those with administrative access to th
 ******
 # Displaying 3rd Party Content using Customizer
 
-In certain circumstances it may be desirable to display 3rd party web content on an IBM Connections page. 
+In certain circumstances it may be desirable to display 3rd party web content on an HCL Connections page. 
 To facilitate this an extension point named `com.ibm.customizer.ui.container` has been provided. 
 This extension point has associated metadata which allows injection of 3rd party web content using a container div 
 with an inner `iframe`. Listing 22 details the properties of this extension point.
@@ -1276,7 +1276,7 @@ with an inner `iframe`. Listing 22 details the properties of this extension poin
 |                  |                                                                                              |
 |**`payload`**     | Metadata used to control proxy request behavior                                              |   
 | `url`            | The URL of the web content to be injected                                                    |
-|   > `locator`        | The anchor point where the container will be placed on the IBM Connections page, default ".lotusMain .lotusContent"                       |
+|   > `locator`        | The anchor point where the container will be placed on the HCL Connections page, default ".lotusMain .lotusContent"                       |
 |   > `position`     | The position relative to the locator where the container will be injected, default "first"               |
 |   > `heading`     | An optional label for the container. If specified a div containing a heading will be placed inside the container div above the iframe |
 |   > `sandbox`     | By default, the iframe is set to the highest restriction level. This property allows the removal of specified restrictions e.g. "allow-scripts" will allow the 3rd party web content to execute scripts. It should be used with great care as misuse could lead to potential security risks.  |
@@ -1302,7 +1302,7 @@ with an inner `iframe`. Listing 22 details the properties of this extension poin
 ```
 
 In summary:
-+ This extension will inject a container on the IBM Connections Homepage 
++ This extension will inject a container on the HCL Connections Homepage 
 + Its height will be 250px
 + It will be allowed to execute scripts and the content is treated as from the same origin
 + The iframe content will be from http://forecast.io
@@ -1315,7 +1315,7 @@ In summary:
 ******
 # Customizer Cache Management
 
-On IBM Connections Cloud, when a JavaScript or CSS resource is first served up by Customizer it
+On Connections Cloud, when a JavaScript or CSS resource is first served up by Customizer it
 generates what's known as an entity tag ([ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)) 
 for the resource. This `ETag` value is in the form of a GUID or UUID (128-bit number) and 
 this unique identifier is set as the ETag header in the HTTP response for the JS/CSS request. 
@@ -1443,8 +1443,8 @@ this notification is performed by a GitHub web hook which kicks in when the cont
 # Getting Up and Running
 
 The sample customizations discussed in this document are available to
-any IBM Connections Cloud tenant organization. Applying a sample
-customization is an easy way to get started with IBM Connections
+any Connections Cloud tenant organization. Applying a sample
+customization is an easy way to get started with HCL Connections
 Customizer and help you get familiar with the process. Any sample can be
 used put through its paces by importing the relevant JSON file into an
 organization’s Application Registry. So for example, you could take a
@@ -1458,7 +1458,7 @@ and import it into App Reg as follows:
 2.  Navigate to the helloWorld.json file and copy/paste the contents to
     a local file
 
-3.  As Admin user in your IBM Connections Cloud organization go to:
+3.  As Admin user in your Connections Cloud organization go to:
 
   **Admin \> Manage Organization \> Organization Extensions**
 
@@ -1477,7 +1477,7 @@ and import it into App Reg as follows:
 
 8.  Click **Save** to save the application into the Application Registry
 
-9.  Refresh the IBM Connections Homepage and verify that the Hello World
+9.  Refresh the HCL Connections Homepage and verify that the Hello World
     extension appears
 
 >> **<span class="underline">TIP:</span>** The steps outlined above are
@@ -1492,13 +1492,13 @@ use a JavaScript filename notation that follows the
 [GreaseMonkey](https://en.wikipedia.org/wiki/Greasemonkey) naming
 convention: somename.user.js. This is because these customizations were
 originally developed as GreaseMonkey scripts using browser-based
-extensions. They were then deployed on the server-side in IBM
+extensions. They were then deployed on the server-side in HCL
 Connections as Customizer extensions. This option is not only still
 valid, it is considered a standard practice for developing Customizer
 apps – i.e. create some new browser extensions using a user script
 technology like GreaseMonkey for Firefox or TamperMonkey for Chrome.
 Once you are happy with the local customization then you can submit the
-resources to IBM for review – i.e. the JavaScript and CSS files you
+resources to HCL for review – i.e. the JavaScript and CSS files you
 create using GreaseMonkey or TamperMonkey become your Customizer
 include-files. You can then invoke the customization by creating a
 Customizer extension (just like the JSON files contained in the standard
@@ -1509,15 +1509,15 @@ samples) in the Application Registry.
 
   - Support for Customizer applications follows the same
     [policy](https://www.ibm.com/support/knowledgecenter/en/SSYGQH_5.5.0/admin/customize/c_customize_overview.html)
-    as any other customization to the IBM Connections UI – i.e. **IBM
+    as any other customization to the HCL Connections UI – i.e. **HCL
     Support can address questions about the customization process, but
     cannot address questions about the particulars of your
     customization**.
 
   - Listing 2 provides the list of supported paths for Customizer at
-    this point in time. This list currently encompasses all core IBM
+    this point in time. This list currently encompasses all core HCL
     Connections apps but does not include the Administration URLs (aka
-    BSS), or related IBM ICS components like IBM Docs, Chat or Verse.
+    BSS), or related HCL ICS components like HCL Docs, Chat or Verse.
 	The list may be expanded to include these and possibly other
     components in the future.
 
@@ -1541,7 +1541,7 @@ samples) in the Application Registry.
 
 <https://www.lifewire.com/top-greasemonkey-tampermonkey-user-scripts-4134335>
 
-**IBM Connections Customizer:**
+**HCL Connections Customizer:**
 
 <https://opencode4connections.org/>
  

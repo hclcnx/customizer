@@ -1,6 +1,6 @@
-# Migrating IBM Customizer Apps from Pilot to Production
+# Migrating HCL Customizer Apps from Pilot to Production
 
-IBM Connections Customizer has moved from a pilot program to a production offering on IBM Connections Cloud. If you participated in the pilot program and wish to take your pilot apps to production, then you must move them to the production environment. This migration **only affects the JSON application designs** you defined within the Application Registry. In other words, the include files resident in any repository referenced by your app (e.g. JavaScript, CSS or other web resources) are not impacted. 
+Connections Customizer has moved from a pilot program to a production offering on Connections Cloud. If you participated in the pilot program and wish to take your pilot apps to production, then you must move them to the production environment. This migration **only affects the JSON application designs** you defined within the Application Registry. In other words, the include files resident in any repository referenced by your app (e.g. JavaScript, CSS or other web resources) are not impacted. 
 
 The App Registry migration process for Customizer apps is simple and can be summarized as follows:
 
@@ -17,6 +17,6 @@ The App Registry migration process for Customizer apps is simple and can be summ
 10. Validate that the app continues to work as before
 11. Repeat Steps 3 - 11 for any other applications you wish to migrate
 
-Congratulations - you have migrated your applications to production and they are now running in IBM Connections Pink! You can also view [a short video][1] on this topic which does a walk through of the steps outlined above. Please refer to the doc for the latest features and updates. 
+Congratulations - you have migrated your applications to production and they are now running in Connections Pink! You can also view [a short video][1] on this topic which does a walk through of the steps outlined above. Please refer to the doc for the latest features and updates. 
 
 [1]: https://youtu.be/sPpUqhalkiA
