@@ -2,8 +2,6 @@
 
 ## Online Customizer documentation from the developer community
 
-![](images/icc-logo.png)
-
 # Table of Contents
 
 [1.  Introducing Customizer](#introducing-customizer)
