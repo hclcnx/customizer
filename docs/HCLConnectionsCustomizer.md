@@ -643,7 +643,7 @@ in the [Standard Samples](#standard-samples) section.
 
 ### Figure 2 HCL Connections Developers Organization on GitHub
 
-![](images/icc-ibmcnxdev.png)
+![](images/hcc-hclcnxdev.png)
 
 >> **<span class="underline">TIP:</span>** More information on how to
 integrate your Customizer include files with Connections Cloud is
