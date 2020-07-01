@@ -466,7 +466,7 @@ URLs using the `match url` property but cannot use the same technique
 to match the Homepage hashtag URLs. Instead a Homepage extension would
 need to inject a script that would listen for hash change events and
 respond accordingly. An example is included in the homepage samples:
-[newsRiverSectioned.user.js](https://github.com/ibmcnxdev/global-samples/blob/master/newsRiver/newsRiverSectioned.user.js). 
+[newsRiverSectioned.user.js](https://github.com/hclcnx/global-samples/blob/master/newsRiver/newsRiverSectioned.user.js). 
 In particular take a look at the `handleHashChangeEvent()` function contained within.
 
 It’s easy to envisage many other use cases that would require
@@ -630,7 +630,7 @@ contained within. This raises a number of interesting questions:
 
 For Connections Cloud, any files declared in the `include-files`
 property list are stored in a named repository under the public HCL 
-Connections GitHub organization - https://github.com/ibmcnxdev
+Connections GitHub organization - https://github.com/hclcnx
 
 For HCL Connections On-Premises, `include-files` are stored in 
 nominated folders under the `/pv-connections/customizations` directory (this is a default path
@@ -642,7 +642,7 @@ or a folder for Connections On-Premises.
 
 For example, in Listing 1 you see an `include-repo` reference with a value
 of `'global-samples'` being used. In the case of Connections Cloud this 
-maps directly to https://github.com/ibmcnxdev/global-samples. This a 
+maps directly to https://github.com/hclcnx/global-samples. This a 
 repository containing ready-made samples that can be used by _any_ Connections Cloud 
 tenant, e.g. `'Hello World'`, `'FlipCard'` etc. Most samples are explained later 
 in the [Standard Samples](#standard-samples) section. 
@@ -658,20 +658,20 @@ available in video for on opencode4connections.org:
 	https://opencode4connections.org/oc4c/customizer.xsp?key=ccc-episode2
 
 At any given time HCL Customizer has an up to date snapshot of all the code
-contained in the repositories under [github.com/ibmcnxdev](https://github.com/ibmcnxdev) - see Figure 2.
+contained in the repositories under [github.com/hclcnx](https://github.com/hclcnx) - see Figure 2.
 You can freely explore the assets available in the public repositories and try them out in
 your Connections organization. 
  
 Apart from these public repositories you can also create one or more repositories of your own and 
 then those projects will become available to Customizer on Connections Cloud. If you create a GitHub repo with 
-Customizer content then the procedure to make it available under [github.com/ibmcnxdev](https://github.com/ibmcnxdev)
+Customizer content then the procedure to make it available under [github.com/hclcnx](https://github.com/hclcnx)
 is outlined as follows:
 
 1.  Share your repo with HCL – [add "hclcnxdev" as a
     collaborator](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
 
 2.  HCL then creates a fork of your repository under
-    [github.com/ibmcnxdev](https://github.com/ibmcnxdev) and grants you read access by default.
+    [github.com/hclcnx](https://github.com/hclcnx) and grants you read access by default.
 
 3.  You can continue to work on your extension using your original repo
     for your source code activity, but once you are ready to deliver to
@@ -689,7 +689,7 @@ is outlined as follows:
 Step (3) requires you to issue a Pull Request *across forks* (in
 GitHub parlance). The key thing to remember is that your original repo
 which contains the latest changes is always the `'head fork'`, while the
-`'base fork'` must refer to the repo on [github.com/ibmcnxdev](https://github.com/ibmcnxdev).
+`'base fork'` must refer to the repo on [github.com/hclcnx](https://github.com/hclcnx).
 
 Step (4) involves an initial lightweight summary review by HCL which
 looks at various aspects of the proposed customization, primarily from
@@ -709,7 +709,7 @@ with this aspect of customization integration can be directed to [hclcnxdev@pnp-
 
 ## Restricting Access to Include Files
 
-By default the contents of any repository in the `ibmcnxdev` GitHub organization
+By default the contents of any repository in the `hclcnx` GitHub organization
 are available for use by Customizer apps by any Connections Cloud tenant. This
 is a very flexible and convenient model but may not always be the
 desired solution for every situation. Some tenants may prefer to keep
@@ -739,14 +739,14 @@ listed in the file are allowed to use it - all others are denied
 access. If no `acl.ids` file exists then all tenants can potentially
 leverage the repo in their Customizer apps.
 
-2.  **Private GitHub Repositories on github.com/ibmcnxdev**
+2.  **Private GitHub Repositories on github.com/hclcnx**
 
 GitHub users on a paid GitHub plan have the option of creating private
 repositories. Private repositories can still be shared with the HCL
 Connections Developers organization. The private repository will
 appear in the list of projects under
-[github.com/ibmcnxdev](https://github.com/ibmcnxdev) but only
-administrators of the `ibmcnxdev` site will be able to see the contents – i.e.
+[github.com/hclcnx](https://github.com/hclcnx) but only
+administrators of the `hclcnx` site will be able to see the contents – i.e.
 the repo files have no visibility to regular users or to the general
 public. Even though read access of the source files is restricted via
 the repository, you will also need to add an `acl.ids` file should you
@@ -884,7 +884,7 @@ and others like it should be explored and leveraged by your extensions.
 Besides Hello World, there are a number of other ready-made Customizer
 examples to be available for experimentation. The latest samples can
 always be found in the `global-samples` folder of the IBMCnxDev GitHub
-organization: <https://github.com/ibmcnxdev/global-samples>
+organization: <https://github.com/hclcnx/global-samples>
 
 Each sample has its own subfolder which contains the App Reg design
 definition (JSON file) and the resources to be injected to perform the
@@ -955,7 +955,7 @@ e.g. main.js, and this resource is referenced in the include-files
 payload property and rendered in the modified HTML output. However the
 `include-files` payload property is an array and can contain more than one
 file reference. The snippet shown in Listing 15 is an example from the
-`enhanced-activity-stream` project (https://github.com/ibmcnxdev/enhanced-activity-stream):
+`enhanced-activity-stream` project (https://github.com/hclcnx/enhanced-activity-stream):
 
 ### Listing 15 Multiple Include Files
 ```json
@@ -993,7 +993,7 @@ When your application has more than one extension and is
 sensitive to the load order of the include files then you can control
 this by applying an ordered naming convention to your extensions. 
 
-By way of example take the [Nifty Scripties](https://github.com/ibmcnxdev/global-samples/tree/master/nifty-scripties) sample app. It contains _ten_ separate 
+By way of example take the [Nifty Scripties](https://github.com/hclcnx/global-samples/tree/master/nifty-scripties) sample app. It contains _ten_ separate 
 extensions - all small individual samples designed for educational purposes. One of 
 these extensions is entitled "Smooth Loader" as it is designed to reduce
 screen jitter that can occur when many UI threads are updating the same
@@ -1257,12 +1257,12 @@ The following list summarizes the key details pertaining to the Customizer proxy
 + Apart from the `url` property, the `proxyFile` can also contain `authType`, `username` and `password` properties
 + At this point in time Customizer only supports 'Basic' authorization as the `authType` - not OAuth.
 + Customizer proxy requests must start with a `/files/customizer/proxy` path
-+ The Proxy samples discussed here are available here: https://github.com/ibmcnxdev/global-sample-apps/tree/master/proxySample
++ The Proxy samples discussed here are available here: https://github.com/hclcnx/global-sample-apps/tree/master/proxySample
 
 **Note:** Even though the proxy samples are available for demo purposes on a _public_ repository, if you wish to restrict access
 to the authentication information contained in the JSON file then the file itself should be placed within a `.private` folder and 
 the repository itself should also be _private_ (as of 2019 GitHub users can get [unlimited private repositories for free](https://github.blog/2019-01-07-new-year-new-github/))
-Access to the file can then be limited to those with administrative access to the private repository on the `ibmcnxdev` GitHub org. 
+Access to the file can then be limited to those with administrative access to the private repository on the `hclcnx` GitHub org. 
 
 ******
 # Displaying 3rd Party Content using Customizer
@@ -1454,10 +1454,10 @@ used put through its paces by importing the relevant JSON file into an
 organization’s Application Registry. So for example, you could take a
 copy of the `helloWorld.json` file from the `helloWorld` sample project
 published on the [`global-samples` GitHub
-repo](https://github.com/ibmcnxdev/global-samples/tree/master/helloWorld)
+repo](https://github.com/hclcnx/global-samples/tree/master/helloWorld)
 and import it into App Reg as follows:
 
-1.  Go to <https://github.com/ibmcnxdev/global-samples>
+1.  Go to <https://github.com/hclcnx/global-samples>
 
 2.  Navigate to the helloWorld.json file and copy/paste the contents to
     a local file
@@ -1549,7 +1549,7 @@ samples) in the Application Registry.
 
 <https://opencode4connections.org/>
  
-<https://github.com/ibmcnxdev/global-samples>
+<https://github.com/hclcnx/global-samples>
 
 ******
 ## Appendix 1 Customizer Payload Errors
