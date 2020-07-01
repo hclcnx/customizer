@@ -585,7 +585,13 @@ actual header names can be a little esoteric and can also vary between HCL Conne
 intent of the `keyword` is both to provide an intuitive identifier and a protection against platform implementation 
 differences. There are currently four keywords recognised by Customizer conditional filtering, namely: `user-name`, 
 `user-id`, `user-email`, `user-role`. If you specify a value that is not in this list then Customizer treats it as a 
-header name and if this is true it will apply the regular expression against the header value.  
+header name and if this is true it will apply the regular expression against the header value. 
+
+Because these conditions are evaluated against headers, whose values are constrained by **RFC2616** to only ASCII characters within the **0-255** code range, care must be taken when working with users with accented characters in their Connections profile user name like š,č, etc. Such characters fall in the extended ASCII code range above 255. 
+
+The Customizer code will convert such characters to nearest standard ASCII equivalents before placing in headers to avoid nodejs giving a `500 internal server error` response accompanied by this error in the mw-proxy container log: `Unhandled error for request GET /homepage/web/updates/: TypeError: The header content contains invalid characters`.
+
+For example, a user name `Matúš Jones` would become `Matus Jones` and thus any keyword rule should use the converted `Matus Jones` regex value to achieve a proper match.
 
 ******
 
