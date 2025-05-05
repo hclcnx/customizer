@@ -15,9 +15,9 @@ Customizer is also available for on-premises customers since the release of [Com
 ### 4. Provide Feedback
 Any bugs, feature requests and other observations should be reported as [issues][3] in this repository. 
 
-[1]: https://github.com/ibmcnxdev/customizer/blob/master/docs/HCLConnectionsCustomizer.md
-[2]: https://github.com/ibmcnxdev/customizer/tree/master/samples
-[3]: https://github.com/ibmcnxdev/customizer/issues
+[1]: https://github.com/hclcnx/customizer/blob/master/docs/HCLConnectionsCustomizer.md
+[2]: https://github.com/hclcnx/customizer/tree/master/samples
+[3]: https://github.com/hclcnx/customizer/issues
 [4]: https://www.youtube.com/playlist?list=PLaDSIoof-i95DcgxaxGgl3tdziBdyEfuE
 [5]: http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/3/877/ENUSZP18-0053/index.html&lang=en&request_locale=en
 
